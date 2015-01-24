@@ -29,6 +29,8 @@ namespace GameJamGame
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D playerTextureSave;
 
+        public static int currentLevel = -1;
+
         // level 1 tutorial level
         public static Texture2D level1BGSave;
         public static Texture2D level1BreakableBlockSave;

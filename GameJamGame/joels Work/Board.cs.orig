@@ -16,8 +16,7 @@ namespace GameJamGame.joels_Work
         // const
         const String transitionState = "transition";
         const String updateState = "update";
-        const int forward = 1;
-        const int backwards = -1;
+
 
 
 
@@ -35,8 +34,6 @@ namespace GameJamGame.joels_Work
         Vector2 directionOffset = Vector2.Zero;
         float speed = 1.0f;
         Vector2 endPoint = Vector2.Zero;
-
-        int currectDirection = 0;
 		// constructor
 		public Board()
 		{
@@ -44,7 +41,7 @@ namespace GameJamGame.joels_Work
 		}
 
 		// private functions:
-		private void checkCollision(GameObject object1, GameObject object2)
+		private bool checkCollision(GameObject object1, GameObject object2)
 		{
 			/*
 			 * Chris, produce a function to go in the Board class (not yet created).
@@ -58,24 +55,71 @@ namespace GameJamGame.joels_Work
 			Rectangle o2Rect = object2.getCollisionRect();
 
 			//if rectangle1 and rectangle2 are colliding
-			if (o1Rect.Intersects(o2Rect))
+			if (o1Rect.Intersects(o2Rect) || o1Rect.Top == o2Rect.Bottom || o1Rect.Right == o2Rect.Left || o1Rect.Bottom == o2Rect.Top || o1Rect.Left == o2Rect.Right)
 			{
 				//if rectangle1 is movable move it away from rectangle2
 				if (object1.isMovable())
 				{
+					float[] intersect = new float[4];
+
 					if (o1Rect.Bottom > o2Rect.Top && o1Rect.Bottom < o2Rect.Bottom)
 					{
-						float intersect = o2Rect.Top - o1Rect.Bottom;
-						Vector2 newVector = new Vector2(0, intersect);
-						object1.moveObject(newVector);
+						intersect[0] = o2Rect.Top - o1Rect.Bottom;
 					}
+
+					if (o1Rect.Left < o2Rect.Right && o1Rect.Left > o2Rect.Left)
+					{
+						intersect[1] = o2Rect.Right - o1Rect.Left;
+					}
+
+					if (o1Rect.Top < o2Rect.Bottom && o1Rect.Top > o2Rect.Top)
+					{
+						intersect[2] = o2Rect.Bottom - o1Rect.Top;
+					}
+
+					if (o1Rect.Right > o2Rect.Left && o1Rect.Right < o2Rect.Right)
+					{
+						intersect[3] = o2Rect.Left - o1Rect.Right;
+					}
+
+					int index = 0, count = 0;
+
+					foreach (float intersection in intersect)
+					{
+						if (Math.Abs(intersection) < Math.Abs(intersect[index]) && Math.Abs(intersection) != 0)
+						{
+							index = count;
+						}
+						count++;
+					}
+
+					Vector2 newVector;
+
+					if (index % 2 == 0)
+					{
+						newVector = new Vector2(0, intersect[index]);
+					}
+					else
+					{
+						newVector = new Vector2(intersect[index], 0);
+					}
+
+					if (index == 0)
+					{
+						object1.isFalling(false);
+					}
+
+					object1.moveObject(newVector);
 				}
 				//if rectangle2 is movable move it away from rectangle1
 				//if (object2.isMovable())
 				//{
 				//	object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
 				//}
+
+				return true;
 			}
+			return false;
 		}
 
         public void declareTransition(Vector2 endCornerPoint, Vector2 startPoint)
@@ -91,14 +135,13 @@ namespace GameJamGame.joels_Work
         }
 
         // public functions:
-        public void endLevel(int direction)
+        public void endLevel()
         {
-            
+           
             state = transitionState;
-            declareTransition(new Vector2(-800*direction, 0), this.boardOffset);
-            getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-800 * direction, 0));
-            StartTransition(direction);
-            
+            declareTransition(new Vector2(-800, 0), this.boardOffset);
+            getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-800, 0));
+            StartTransition();
 
         }
 
@@ -114,20 +157,22 @@ namespace GameJamGame.joels_Work
             this.gameObjectList.Add(player);
             this.gameObjectList.AddRange(level.getObjectList());
         }
-        void StartTransition(int direction)
+        void StartTransition()
         {
+
             transitionBoard = new Board();
-            transitionBoard.buildBoard(Game1.levelList[Game1.currentLevel + direction], getPlayer());
-            transitionBoard.declareTransition(Vector2.Zero, new Vector2(800*direction, 0));
+            transitionBoard.buildBoard(Game1.levelList[0], getPlayer());
+            transitionBoard.declareTransition(Vector2.Zero, new Vector2(800, 0));
+
+
         }
 
-        void endTransition(int direction)
+        void endTransition()
         {
             transitionBoard = null;
             //this.gameObjectList[0].moveObject(new Vector2(-800, 0));
-            Game1.currentLevel += direction;
-            this.buildBoard(Game1.levelList[Game1.currentLevel], (Player)gameObjectList[0]);
-            //Game1.levelList.RemoveAt(0);
+            this.buildBoard(Game1.levelList[0], (Player)gameObjectList[0]);
+            Game1.levelList.RemoveAt(0);
             this.state = updateState;
         }
 
@@ -139,13 +184,7 @@ namespace GameJamGame.joels_Work
             {
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
-                    currectDirection = forward;
-                    endLevel(forward);
-                }
-                if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
-                {
-                    currectDirection = backwards;
-                    endLevel(backwards);
+                    endLevel();
                 }
 
                 foreach (GameObject i in gameObjectList)
@@ -169,14 +208,32 @@ namespace GameJamGame.joels_Work
                 this.applyTransmitionAnimation();
                 if (Vector2.Distance(boardOffset, endPoint) < directionOffset.Length() / 1.5f)
                 {
-                    if (currectDirection != 0)
-                        endTransition(currectDirection);
-                    else
-                    {
-                        // something is fucking broken
-                    }
+                    endTransition();
                 }
             }
+<<<<<<< HEAD
+
+			foreach (GameObject i in gameObjectList)
+			{
+				i.update(gameTime);
+			}
+			foreach (GameObject i in gameObjectList)
+			{
+				bool check = false;
+				foreach (GameObject j in gameObjectList)
+				{
+					if (i != j && i.getState() != 3 && j.getState() != 3)
+					{
+						if (this.checkCollision(i, j))
+						{
+							check = true;
+						}
+					}
+				}
+				i.isColliding(check);
+			}
+=======
+>>>>>>> transitionsMaybeDone
 		}
 
 		public void load(int objectNumber)
@@ -187,14 +244,22 @@ namespace GameJamGame.joels_Work
 			gameObjectList[0].load(Game1.playerTextureSave);
             playerPointer = (Player)gameObjectList[0];
             
-            gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(200, 200),Color.White));
+            gameObjectList.Add(new Shatter(Game1.objectPlaceHolderSave, new Vector2(30, 300),Color.White));
             gameObjectList[1].load(Game1.objectPlaceHolderSave);
+			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
+			//gameObjectList[2].load(Game1.objectPlaceHolderSave);
+			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White));
+			//gameObjectList[3].load(Game1.objectPlaceHolderSave);
+			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(175, 300), Color.White));
+			//gameObjectList[4].load(Game1.objectPlaceHolderSave);
+			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(225, 300), Color.White));
+			//gameObjectList[5].load(Game1.objectPlaceHolderSave);
 			
-            for (int i = 0; i < objectNumber; i++)
-			{
-				gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Vector2(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490)), Color.White));
-				gameObjectList[i + 1].load(Game1.objectPlaceHolderSave);
-			}
+			//for (int i = 0; i < objectNumber; i++)
+			//{
+			//	gameObjectList.Add(new Shatter(GameJamGame.Game1.objectPlaceHolderSave, new Vector2(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490)), Color.White));
+			//	gameObjectList[i + 1].load(Game1.objectPlaceHolderSave);
+			//}
 		}
 
 
@@ -203,7 +268,7 @@ namespace GameJamGame.joels_Work
             SB.Draw(this.currentBackGround, drawRect(this.boardOffset), Color.White);
 			foreach (GameObject i in this.gameObjectList)
 			{
-				i.draw(SB, this.boardOffset);
+				if (i.getState() != 3) i.draw(SB, this.boardOffset);
 			}
 
             if (transitionBoard != null)

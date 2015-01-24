@@ -13,36 +13,36 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameJamGame.joels_Work
 {
-    class Player : GameObject
-    {
+	class Player : GameObject
+	{
 
-        enum State
-        {
-            Walking,
-            Jumping
-        }
-        State currentState = State.Walking;
+		enum State
+		{
+			Walking,
+			Jumping
+		}
+		State currentState = State.Walking;
 
-        Vector2 mDirection = Vector2.Zero;
-        Vector2 mSpeed = Vector2.Zero;
+		Vector2 mDirection = Vector2.Zero;
+		Vector2 mSpeed = Vector2.Zero;
 
-        KeyboardState mPreviousKeyboardState;
+		KeyboardState mPreviousKeyboardState;
 
-        public void Update(GameTime theGameTime)
-        {
-            //KeyboardState aCurrentKeyboardState = Keyboard.GetState();
+		public void Update(GameTime theGameTime)
+		{
+			//KeyboardState aCurrentKeyboardState = Keyboard.GetState();
 
-            //UpdateMovement(aCurrentKeyboardState);
+			//UpdateMovement(aCurrentKeyboardState);
 
-            //mPreviousKeyboardState = aCurrentKeyboardState;
+			//mPreviousKeyboardState = aCurrentKeyboardState;
 
-            //base.Update(theGameTime, mSpeed, mDirection);
-        }
+			//base.Update(theGameTime, mSpeed, mDirection);
+		}
 
-        private void UpdateMovement(KeyboardState currentKeyboardState)
-        {
+		private void UpdateMovement(KeyboardState currentKeyboardState)
+		{
 
 
-        }
-    }
+		}
+	}
 }

@@ -40,7 +40,10 @@ namespace GameJamGame.joels_Work
 				//if rectangle1 is movable move it away from rectangle2
 				if (object1.isMovable())
 				{
-					object1.moveObject(new Vector2(object2.getCenterPosition().X - object1.getCenterPosition().X, object2.getCenterPosition().Y - object1.getCenterPosition().Y));
+					Vector2 object1Vector = object1.getCenterPosition();
+					Vector2 object2Vector = object2.getCenterPosition();
+					Vector2 newVector = Vector2.Normalize(object1Vector - object2Vector);
+					object1.moveObject(newVector);
 				}
 				//if rectangle2 is movable move it away from rectangle1
 				if (object2.isMovable())

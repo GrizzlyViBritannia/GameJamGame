@@ -106,7 +106,8 @@ namespace GameJamGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+			// TODO: Add your update logic here
+			gameBoard.update(gameTime);
 
             base.Update(gameTime);
         }
@@ -124,7 +125,6 @@ namespace GameJamGame
             spriteBatch.Begin();
 
             spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
-            gameBoard.update(gameTime);
             gameBoard.draw(spriteBatch);
 
             spriteBatch.End();

@@ -49,6 +49,8 @@ namespace GameJamGame.joels_Work
             this.texture = texture;
             this.centerPosition = pos;
             this.colour = colour;
+			this.movable = true;
+			this.collisonRect = drawRect();
         }
 
 		public override void update(GameTime gameTime)
@@ -58,6 +60,7 @@ namespace GameJamGame.joels_Work
 			updateMovement(currentKeyboardState);
 			updateJump(currentKeyboardState);
 			this.moveObject(mDirection * mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+			this.collisonRect = drawRect();
 
 			mPreviousKeyboardState = currentKeyboardState;
 		}

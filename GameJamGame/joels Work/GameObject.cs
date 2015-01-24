@@ -53,6 +53,7 @@ namespace GameJamGame.joels_Work
             this.colour = colour;
             this.centerPosition = pos;
             this.collisonRect = drawRect();
+			this.movable = false;
         }
 
 

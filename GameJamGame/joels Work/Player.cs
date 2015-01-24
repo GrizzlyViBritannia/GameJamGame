@@ -42,10 +42,10 @@ namespace GameJamGame.joels_Work
 		{
 
         }
-        public Player(Texture2D texture, Rectangle pos, Color colour)
+        public Player(Texture2D texture, Vector2 pos, Color colour)
         {
             this.texture = texture;
-            this.drawRect = pos;
+            this.centerPosition = pos;
             this.colour = colour;
         }
 

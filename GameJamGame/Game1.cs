@@ -15,6 +15,13 @@ namespace GameJamGame
 	/// <summary>
 	/// This is the main type for your game
 	/// </summary>
+    /// 
+
+    public struct levelImageSave
+    {
+        Texture2D BackGround;
+    }
+
 	public class Game1 : Game
 	{
 		GraphicsDeviceManager graphics;
@@ -26,9 +33,14 @@ namespace GameJamGame
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D playerTextureSave;
 
+
         public static Random rnd = new Random();
 
+
+
+
         Board gameBoard = new Board();
+        List<Level> levelList;
 
 		public Game1()
 			: base()
@@ -112,5 +124,26 @@ namespace GameJamGame
 
 			base.Draw(gameTime);
 		}
+
+
+
+
+        /*
+         * 
+         * create level code
+         * 
+         */ 
+        /*
+        private List<Level> createLevels()
+        {
+            Level level1 = new Level();
+
+            // add background texture
+            level1.backGround =  
+          
+            
+        }
+
+        */
 	}
 }

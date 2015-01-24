@@ -35,7 +35,7 @@ namespace GameJamGame.joels_Work
 
 		public Vector2 Position = new Vector2(0, 0);
 
-		Vector2 mDirection = Vector2.Zero;
+		Vector2 mDirection = new Vector2(0,1);
 		Vector2 mSpeed = Vector2.Zero;
 		Vector2 jumpStartingPosition = Vector2.Zero;
 
@@ -58,10 +58,13 @@ namespace GameJamGame.joels_Work
 
 		public override void update(GameTime gameTime)
 		{
+			
+			
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 
 			updateMovement(currentKeyboardState);
 			updateJump(currentKeyboardState);
+			checkFalling();
 			updateGravity(gameTime);
 			this.moveObject(mDirection * mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 			this.collisonRect = drawRect(this.drawOffset);
@@ -73,30 +76,37 @@ namespace GameJamGame.joels_Work
 			mPreviousKeyboardState = currentKeyboardState;
 		}
 
+		private void checkFalling()
+		{
+			if (!this.falling)
+			{
+				mSpeed.Y = 0;
+				jumpCount = 0;
+				this.isFalling(true);
+			}
+		}
+
 		private void updateGravity(GameTime gameTime)
 		{
 			mSpeed.Y = mSpeed.Y + (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds);
-			Console.WriteLine("UPDATING GRAVITY " + (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds) + mSpeed.Y);
+			//Console.WriteLine("UPDATING GRAVITY " + (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds) + mSpeed.Y);
 		}
 
 		private void updateMovement(KeyboardState currentKeyboardState)
 		{
-			//if (currentState == State.Walking)
-			//{
-				mSpeed.X = 0;
-				mDirection.X = 0;
+			mSpeed.X = 0;
+			mDirection.X = 0;
 
-				if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
-				{
-					mSpeed.X = WALKING_SPEED;
-					mDirection.X = MOVE_LEFT;
-				}
-				else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
-				{
-					mSpeed.X = WALKING_SPEED;
-					mDirection.X = MOVE_RIGHT;
-				}
-			//}
+			if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
+			{
+				mSpeed.X = WALKING_SPEED;
+				mDirection.X = MOVE_LEFT;
+			}
+			else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
+			{
+				mSpeed.X = WALKING_SPEED;
+				mDirection.X = MOVE_RIGHT;
+			}
 		}
 
 		private void updateJump(KeyboardState currentKeyboardState)
@@ -115,12 +125,13 @@ namespace GameJamGame.joels_Work
 			bool doJump = false;
 
 			//TODO fix double jump condition.
-			if (jumpCount >= 0)
+			if (jumpCount < 2)
 			{
 				if (currentKeyboardState.IsKeyDown(Keys.Up) == true &&
 					 mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
 				{
 					doJump = true;
+					Console.WriteLine("TRY JUMP");
 				}
 			}
 
@@ -130,9 +141,8 @@ namespace GameJamGame.joels_Work
 		private void jump()
 		{
 			jumpCount++;
-			mDirection.Y = MOVE_UP;
 			mSpeed.Y = JUMP_POWER;
-			Console.WriteLine("JUMP");
+			Console.WriteLine("DO JUMP");
 		}
 
 	}

@@ -71,7 +71,7 @@ namespace GameJamGame.joels_Work
 		{
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                buildBoard(Game1.levelList[0], playerPointer);
+                buildBoard(Game1.levelList[0], (Player)this.gameObjectList[0]);
             }
 
 			foreach (GameObject i in gameObjectList)

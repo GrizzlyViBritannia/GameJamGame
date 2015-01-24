@@ -82,6 +82,7 @@ namespace GameJamGame
             level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/breakableBlockPlaceHolder.png");
 
             // create level data
+            levelList = new List<Level>();
             levelList = createLevels();
 
             gameBoard.load(5);
@@ -144,8 +145,11 @@ namespace GameJamGame
         private List<Level> createLevels()
         {
             List<Level> returnList = new List<Level>();
-            Level level1 = new Level(level1BGSave, level1Objects());
+            List<GameObject> level1GameObjectList = new List<GameObject>();
+            level1GameObjectList = level1Objects();
+            Level level1 = new Level(level1BGSave, level1GameObjectList);
 
+            returnList.Add(level1);
             return returnList;
 
         }

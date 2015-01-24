@@ -21,10 +21,12 @@ namespace GameJamGame.joels_Work
 		public Rectangle drawRect;
 		private List<GameObject> objectList;
 
-		public Level(Texture2D backGround, List<GameObject> gameObject)
+		public Level(Texture2D backGround, List<GameObject> gameObjectList)
 		{
 			this.backGround = backGround;
 			this.drawRect = drawRect;
+            objectList = new List<GameObject>();
+            objectList = gameObjectList;
 		}
 
         public List<GameObject> getObjectList()

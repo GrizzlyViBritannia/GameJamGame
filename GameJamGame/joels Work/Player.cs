@@ -21,6 +21,10 @@ namespace GameJamGame.joels_Work
 		const int MOVE_DOWN = -1;
 		const int MOVE_UP = 1;
 
+        // animation stuff (Joel)
+
+
+
 
 		enum State
 		{

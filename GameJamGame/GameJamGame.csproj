@@ -37,6 +37,8 @@
   <ItemGroup>
     <Compile Include="Chris Work\Collison.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="joels Work\Board.cs" />
+    <Compile Include="joels Work\Level.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

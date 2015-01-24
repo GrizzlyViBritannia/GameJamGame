@@ -59,7 +59,6 @@ namespace GameJamGame.joels_Work
 			this.colour = colour;
 			this.movable = true;
 			this.collisonRect = drawRect(this.drawOffset);
-			this.player = true;
 		}
 
 		public override void update(GameTime gameTime)

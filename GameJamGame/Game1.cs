@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
+using GameJamGame.joels_Work;
 #endregion
 
 namespace GameJamGame
@@ -19,7 +20,15 @@ namespace GameJamGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D image;
+        Texture2D image; // piss off
+
+        public static Texture2D backGroundPlaceHolderSave;
+        public static Texture2D objectPlaceHolderSave;
+        public static Texture2D playerTextureSave;
+
+        public static Random rnd = new Random();
+
+        Board gameBoard = new Board();
 
         public Game1()
             : base()
@@ -52,7 +61,12 @@ namespace GameJamGame
 
             // TODO: use this.Content to load your game content here
 
-            image = Content.Load<Texture2D>("Images/test");
+            image = Content.Load<Texture2D>("Images/test"); // i hate you
+            backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backgroundPlaceHolder");
+            playerTextureSave = Content.Load<Texture2D>("Images/playerPlaceHolder.png");
+            objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
+
+            gameBoard.load(5);
         }
 
         /// <summary>
@@ -92,6 +106,7 @@ namespace GameJamGame
             spriteBatch.Begin();
 
             spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
+            gameBoard.draw(spriteBatch);
 
             spriteBatch.End();
 

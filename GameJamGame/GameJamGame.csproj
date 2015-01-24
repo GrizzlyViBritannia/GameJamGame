@@ -40,6 +40,7 @@
     <Compile Include="joels Work\GameObject.cs" />
     <Compile Include="joels Work\Level.cs" />
     <Compile Include="joels Work\Player.cs" />
+    <Compile Include="joels Work\Shatter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

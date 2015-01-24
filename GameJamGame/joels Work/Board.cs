@@ -45,7 +45,6 @@ namespace GameJamGame.joels_Work
 
 			Rectangle o1Rect = object1.getCollisionRect();
 			Rectangle o2Rect = object2.getCollisionRect();
-			int returnIndex = -1;
 
 			//if rectangle1 and rectangle2 are colliding
 			if (o1Rect.Intersects(o2Rect))
@@ -160,7 +159,7 @@ namespace GameJamGame.joels_Work
 				bool check = false;
 				foreach (GameObject j in gameObjectList)
 				{
-					if (i != j)
+					if (i != j && i.getState() != 3 && j.getState() != 3)
 					{
 						if (this.checkCollision(i, j))
 						{
@@ -186,7 +185,7 @@ namespace GameJamGame.joels_Work
 			
             for (int i = 0; i < objectNumber; i++)
 			{
-				gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Vector2(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490)), Color.White));
+				gameObjectList.Add(new Shatter(GameJamGame.Game1.objectPlaceHolderSave, new Vector2(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490)), Color.White));
 				gameObjectList[i + 1].load(Game1.objectPlaceHolderSave);
 			}
 		}
@@ -197,7 +196,7 @@ namespace GameJamGame.joels_Work
             SB.Draw(this.currentBackGround, drawRect(this.boardOffset), Color.White);
 			foreach (GameObject i in this.gameObjectList)
 			{
-				i.draw(SB, this.boardOffset);
+				if (i.getState() != 3) i.draw(SB, this.boardOffset);
 			}
 		}
         private Rectangle drawRect(Vector2 offset)

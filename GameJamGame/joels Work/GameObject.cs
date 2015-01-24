@@ -24,6 +24,8 @@ namespace GameJamGame.joels_Work
 		protected bool falling;
 		protected bool colliding;
 
+		protected int state; // 1 is INIT	2 is INTERMEDIATE	3 is DEAD
+
 		// draw variable
 		protected Color colour;
         protected Texture2D texture;
@@ -114,6 +116,9 @@ namespace GameJamGame.joels_Work
 			return this.centerPosition;
 		}
 
-
+		public int getState()
+		{
+			return this.state;
+		}
 	}
 }

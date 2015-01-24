@@ -51,7 +51,7 @@ namespace GameJamGame.joels_Work
             this.colour = colour;
         }
 
-		private void update(GameTime gameTime)
+		public override void update(GameTime gameTime)
 		{
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 
@@ -66,18 +66,20 @@ namespace GameJamGame.joels_Work
 		{
 			if (currentState == State.Walking)
 			{
-				mSpeed = Vector2.Zero;
-				mDirection = Vector2.Zero;
+				mSpeed.X = 0;
+				mDirection.X = 0;
 
-				if (currentKeyboardState.IsKeyDown(Keys.Left) == true || currentKeyboardState.IsKeyDown(Keys.A) == true)
+				if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
 				{
 					mSpeed.X = WALKING_SPEED;
 					mDirection.X = MOVE_LEFT;
+					Console.WriteLine("MOVE LEFT");
 				}
-				else if (currentKeyboardState.IsKeyDown(Keys.Right) == true || currentKeyboardState.IsKeyDown(Keys.D) == true)
+				else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
 				{
 					mSpeed.X = WALKING_SPEED;
 					mDirection.X = MOVE_RIGHT;
+					Console.WriteLine("MOVE RIGHT");
 				}
 			}
 		}

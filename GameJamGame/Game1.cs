@@ -122,7 +122,8 @@ namespace GameJamGame
 			spriteBatch.Begin();
 
 			spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
-            gameBoard.draw(spriteBatch);
+			gameBoard.update(gameTime);
+			gameBoard.draw(spriteBatch);
 
 			spriteBatch.End();
 
@@ -138,15 +139,15 @@ namespace GameJamGame
          * 
          */ 
         
-        private List<Level> createLevels()
-        {
-            //Level level1 = new Level();
+		//private List<Level> createLevels()
+		//{
+		//	//Level level1 = new Level();
 
-            // add background texture
-            // level1. = level1BGSave;
+		//	// add background texture
+		//	// level1. = level1BGSave;
           
             
-        }
+		//}
 
         
 	}

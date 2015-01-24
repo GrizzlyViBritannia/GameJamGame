@@ -30,13 +30,13 @@ namespace GameJamGame.joels_Work
 
         public void Update(GameTime theGameTime)
         {
-            KeyboardState aCurrentKeyboardState = Keyboard.GetState();
+            //KeyboardState aCurrentKeyboardState = Keyboard.GetState();
 
-            UpdateMovement(aCurrentKeyboardState);
+            //UpdateMovement(aCurrentKeyboardState);
 
-            mPreviousKeyboardState = aCurrentKeyboardState;
+            //mPreviousKeyboardState = aCurrentKeyboardState;
 
-            base.Update(theGameTime, mSpeed, mDirection);
+            //base.Update(theGameTime, mSpeed, mDirection);
         }
 
         private void UpdateMovement(KeyboardState currentKeyboardState)

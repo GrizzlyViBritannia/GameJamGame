@@ -36,7 +36,7 @@ namespace GameJamGame.joels_Work
 		}
 		State currentState = State.Walking;
 
-		public Vector2 Position = new Vector2(0, 0);
+		//public Vector2 Position = new Vector2(0, 0);
 
 		Vector2 mDirection = new Vector2(0,1);
 		Vector2 mSpeed = Vector2.Zero;
@@ -182,5 +182,10 @@ namespace GameJamGame.joels_Work
 			Console.WriteLine("DO JUMP");
 		}
 
-	}
+
+        internal void setPosition(int p1, int p2)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

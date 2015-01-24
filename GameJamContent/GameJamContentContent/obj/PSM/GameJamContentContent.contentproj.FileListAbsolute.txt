@@ -1,1 +1,2 @@
 D:\git rep\GameJamGame\GameJamContent\GameJamContentContent\obj\PSM\GameJamContentContent.contentprojResolveAssemblyReference.cache
+D:\tst\GameJamGame\GameJamContent\GameJamContentContent\obj\PSM\GameJamContentContent.contentprojResolveAssemblyReference.cache

@@ -21,3 +21,14 @@ D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Tao.Sdl.dll
 D:\git rep\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.csprojResolveAssemblyReference.cache
 D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.exe
 D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.pdb
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Content\Images\test.png
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.exe
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.pdb
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\IgnoreMe.dll
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\OpenTK.dll
+D:\tst\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+D:\tst\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.csprojResolveAssemblyReference.cache
+D:\tst\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.exe
+D:\tst\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.pdb

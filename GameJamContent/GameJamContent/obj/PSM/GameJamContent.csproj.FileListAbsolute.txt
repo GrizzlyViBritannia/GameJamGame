@@ -12,3 +12,4 @@ D:\tst\GameJamGame\GameJamContent\GameJamContent\bin\PSM\IgnoreMe.dll
 D:\tst\GameJamGame\GameJamContent\GameJamContent\obj\PSM\GameJamContent.csprojResolveAssemblyReference.cache
 D:\tst\GameJamGame\GameJamContent\GameJamContent\obj\PSM\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\tst\GameJamGame\GameJamContent\GameJamContent\obj\PSM\IgnoreMe.dll
+c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamContent\GameJamContent\obj\PSM\GameJamContent.csprojResolveAssemblyReference.cache

@@ -33,7 +33,7 @@ namespace GameJamGame.joels_Work
 		}
 
 		// private functions:
-		private void checkCollision(GameObject object1, GameObject object2)
+		private bool checkCollision(GameObject object1, GameObject object2)
 		{
 			/*
 			 * Chris, produce a function to go in the Board class (not yet created).
@@ -109,7 +109,10 @@ namespace GameJamGame.joels_Work
 				//{
 				//	object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
 				//}
+
+				return true;
 			}
+			return false;
 		}
 
         private void declareTransition(Vector2 direction, Vector2 endCornerPoint)
@@ -154,13 +157,18 @@ namespace GameJamGame.joels_Work
 			}
 			foreach (GameObject i in gameObjectList)
 			{
+				bool check = false;
 				foreach (GameObject j in gameObjectList)
 				{
 					if (i != j)
 					{
-						this.checkCollision(i, j);
+						if (this.checkCollision(i, j))
+						{
+							check = true;
+						}
 					}
 				}
+				i.isColliding(check);
 			}
 		}
 

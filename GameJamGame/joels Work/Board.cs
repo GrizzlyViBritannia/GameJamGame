@@ -98,7 +98,6 @@ namespace GameJamGame.joels_Work
 		// public logic-draw functions
 		public void update(GameTime gameTime)
 		{
-            this.boardOffset.X++;
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 buildBoard(Game1.levelList[0], (Player)this.gameObjectList[0]);

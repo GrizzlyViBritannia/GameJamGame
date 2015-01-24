@@ -55,7 +55,7 @@ namespace GameJamGame.joels_Work
             this.centerPosition = pos;
             this.colour = colour;
 			this.movable = true;
-			this.collisonRect = drawRect();
+			this.collisonRect = drawRect(this.drawOffset);
         }
 
 		public override void update(GameTime gameTime)
@@ -66,7 +66,7 @@ namespace GameJamGame.joels_Work
 			updateJump(currentKeyboardState);
 			updateGravity(gameTime);
 			this.moveObject(mDirection * mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
-			this.collisonRect = drawRect();
+			this.collisonRect = drawRect(this.drawOffset);
 			if (currentKeyboardState.IsKeyDown(Keys.Space) == true)
 			{
 				currentState = State.Walking;

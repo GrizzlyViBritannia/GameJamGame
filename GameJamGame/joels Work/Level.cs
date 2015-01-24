@@ -23,11 +23,12 @@ namespace GameJamGame.joels_Work
 
 
 
-		public Level(Texture2D backGround, Rectangle drawRect, List<GameObject> gameObject)
+		public Level(Texture2D backGround, List<GameObject> gameObject)
 		{
 			this.backGround = backGround;
 			this.drawRect = drawRect;
 		}
+
 
 
 	}

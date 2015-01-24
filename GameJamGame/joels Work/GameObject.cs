@@ -42,10 +42,7 @@ namespace GameJamGame.joels_Work
         }
 
 		// public functions:
-        public GameObject()
-        {
-
-        }
+        public GameObject(){}
         public GameObject(Texture2D texture, Vector2 pos, Color colour)
         {
             this.texture = texture;

@@ -17,10 +17,6 @@ namespace GameJamGame
 	/// </summary>
     /// 
 
-    public struct levelImageSave
-    {
-        Texture2D BackGround;
-    }
 
 	public class Game1 : Game
 	{
@@ -33,6 +29,9 @@ namespace GameJamGame
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D playerTextureSave;
 
+        // level 1 tutorial level
+        public static Texture2D level1BGSave;
+        public static Texture2D breakableBlockSave;
 
         public static Random rnd = new Random();
 
@@ -75,8 +74,13 @@ namespace GameJamGame
 
             image = Content.Load<Texture2D>("Images/test"); // i hate you
             backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backgroundPlaceHolder");
-            playerTextureSave = Content.Load<Texture2D>("Images/playerPlaceHolder.png");
+            playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
+
+            // level 1 load
+            level1BGSave = Content.Load<Texture2D>("Images/Level1/tutorial level 1.png");
+            breakableBlockSave = Content.Load<Texture2D>("Images/Level1/breakableBlockPlaceHolder.png");
+            
 
             gameBoard.load(5);
 		}
@@ -133,17 +137,17 @@ namespace GameJamGame
          * create level code
          * 
          */ 
-        /*
+        
         private List<Level> createLevels()
         {
-            Level level1 = new Level();
+            //Level level1 = new Level();
 
             // add background texture
-            level1.backGround =  
+            // level1. = level1BGSave;
           
             
         }
 
-        */
+        
 	}
 }

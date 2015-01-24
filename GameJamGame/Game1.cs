@@ -85,7 +85,7 @@ namespace GameJamGame
             levelList = new List<Level>();
             levelList = createLevels();
 
-            gameBoard.load(5);
+            gameBoard.load(0);
         }
 
         /// <summary>

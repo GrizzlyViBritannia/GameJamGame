@@ -17,7 +17,7 @@ namespace GameJamGame.joels_Work
 		// logic variables
 		protected Vector2 centerPosition;
 		protected Rectangle collisonRect;
-		protected float gravity = 1.0f;
+		protected float gravity = 1000.0f;
 
 		protected bool movable;
 		protected bool collidable;

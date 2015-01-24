@@ -16,10 +16,10 @@ namespace GameJamGame.joels_Work
 	{
 
 		const int WALKING_SPEED = 160;
-		const int JUMP_POWER = 10;
+		const int JUMP_POWER = -500;
 		const int MOVE_LEFT = -1;
 		const int MOVE_RIGHT = 1;
-		const int MOVE_DOWN = -1;
+		const int MOVE_DOWN = 1;
 		const int MOVE_UP = 1;
 
         // animation stuff (Joel)
@@ -29,9 +29,7 @@ namespace GameJamGame.joels_Work
 
 		enum State
 		{
-			Walking,
-			Jumping,
-			Falling
+			Walking
 		}
 		State currentState = State.Walking;
 
@@ -77,13 +75,14 @@ namespace GameJamGame.joels_Work
 
 		private void updateGravity(GameTime gameTime)
 		{
-			mSpeed.Y =+ (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds); 
+			mSpeed.Y = mSpeed.Y + (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds);
+			Console.WriteLine("UPDATING GRAVITY " + (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds) + mSpeed.Y);
 		}
 
 		private void updateMovement(KeyboardState currentKeyboardState)
 		{
-			if (currentState == State.Walking)
-			{
+			//if (currentState == State.Walking)
+			//{
 				mSpeed.X = 0;
 				mDirection.X = 0;
 
@@ -91,15 +90,13 @@ namespace GameJamGame.joels_Work
 				{
 					mSpeed.X = WALKING_SPEED;
 					mDirection.X = MOVE_LEFT;
-					Console.WriteLine("MOVE LEFT");
 				}
 				else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
 				{
 					mSpeed.X = WALKING_SPEED;
 					mDirection.X = MOVE_RIGHT;
-					Console.WriteLine("MOVE RIGHT");
 				}
-			}
+			//}
 		}
 
 		private void updateJump(KeyboardState currentKeyboardState)
@@ -117,7 +114,8 @@ namespace GameJamGame.joels_Work
 		{
 			bool doJump = false;
 
-			if (jumpCount < 2)
+			//TODO fix double jump condition.
+			if (jumpCount >= 0)
 			{
 				if (currentKeyboardState.IsKeyDown(Keys.Up) == true &&
 					 mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
@@ -131,13 +129,10 @@ namespace GameJamGame.joels_Work
 
 		private void jump()
 		{
-			if (currentState != State.Jumping)
-			{
-				currentState = State.Jumping;
-				jumpCount++;
-				mDirection.Y = MOVE_UP;
-				mSpeed.Y = JUMP_POWER;
-			}
+			jumpCount++;
+			mDirection.Y = MOVE_UP;
+			mSpeed.Y = JUMP_POWER;
+			Console.WriteLine("JUMP");
 		}
 
 	}

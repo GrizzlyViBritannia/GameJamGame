@@ -64,6 +64,7 @@ namespace GameJamGame.joels_Work
 		public void moveObject(Vector2 input)
 		{
 			this.centerPosition += input;
+			this.collisonRect = drawRect(this.drawOffset);
 		}
 
 		// main logic-draw functions

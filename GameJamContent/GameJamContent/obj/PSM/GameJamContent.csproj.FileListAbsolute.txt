@@ -7,3 +7,8 @@ D:\git rep\GameJamGame\GameJamContent\GameJamContent\bin\PSM\IgnoreMe.dll
 D:\git rep\GameJamGame\GameJamContent\GameJamContent\obj\PSM\GameJamContent.csprojResolveAssemblyReference.cache
 D:\git rep\GameJamGame\GameJamContent\GameJamContent\obj\PSM\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\git rep\GameJamGame\GameJamContent\GameJamContent\obj\PSM\IgnoreMe.dll
+D:\tst\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\test.png
+D:\tst\GameJamGame\GameJamContent\GameJamContent\bin\PSM\IgnoreMe.dll
+D:\tst\GameJamGame\GameJamContent\GameJamContent\obj\PSM\GameJamContent.csprojResolveAssemblyReference.cache
+D:\tst\GameJamGame\GameJamContent\GameJamContent\obj\PSM\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\tst\GameJamGame\GameJamContent\GameJamContent\obj\PSM\IgnoreMe.dll

@@ -21,3 +21,5 @@ D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Tao.Sdl.dll
 D:\git rep\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.csprojResolveAssemblyReference.cache
 D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.exe
 D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.pdb
+D:\tst\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.exe
+D:\tst\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.pdb

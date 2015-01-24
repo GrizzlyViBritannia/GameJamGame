@@ -58,6 +58,16 @@ namespace GameJamGame.joels_Work
             return this.collidable;
         }
 
+        public Rectangle getCollisionRect()
+        {
+            return this.collisonRect;
+        }
+
+        public Vector2 getCenterPosition()
+        {
+            return this.centerPosition;
+        }
+
 
     }
 }

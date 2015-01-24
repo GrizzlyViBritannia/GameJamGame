@@ -35,7 +35,6 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Chris Work\Collison.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="joels Work\Board.cs" />
     <Compile Include="joels Work\GameObject.cs" />
@@ -65,6 +64,7 @@
     <Content Include="SDL.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Chris Work\" />
     <Folder Include="Content\" />
     <Folder Include="Sams Work\" />
   </ItemGroup>

@@ -28,6 +28,22 @@ namespace GameJamGame.joels_Work
              * this function takes a Vector2 variable and will move the object by 
              * said vector
              */
+
+            //if rectangle1 and rectangle2 are colliding
+            if (object1.getCollisionRect().Intersects(object2.getCollisionRect()))
+            {
+                //if rectangle1 is movable move it away from rectangle2
+                if (object1.isMovable())
+                {
+                    object1.moveObject(new Vector2(object2.getCenterPosition().X - object1.getCenterPosition().X, object2.getCenterPosition().Y - object1.getCenterPosition().Y));
+                }
+                //if rectangle2 is movable move it away from rectangle1
+                if (object2.isMovable())
+                {
+                    object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
+                }
+            }
+
         }
 
         // public logic-draw functions

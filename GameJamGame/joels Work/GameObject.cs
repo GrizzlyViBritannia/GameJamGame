@@ -17,6 +17,7 @@ namespace GameJamGame.joels_Work
 		// logic variables
 		protected Vector2 centerPosition;
 		protected Rectangle collisonRect;
+		protected float gravity = 1.0f;
 
 		protected bool movable;
 		protected bool collidable;
@@ -42,7 +43,10 @@ namespace GameJamGame.joels_Work
         }
 
 		// public functions:
-        public GameObject(){}
+        public GameObject()
+        {
+
+        }
         public GameObject(Texture2D texture, Vector2 pos, Color colour)
         {
             this.texture = texture;
@@ -59,9 +63,9 @@ namespace GameJamGame.joels_Work
 
 		// main logic-draw functions
 
-        public void update(GameTime gameTime)
+        public virtual void update(GameTime gameTime)
 		{
-
+			
 		}
 		public void draw(SpriteBatch SB)
 		{

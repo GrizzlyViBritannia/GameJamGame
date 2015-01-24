@@ -15,7 +15,7 @@ namespace GameJamGame.Chris_Work
     {
         public Vector2 CheckCollision(Rectangle rectangle1, Rectangle rectangle2)
         {
-           
+            return new Vector2(rectangle1.X - rectangle2.X, rectangle1.Y - rectangle2.Y);
         }
     }
 }

@@ -35,9 +35,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Chris Work\Collison.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="joels Work\GameObject.cs" />
-    <Compile Include="joels Work\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="joels Work\" />
     <Folder Include="Sams Work\" />
   </ItemGroup>
   <ItemGroup>

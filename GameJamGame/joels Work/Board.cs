@@ -41,7 +41,7 @@ namespace GameJamGame.joels_Work
 		}
 
 		// private functions:
-		private bool checkCollision(GameObject object1, GameObject object2)
+		private bool[] checkCollision(GameObject object1, GameObject object2)
 		{
 			/*
 			 * Chris, produce a function to go in the Board class (not yet created).
@@ -54,10 +54,16 @@ namespace GameJamGame.joels_Work
 			Rectangle o1Rect = object1.getCollisionRect();
 			Rectangle o2Rect = object2.getCollisionRect();
 
+			bool[] colliding = new bool[] { false, false };
+
 			//if rectangle1 and rectangle2 are colliding
-			if (o1Rect.Intersects(o2Rect) || o1Rect.Top == o2Rect.Bottom || o1Rect.Right == o2Rect.Left || o1Rect.Bottom == o2Rect.Top || o1Rect.Left == o2Rect.Right)
+			if (o1Rect.Intersects(o2Rect))
 			{
 				//if rectangle1 is movable move it away from rectangle2
+				if (object2.isPlayer())
+				{
+					colliding[1] = true;
+				}
 				if (object1.isMovable())
 				{
 					float[] intersect = new float[4];
@@ -117,9 +123,9 @@ namespace GameJamGame.joels_Work
 				//	object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
 				//}
 
-				return true;
+				colliding[0] = true;
 			}
-			return false;
+			return colliding;
 		}
 
         public void declareTransition(Vector2 endCornerPoint, Vector2 startPoint)
@@ -194,17 +200,24 @@ namespace GameJamGame.joels_Work
                 foreach (GameObject i in gameObjectList)
                 {
 				bool check = false;
+				bool collidingWithPlayerCheck = false;
                     foreach (GameObject j in gameObjectList)
                     {
 					if (i != j && i.getState() != 3 && j.getState() != 3)
                         {
-						if (this.checkCollision(i, j))
+						bool[] test = this.checkCollision(i, j);
+						if (test[0])
 						{
 							check = true;
+						}
+						if (test[1])
+						{
+							collidingWithPlayerCheck = true;
 						}
 					}
 				}
 				i.isColliding(check);
+				i.isCollidingWithPlayer(collidingWithPlayerCheck);
 			}
             }
             else if (state == transitionState)
@@ -226,12 +239,12 @@ namespace GameJamGame.joels_Work
 			gameObjectList[0].load(Game1.playerTextureSave);
             playerPointer = (Player)gameObjectList[0];
             
-            gameObjectList.Add(new Shatter(Game1.objectPlaceHolderSave, new Vector2(30, 300),Color.White));
+            gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(25, 300),Color.White));
             gameObjectList[1].load(Game1.objectPlaceHolderSave);
-			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
-			//gameObjectList[2].load(Game1.objectPlaceHolderSave);
-			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White));
-			//gameObjectList[3].load(Game1.objectPlaceHolderSave);
+			gameObjectList.Add(new Shatter(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
+			gameObjectList[2].load(Game1.objectPlaceHolderSave);
+			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White));
+			gameObjectList[3].load(Game1.objectPlaceHolderSave);
 			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(175, 300), Color.White));
 			//gameObjectList[4].load(Game1.objectPlaceHolderSave);
 			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(225, 300), Color.White));

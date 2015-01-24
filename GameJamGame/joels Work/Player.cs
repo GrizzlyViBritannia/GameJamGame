@@ -16,6 +16,7 @@ namespace GameJamGame.joels_Work
 	{
 
 		const int WALKING_SPEED = 160;
+		const int JUMP_POWER = 10;
 		const int MOVE_LEFT = -1;
 		const int MOVE_RIGHT = 1;
 		const int MOVE_DOWN = -1;
@@ -59,10 +60,20 @@ namespace GameJamGame.joels_Work
 
 			updateMovement(currentKeyboardState);
 			updateJump(currentKeyboardState);
+			updateGravity(gameTime);
 			this.moveObject(mDirection * mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 			this.collisonRect = drawRect();
+			if (currentKeyboardState.IsKeyDown(Keys.Space) == true)
+			{
+				currentState = State.Walking;
+			}
 
 			mPreviousKeyboardState = currentKeyboardState;
+		}
+
+		private void updateGravity(GameTime gameTime)
+		{
+			mSpeed.Y =+ (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds); 
 		}
 
 		private void updateMovement(KeyboardState currentKeyboardState)
@@ -120,9 +131,8 @@ namespace GameJamGame.joels_Work
 			{
 				currentState = State.Jumping;
 				jumpCount++;
-				jumpStartingPosition = Position;
 				mDirection.Y = MOVE_UP;
-				mSpeed = new Vector2(WALKING_SPEED, WALKING_SPEED);
+				mSpeed.Y = JUMP_POWER;
 			}
 		}
 

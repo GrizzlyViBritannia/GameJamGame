@@ -22,10 +22,9 @@ namespace GameJamGame.joels_Work
 
 		public override void update(GameTime gameTime)
 		{
-			if (collidingWithPlayer)
+			if (colliding)
 			{
 				state = 2;
-				this.colour = Color.Red;
 			}
 			else if (state == 2)
 			{

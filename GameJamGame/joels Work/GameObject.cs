@@ -23,8 +23,6 @@ namespace GameJamGame.joels_Work
 		protected bool collidable;
 		protected bool falling;
 		protected bool colliding;
-		protected bool collidingWithPlayer;
-		protected bool player = false;
 
 		protected int state; // 1 is INIT	2 is INTERMEDIATE	3 is DEAD
 
@@ -109,24 +107,9 @@ namespace GameJamGame.joels_Work
 			this.colliding = colliding;
 		}
 
-		public bool isCollidingWithPlayer()
-		{
-			return this.collidingWithPlayer;
-		}
-
-		public void isCollidingWithPlayer(bool colliding)
-		{
-			this.collidingWithPlayer = colliding;
-		}
-
 		public void isFalling(bool falling)
 		{
 			this.falling = falling;
-		}
-
-		public bool isPlayer()
-		{
-			return player;
 		}
 
 		public Rectangle getCollisionRect()

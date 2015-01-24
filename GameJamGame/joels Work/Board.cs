@@ -17,6 +17,15 @@ namespace GameJamGame.joels_Work
 		Rectangle currentDrawRect;
 		List<GameObject> gameObjectList;
         Player playerPointer;
+
+        String updateState = "update";
+
+
+        // animation stuff:
+        Vector2 boardOffset = Vector2.Zero;
+        Vector2 directionOffset = Vector2.Zero;
+        float speed = 1.0f;
+        Vector2 endPoint = Vector2.Zero;
 		// constructor
 		public Board()
 		{
@@ -56,13 +65,25 @@ namespace GameJamGame.joels_Work
 				//	object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
 				//}
 			}
-
 		}
+
+        private void declareTransition(Vector2 direction, Vector2 endCornerPoint)
+        {
+            boardOffset = direction;
+            endPoint = endCornerPoint;
+
+
+        }
+        
+        private void applyAnimation()
+        {
+
+        }
 
         // public functions:
         public void endLevel(Player player)
         {
-
+            // enter transition state
         }
 
         public void buildBoard(Level level, Player player)
@@ -77,9 +98,10 @@ namespace GameJamGame.joels_Work
 		// public logic-draw functions
 		public void update(GameTime gameTime)
 		{
+            this.boardOffset.X++;
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                buildBoard(Game1.levelList[0], playerPointer);
+                buildBoard(Game1.levelList[0], (Player)this.gameObjectList[0]);
             }
 
 			foreach (GameObject i in gameObjectList)
@@ -96,7 +118,6 @@ namespace GameJamGame.joels_Work
 					}
 				}
 			}
-
 		}
 
 		public void load(int objectNumber)
@@ -121,16 +142,19 @@ namespace GameJamGame.joels_Work
 
 		public void draw(SpriteBatch SB)
 		{
-			SB.Draw(this.currentBackGround, this.currentDrawRect, Color.White);
+            SB.Draw(this.currentBackGround, drawRect(this.boardOffset), Color.White);
 			foreach (GameObject i in this.gameObjectList)
 			{
-				i.draw(SB);
+				i.draw(SB, this.boardOffset);
 			}
-
-
-
-
-
 		}
+        private Rectangle drawRect(Vector2 offset)
+        {
+            return new Rectangle(
+                (int)(this.currentDrawRect.X + offset.X),
+                (int)(this.currentDrawRect.Y + offset.Y),
+                this.currentDrawRect.Width,
+                this.currentDrawRect.Height);
+        }
 	}
 }

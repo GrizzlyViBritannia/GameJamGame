@@ -40,6 +40,8 @@ namespace GameJamGame.joels_Work
             this.texture = texture;
             this.drawRect = pos;
             this.colour = colour;
+
+            this.collisonRect = drawRect;
         }
 
 

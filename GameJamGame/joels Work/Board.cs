@@ -80,7 +80,11 @@ namespace GameJamGame.joels_Work
 			gameObjectList = new List<GameObject>();
 			gameObjectList.Add(new Player(Game1.playerTextureSave, new Rectangle(0, 0, 50, 50), Color.White)); // player will always be index 0
 			gameObjectList[0].load(Game1.playerTextureSave);
-			for (int i = 0; i < objectNumber; i++)
+            
+            gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Rectangle(200, 200, 200, 20),Color.White));
+            gameObjectList[1].load(Game1.objectPlaceHolderSave);
+			
+            for (int i = 0; i < objectNumber; i++)
 			{
 				gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Rectangle(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490), 25, 25), Color.White));
 				gameObjectList[i + 1].load(Game1.objectPlaceHolderSave);

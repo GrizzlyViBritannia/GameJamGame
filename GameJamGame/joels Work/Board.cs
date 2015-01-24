@@ -45,6 +45,7 @@ namespace GameJamGame.joels_Work
 
 			Rectangle o1Rect = object1.getCollisionRect();
 			Rectangle o2Rect = object2.getCollisionRect();
+			int returnIndex = -1;
 
 			//if rectangle1 and rectangle2 are colliding
 			if (o1Rect.Intersects(o2Rect))
@@ -94,6 +95,11 @@ namespace GameJamGame.joels_Work
 					else
 					{
 						newVector = new Vector2(intersect[index], 0);
+					}
+
+					if (index == 0)
+					{
+						object1.isFalling(false);
 					}
 
 					object1.moveObject(newVector);

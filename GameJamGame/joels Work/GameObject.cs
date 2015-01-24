@@ -21,6 +21,7 @@ namespace GameJamGame.joels_Work
 
 		protected bool movable;
 		protected bool collidable;
+		protected bool falling;
 
 		// draw variable
 		protected Color colour;
@@ -85,6 +86,11 @@ namespace GameJamGame.joels_Work
 		public bool isCollidable()
 		{
 			return this.collidable;
+		}
+
+		public void isFalling(bool falling)
+		{
+			this.falling = falling;
 		}
 
 		public Rectangle getCollisionRect()

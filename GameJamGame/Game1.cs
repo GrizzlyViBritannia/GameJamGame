@@ -12,16 +12,16 @@ using GameJamGame.joels_Work;
 
 namespace GameJamGame
 {
-	/// <summary>
-	/// This is the main type for your game
-	/// </summary>
+    /// <summary>
+    /// This is the main type for your game
+    /// </summary>
     /// 
 
 
-	public class Game1 : Game
-	{
-		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
+    public class Game1 : Game
+    {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
 
         Texture2D image; // piss off
 
@@ -41,36 +41,36 @@ namespace GameJamGame
         Board gameBoard = new Board();
         public static List<Level> levelList;
 
-		public Game1()
-			: base()
-		{
-			graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = "Content";
-		}
+        public Game1()
+            : base()
+        {
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+        }
 
-		/// <summary>
-		/// Allows the game to perform any initialization it needs to before starting to run.
-		/// This is where it can query for any required services and load any non-graphic
-		/// related content.  Calling base.Initialize will enumerate through any components
-		/// and initialize them as well.
-		/// </summary>
-		protected override void Initialize()
-		{
-			// TODO: Add your initialization logic here
+        /// <summary>
+        /// Allows the game to perform any initialization it needs to before starting to run.
+        /// This is where it can query for any required services and load any non-graphic
+        /// related content.  Calling base.Initialize will enumerate through any components
+        /// and initialize them as well.
+        /// </summary>
+        protected override void Initialize()
+        {
+            // TODO: Add your initialization logic here
 
-			base.Initialize();
-		}
+            base.Initialize();
+        }
 
-		/// <summary>
-		/// LoadContent will be called once per game and is the place to load
-		/// all of your content.
-		/// </summary>
-		protected override void LoadContent()
-		{
-			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			// TODO: use this.Content to load your game content here
+            // TODO: use this.Content to load your game content here
 
             image = Content.Load<Texture2D>("Images/test"); // i hate you
             backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backgroundPlaceHolder");
@@ -80,57 +80,57 @@ namespace GameJamGame
             // level 1 load
             level1BGSave = Content.Load<Texture2D>("Images/Level1/tutorial level 1.png");
             level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/breakableBlockPlaceHolder.png");
-            
+
             // create level data
             levelList = createLevels();
 
             gameBoard.load(5);
-		}
+        }
 
-		/// <summary>
-		/// UnloadContent will be called once per game and is the place to unload
-		/// all content.
-		/// </summary>
-		protected override void UnloadContent()
-		{
-			// TODO: Unload any non ContentManager content here
-		}
+        /// <summary>
+        /// UnloadContent will be called once per game and is the place to unload
+        /// all content.
+        /// </summary>
+        protected override void UnloadContent()
+        {
+            // TODO: Unload any non ContentManager content here
+        }
 
-		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Update(GameTime gameTime)
-		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-				Exit();
+        /// <summary>
+        /// Allows the game to run logic such as updating the world,
+        /// checking for collisions, gathering input, and playing audio.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
-			// TODO: Add your update logic here
+            // TODO: Add your update logic here
 
-			base.Update(gameTime);
-		}
+            base.Update(gameTime);
+        }
 
-		/// <summary>
-		/// This is called when the game should draw itself.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
-		protected override void Draw(GameTime gameTime)
-		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
+        /// <summary>
+        /// This is called when the game should draw itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			// TODO: Add your drawing code here
+            // TODO: Add your drawing code here
 
-			spriteBatch.Begin();
+            spriteBatch.Begin();
 
-			spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
-			gameBoard.update(gameTime);
-			gameBoard.draw(spriteBatch);
+            spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
+            gameBoard.update(gameTime);
+            gameBoard.draw(spriteBatch);
 
-			spriteBatch.End();
+            spriteBatch.End();
 
-			base.Draw(gameTime);
-		}
+            base.Draw(gameTime);
+        }
 
 
 
@@ -139,15 +139,15 @@ namespace GameJamGame
          * 
          * create level code
          * 
-         */ 
-        
-		//private List<Level> createLevels()
-		//{
+         */
+
+        private List<Level> createLevels()
+        {
             List<Level> returnList = new List<Level>();
             Level level1 = new Level(level1BGSave, level1Objects());
 
             return returnList;
-            
+
         }
 
         private List<GameObject> level1Objects()
@@ -161,6 +161,7 @@ namespace GameJamGame
 
             return returnList;
 
-        
-	}
+
+        }
+    }
 }

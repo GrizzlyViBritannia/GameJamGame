@@ -10,3 +10,14 @@ c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamGame\bin\
 c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.csprojResolveAssemblyReference.cache
 c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.exe
 c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.pdb
+D:\git rep\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.exe
+D:\git rep\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.pdb
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Content\Images\test.png
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\IgnoreMe.dll
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Lidgren.Network.dll
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\MonoGame.Framework.dll
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\OpenTK.dll
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\Tao.Sdl.dll
+D:\git rep\GameJamGame\GameJamGame\obj\x86\Debug\GameJamGame.csprojResolveAssemblyReference.cache
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.exe
+D:\git rep\GameJamGame\GameJamGame\bin\WindowsGL\Debug\GameJamGame.pdb

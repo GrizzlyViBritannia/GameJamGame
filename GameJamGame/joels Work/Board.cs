@@ -241,12 +241,12 @@ namespace GameJamGame.joels_Work
             
             gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(25, 300),Color.White));
             gameObjectList[1].load(Game1.objectPlaceHolderSave);
-			gameObjectList.Add(new Shatter(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
+			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
 			gameObjectList[2].load(Game1.objectPlaceHolderSave);
 			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White));
 			gameObjectList[3].load(Game1.objectPlaceHolderSave);
-			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(175, 300), Color.White));
-			//gameObjectList[4].load(Game1.objectPlaceHolderSave);
+			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(225, 250), Color.White));
+			gameObjectList[4].load(Game1.objectPlaceHolderSave);
 			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(225, 300), Color.White));
 			//gameObjectList[5].load(Game1.objectPlaceHolderSave);
 			

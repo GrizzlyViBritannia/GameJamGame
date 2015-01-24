@@ -17,7 +17,9 @@ namespace GameJamGame.joels_Work
         // logic variables
         protected Vector2 centerPosition;
         protected Rectangle collisonRect;
+        
         protected bool movable;
+        protected bool collidable;
 
         // draw variable
         protected Rectangle drawRect;
@@ -34,21 +36,28 @@ namespace GameJamGame.joels_Work
             this.centerPosition += input;
         }
 
+        // main logic-draw functions
+
+        public void logic(GameTime gameTime)
+        {
+
+        }
+        public void draw (SpriteBatch SB)
+        {
+
+        }
+
 
         // get-set functions:
         public bool isMovable()
         {
             return this.movable;
         }
+        public bool isCollidable()
+        {
+            return this.collidable;
+        }
 
-
-        /*
-         * Chris, produce a function to go in the Board class (not yet created).
-         * the functions will take two objects, check if they are colliding, and 
-         * fix the collision via the "moveObject(Vector2)" function.
-         * this function takes a Vector2 variable and will move the object by 
-         * said vector
-         */
 
     }
 }

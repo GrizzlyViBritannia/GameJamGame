@@ -36,6 +36,8 @@ namespace GameJamGame.joels_Work
 		Vector2 mSpeed = Vector2.Zero;
 		Vector2 jumpStartingPosition = Vector2.Zero;
 
+		int jumpCount = 0;
+
 		KeyboardState mPreviousKeyboardState;
 
         public Player()
@@ -54,6 +56,8 @@ namespace GameJamGame.joels_Work
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 
 			updateMovement(currentKeyboardState);
+			updateJump(currentKeyboardState);
+			this.moveObject(mDirection * mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
 			mPreviousKeyboardState = currentKeyboardState;
 		}
@@ -93,20 +97,13 @@ namespace GameJamGame.joels_Work
 		{
 			bool doJump = false;
 
-			if (currentKeyboardState.IsKeyDown(Keys.Space) == true &&
-				   mPreviousKeyboardState.IsKeyDown(Keys.Space) == false)
+			if (jumpCount < 2)
 			{
-				doJump = true;
-			}
-			else if (currentKeyboardState.IsKeyDown(Keys.W) == true &&
-				 mPreviousKeyboardState.IsKeyDown(Keys.W) == false)
-			{
-				doJump = true;
-			}
-			else if (currentKeyboardState.IsKeyDown(Keys.Up) == true &&
-				 mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
-			{
-				doJump = true;
+				if (currentKeyboardState.IsKeyDown(Keys.Up) == true &&
+					 mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
+				{
+					doJump = true;
+				}
 			}
 
 			return doJump;
@@ -117,6 +114,7 @@ namespace GameJamGame.joels_Work
 			if (currentState != State.Jumping)
 			{
 				currentState = State.Jumping;
+				jumpCount++;
 				jumpStartingPosition = Position;
 				mDirection.Y = MOVE_UP;
 				mSpeed = new Vector2(WALKING_SPEED, WALKING_SPEED);

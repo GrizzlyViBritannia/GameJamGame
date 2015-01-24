@@ -24,13 +24,25 @@ namespace GameJamGame.joels_Work
         // draw variable
         protected Rectangle drawRect;
         protected Color colour;
-        protected Texture2D sprite;
+        protected Texture2D texture;
 
         // private functions:
         
 
 
         // public functions:
+        public GameObject()
+        {
+
+        }
+        public GameObject(Texture2D texture, Rectangle pos, Color colour)
+        {
+            this.texture = texture;
+            this.drawRect = pos;
+            this.colour = colour;
+        }
+
+
         public void moveObject(Vector2 input)
         {
             this.centerPosition += input;
@@ -38,15 +50,22 @@ namespace GameJamGame.joels_Work
 
         // main logic-draw functions
 
-        public void logic(GameTime gameTime)
+        public void update(GameTime gameTime)
         {
 
         }
         public void draw (SpriteBatch SB)
         {
-
+            SB.Draw(this.texture, this.drawRect, this.colour);
         }
-
+        public void load (Texture2D texture)
+        {
+            this.texture = texture;
+            if(this.drawRect.Width == 0 &&this.drawRect.Width == 0)
+            {
+                this.drawRect = new Rectangle(300, 400, texture.Width, texture.Height);
+            }
+        }
 
         // get-set functions:
         public bool isMovable()

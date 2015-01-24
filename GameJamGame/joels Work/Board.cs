@@ -16,7 +16,7 @@ namespace GameJamGame.joels_Work
 		Texture2D currentBackGround;
 		Rectangle currentDrawRect;
 		List<GameObject> gameObjectList;
-
+        Player playerPointer;
 		// constructor
 		public Board()
 		{
@@ -57,10 +57,23 @@ namespace GameJamGame.joels_Work
 
         }
 
+        public void buildBoard(Level level, Player player)
+        {
+            this.currentBackGround = level.backGround;
+            this.gameObjectList.Clear();
+            this.gameObjectList.Add(player);
+            this.gameObjectList.AddRange(level.getObjectList());
+        }
+
 
 		// public logic-draw functions
 		public void update(GameTime gameTime)
 		{
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                buildBoard(Game1.levelList[0], playerPointer);
+            }
+
 			foreach (GameObject i in gameObjectList)
 			{
 				i.update(gameTime);
@@ -85,6 +98,7 @@ namespace GameJamGame.joels_Work
 			gameObjectList = new List<GameObject>();
 			gameObjectList.Add(new Player(Game1.playerTextureSave, new Vector2(0, 0), Color.White)); // player will always be index 0
 			gameObjectList[0].load(Game1.playerTextureSave);
+            playerPointer = (Player)gameObjectList[0];
             
             gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(200, 200),Color.White));
             gameObjectList[1].load(Game1.objectPlaceHolderSave);

@@ -31,7 +31,7 @@ namespace GameJamGame
 
         // level 1 tutorial level
         public static Texture2D level1BGSave;
-        public static Texture2D breakableBlockSave;
+        public static Texture2D level1BreakableBlockSave;
 
         public static Random rnd = new Random();
 
@@ -39,7 +39,7 @@ namespace GameJamGame
 
 
         Board gameBoard = new Board();
-        List<Level> levelList;
+        public static List<Level> levelList;
 
 		public Game1()
 			: base()
@@ -79,8 +79,10 @@ namespace GameJamGame
 
             // level 1 load
             level1BGSave = Content.Load<Texture2D>("Images/Level1/tutorial level 1.png");
-            breakableBlockSave = Content.Load<Texture2D>("Images/Level1/breakableBlockPlaceHolder.png");
+            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/breakableBlockPlaceHolder.png");
             
+            // create level data
+            levelList = createLevels();
 
             gameBoard.load(5);
 		}
@@ -140,12 +142,23 @@ namespace GameJamGame
         
         private List<Level> createLevels()
         {
-            //Level level1 = new Level();
+            List<Level> returnList = new List<Level>();
+            Level level1 = new Level(level1BGSave, level1Objects());
 
-            // add background texture
-            // level1. = level1BGSave;
-          
+            return returnList;
             
+        }
+
+        private List<GameObject> level1Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(200, 350), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(250, 350), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(300, 350), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(350, 350), Color.White));
+
+            return returnList;
         }
 
         

@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameJamGame.joels_Work
 {
-	class GameObject
+	public class GameObject
 	{
 		// logic variables
 		protected Vector2 centerPosition;

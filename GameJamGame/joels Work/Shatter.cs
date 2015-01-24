@@ -20,7 +20,7 @@ namespace GameJamGame.joels_Work
 			this.state = 1;
         }
 
-		public virtual void update(GameTime gameTime)
+		public override void update(GameTime gameTime)
 		{
 			if (colliding)
 			{

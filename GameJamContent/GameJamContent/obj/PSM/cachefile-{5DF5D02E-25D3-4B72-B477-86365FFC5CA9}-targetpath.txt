@@ -1,4 +1,0 @@
-Content\Images\backgroundPlaceHolder.png
-Content\Images\objectPlaceHolder.png
-Content\Images\playerPlaceHolder.png
-Content\Images\test.png

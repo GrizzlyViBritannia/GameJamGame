@@ -1,3 +1,0 @@
-D:\tst\GameJamGame\GameJamContent\GameJamContentContent\obj\PSM\GameJamContentContent.contentprojResolveAssemblyReference.cache
-c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamContent\GameJamContentContent\obj\PSM\GameJamContentContent.contentprojResolveAssemblyReference.cache
-D:\git rep\GameJamGame\GameJamContent\GameJamContentContent\obj\PSM\GameJamContentContent.contentprojResolveAssemblyReference.cache

@@ -38,7 +38,7 @@ namespace GameJamGame
 
 
 
-        Board gameBoard = new Board();
+        static Board gameBoard = new Board();
         public static List<Level> levelList;
 
         public Game1()
@@ -110,6 +110,7 @@ namespace GameJamGame
 			// TODO: Add your update logic here
 			gameBoard.update(gameTime);
 
+
             base.Update(gameTime);
         }
 
@@ -126,15 +127,17 @@ namespace GameJamGame
             spriteBatch.Begin();
 
             spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
+
+
             gameBoard.draw(spriteBatch);
+
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
-
-
+        
 
         /*
          * 
@@ -146,10 +149,17 @@ namespace GameJamGame
         {
             List<Level> returnList = new List<Level>();
             List<GameObject> level1GameObjectList = new List<GameObject>();
+            // lvl 1
             level1GameObjectList = level1Objects();
             Level level1 = new Level(level1BGSave, level1GameObjectList);
 
+            // lvl 2
+            level1GameObjectList = level2Objects();
+            Level level2 = new Level(level1BGSave, level1GameObjectList);
+
+            
             returnList.Add(level1);
+            returnList.Add(level2);
             return returnList;
 
         }
@@ -167,5 +177,23 @@ namespace GameJamGame
 
 
         }
+        private List<GameObject> level2Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(000, 300), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(050, 300), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(100, 300), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(150, 300), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(200, 350), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(250, 400), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(300, 450), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(350, 400), Color.White));
+            return returnList;
+
+
+        }
+
+
     }
 }

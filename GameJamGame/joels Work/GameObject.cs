@@ -78,6 +78,11 @@ namespace GameJamGame.joels_Work
 		}
 
 		// get-set functions:
+        
+        public GameObject clone()
+        {
+            return (GameObject)MemberwiseClone();
+        }
 		public bool isMovable()
 		{
 			return this.movable;
@@ -96,6 +101,10 @@ namespace GameJamGame.joels_Work
 		{
 			return this.centerPosition;
 		}
+        public void setPosition(Vector2 pos)
+        {
+            this.centerPosition = pos;
+        }
 
 
 	}

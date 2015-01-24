@@ -13,13 +13,21 @@ namespace GameJamGame.joels_Work
 {
 	class Board
 	{
+        // const
+        const String transitionState = "transition";
+        const String updateState = "update";
+
+
+
+
 		Texture2D currentBackGround;
-		Rectangle currentDrawRect;
+		//Rectangle currentDrawRect;
 		List<GameObject> gameObjectList;
         Player playerPointer;
 
-        String updateState = "update";
+        String state = updateState;
 
+        Board transitionBoard = null;
 
         // animation stuff:
         Vector2 boardOffset = Vector2.Zero;
@@ -67,62 +75,100 @@ namespace GameJamGame.joels_Work
 			}
 		}
 
-        private void declareTransition(Vector2 direction, Vector2 endCornerPoint)
+        public void declareTransition(Vector2 endCornerPoint, Vector2 startPoint)
         {
-            boardOffset = direction;
+            this.boardOffset = startPoint;
+            directionOffset = (endCornerPoint - new Vector2(drawRect(this.boardOffset).X, drawRect(this.boardOffset).Y)) / 100;
             endPoint = endCornerPoint;
-
-
         }
         
-        private void applyAnimation()
+        private void applyTransmitionAnimation()
         {
-
+            boardOffset += directionOffset;
         }
 
         // public functions:
-        public void endLevel(Player player)
+        public void endLevel()
         {
-            // enter transition state
+           
+            state = transitionState;
+            declareTransition(new Vector2(-800, 0), this.boardOffset);
+            getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-800, 0));
+            StartTransition();
+
         }
 
         public void buildBoard(Level level, Player player)
         {
+            this.boardOffset = Vector2.Zero;
             this.currentBackGround = level.backGround;
-            this.gameObjectList.Clear();
+            this.state = transitionState;
+            if (this.gameObjectList != null)
+                this.gameObjectList.Clear();
+            else
+                this.gameObjectList = new List<GameObject>();
             this.gameObjectList.Add(player);
             this.gameObjectList.AddRange(level.getObjectList());
         }
+        void StartTransition()
+        {
 
+            transitionBoard = new Board();
+            transitionBoard.buildBoard(Game1.levelList[0], getPlayer());
+            transitionBoard.declareTransition(Vector2.Zero, new Vector2(800, 0));
+
+
+        }
+
+        void endTransition()
+        {
+            transitionBoard = null;
+            //this.gameObjectList[0].moveObject(new Vector2(-800, 0));
+            this.buildBoard(Game1.levelList[0], (Player)gameObjectList[0]);
+            Game1.levelList.RemoveAt(0);
+            this.state = updateState;
+        }
 
 		// public logic-draw functions
 		public void update(GameTime gameTime)
 		{
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            
+            if (state == updateState)
             {
-                buildBoard(Game1.levelList[0], (Player)this.gameObjectList[0]);
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                {
+                    endLevel();
+                }
 
-			foreach (GameObject i in gameObjectList)
-			{
-				i.update(gameTime);
-			}
-			foreach (GameObject i in gameObjectList)
-			{
-				foreach (GameObject j in gameObjectList)
-				{
-					if (i != j)
-					{
-						this.checkCollision(i, j);
-					}
-				}
-			}
+                foreach (GameObject i in gameObjectList)
+                {
+                    i.update(gameTime);
+                }
+                foreach (GameObject i in gameObjectList)
+                {
+                    foreach (GameObject j in gameObjectList)
+                    {
+                        if (i != j)
+                        {
+                            this.checkCollision(i, j);
+                        }
+                    }
+                }
+            }
+            else if (state == transitionState)
+            {
+                transitionBoard.applyTransmitionAnimation();
+                this.applyTransmitionAnimation();
+                if (Vector2.Distance(boardOffset, endPoint) < directionOffset.Length() / 1.5f)
+                {
+                    endTransition();
+                }
+            }
 		}
 
 		public void load(int objectNumber)
 		{
 			this.currentBackGround = Game1.backGroundPlaceHolderSave;
-			this.currentDrawRect = new Rectangle(0, 0, 500, 500);
 			gameObjectList = new List<GameObject>();
 			gameObjectList.Add(new Player(Game1.playerTextureSave, new Vector2(0, 0), Color.White)); // player will always be index 0
 			gameObjectList[0].load(Game1.playerTextureSave);
@@ -146,14 +192,28 @@ namespace GameJamGame.joels_Work
 			{
 				i.draw(SB, this.boardOffset);
 			}
+
+            if (transitionBoard != null)
+                transitionBoard.draw(SB);
 		}
         private Rectangle drawRect(Vector2 offset)
         {
             return new Rectangle(
-                (int)(this.currentDrawRect.X + offset.X),
-                (int)(this.currentDrawRect.Y + offset.Y),
-                this.currentDrawRect.Width,
-                this.currentDrawRect.Height);
+                (int)(offset.X),
+                (int)(offset.Y),
+                this.currentBackGround.Width,
+                this.currentBackGround.Height);
+        }
+
+
+        // get-set
+        public Player getPlayer()
+        {
+            return (Player)this.gameObjectList[0];
+        }
+        public void startUpdate()
+        {
+            this.state = updateState;
         }
 	}
 }

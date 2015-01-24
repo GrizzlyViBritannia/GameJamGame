@@ -40,7 +40,7 @@ namespace GameJamGame.joels_Work
 		KeyboardState mPreviousKeyboardState;
 
         public Player()
-        {
+		{
 
         }
         public Player(Texture2D texture, Rectangle pos, Color colour)

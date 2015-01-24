@@ -8,15 +8,15 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>PSM</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>D:\git rep\GameJamGame\GameJamContent\GameJamContentContent\</RootDirectory>
-      <LoggerRootDirectory>D:\git rep\GameJamGame\GameJamContent\GameJamContent\</LoggerRootDirectory>
-      <IntermediateDirectory>D:\git rep\GameJamGame\GameJamContent\GameJamContent\obj\PSM\</IntermediateDirectory>
-      <OutputDirectory>D:\git rep\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\</OutputDirectory>
+      <RootDirectory>c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamContent\GameJamContentContent\</RootDirectory>
+      <LoggerRootDirectory>c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamContent\GameJamContent\</LoggerRootDirectory>
+      <IntermediateDirectory>c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamContent\GameJamContent\obj\PSM\</IntermediateDirectory>
+      <OutputDirectory>c:\users\leec\documents\visual studio 2013\Projects\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2015-01-23T23:12:59.5530878+00:00</Value>
+        <Value>2014-10-01T16:28:38.6401865+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

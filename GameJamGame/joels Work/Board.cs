@@ -11,11 +11,11 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameJamGame.joels_Work
 {
-    class Board
-    {
-        Texture2D currentBackGround;
-        Rectangle currentDrawRect;
-        List<GameObject> gameObjectList;
+	class Board
+	{
+		Texture2D currentBackGround;
+		Rectangle currentDrawRect;
+		List<GameObject> gameObjectList;
         Player player;
 
         // constructor
@@ -24,24 +24,40 @@ namespace GameJamGame.joels_Work
            
         }
 
-        // private functions:
+		// private functions:
 
-        private void checkCollision(GameObject object1, GameObject object2)
-        {
-            /*
-             * Chris, produce a function to go in the Board class (not yet created).
-             * the functions will take two objects, check if they are colliding, and 
-             * fix the collision via the "moveObject(Vector2)" function.
-             * this function takes a Vector2 variable and will move the object by 
-             * said vector
-             */
-        }
+		private void checkCollision(GameObject object1, GameObject object2)
+		{
+			/*
+			 * Chris, produce a function to go in the Board class (not yet created).
+			 * the functions will take two objects, check if they are colliding, and 
+			 * fix the collision via the "moveObject(Vector2)" function.
+			 * this function takes a Vector2 variable and will move the object by 
+			 * said vector
+			 */
 
-        // public logic-draw functions
+			//if rectangle1 and rectangle2 are colliding
+			if (object1.getCollisionRect().Intersects(object2.getCollisionRect()))
+			{
+				//if rectangle1 is movable move it away from rectangle2
+				if (object1.isMovable())
+				{
+					object1.moveObject(new Vector2(object2.getCenterPosition().X - object1.getCenterPosition().X, object2.getCenterPosition().Y - object1.getCenterPosition().Y));
+				}
+				//if rectangle2 is movable move it away from rectangle1
+				if (object2.isMovable())
+				{
+					object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
+				}
+			}
+
+		}
+
+		// public logic-draw functions
         public void update(GameTime gameTime)
-        {
-            foreach (GameObject i in gameObjectList)
-            {
+		{
+			foreach (GameObject i in gameObjectList)
+			{
                 i.update(gameTime);
             }
             foreach (GameObject i in gameObjectList)
@@ -53,7 +69,7 @@ namespace GameJamGame.joels_Work
                         this.checkCollision(i, j);
                     }
                 }
-            }
+			}
 
         }
 
@@ -69,19 +85,20 @@ namespace GameJamGame.joels_Work
                 gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Rectangle(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490), 25, 25), Color.White));
                 gameObjectList[i+1].load(Game1.objectPlaceHolderSave);
             }
-        }
+		}
 
 
-        public void draw(SpriteBatch SB)
-        {
+		public void draw(SpriteBatch SB)
+		{
             SB.Draw(this.currentBackGround, this.currentDrawRect, Color.White);
             foreach(GameObject i in this.gameObjectList)
             {
                 i.draw(SB);
-            }
-
-        }
+		}
 
 
-    }
+
+
+
+	}
 }

@@ -11,24 +11,24 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameJamGame.joels_Work
 {
-    class Level 
-    {
-        /*
-         * this class is going to be used to simply save the data in 
-         * memory. each Level will be created in code at initilisation
-        */
-        Texture2D backGround;
-        Rectangle drawRect;
-        List<GameObject> objectList;
+	class Level
+	{
+		/*
+		 * this class is going to be used to simply save the data in 
+		 * memory. each Level will be created in code at initilisation
+		*/
+		Texture2D backGround;
+		Rectangle drawRect;
+		List<GameObject> objectList;
 
 
 
-        public Level(Texture2D backGround, Rectangle drawRect, List<GameObject> gameObject)
-        {
-            this.backGround = backGround;
-            this.drawRect = drawRect;
-        }
-               
+		public Level(Texture2D backGround, Rectangle drawRect, List<GameObject> gameObject)
+		{
+			this.backGround = backGround;
+			this.drawRect = drawRect;
+		}
 
-    }
+
+	}
 }

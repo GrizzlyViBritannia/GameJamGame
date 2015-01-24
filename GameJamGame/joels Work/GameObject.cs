@@ -12,25 +12,25 @@ using Microsoft.Xna.Framework.GamerServices;
 
 namespace GameJamGame.joels_Work
 {
-    class GameObject
-    {
-        // logic variables
-        protected Vector2 centerPosition;
-        protected Rectangle collisonRect;
-        
-        protected bool movable;
-        protected bool collidable;
+	class GameObject
+	{
+		// logic variables
+		protected Vector2 centerPosition;
+		protected Rectangle collisonRect;
 
-        // draw variable
-        protected Rectangle drawRect;
-        protected Color colour;
+		protected bool movable;
+		protected bool collidable;
+
+		// draw variable
+		protected Rectangle drawRect;
+		protected Color colour;
         protected Texture2D texture;
 
-        // private functions:
-        
+		// private functions:
 
 
-        // public functions:
+
+		// public functions:
         public GameObject()
         {
 
@@ -43,19 +43,19 @@ namespace GameJamGame.joels_Work
         }
 
 
-        public void moveObject(Vector2 input)
-        {
-            this.centerPosition += input;
-        }
+		public void moveObject(Vector2 input)
+		{
+			this.centerPosition += input;
+		}
 
-        // main logic-draw functions
+		// main logic-draw functions
 
         public void update(GameTime gameTime)
-        {
+		{
 
-        }
-        public void draw (SpriteBatch SB)
-        {
+		}
+		public void draw(SpriteBatch SB)
+		{
             SB.Draw(this.texture, this.drawRect, this.colour);
         }
         public void load (Texture2D texture)
@@ -65,18 +65,28 @@ namespace GameJamGame.joels_Work
             {
                 this.drawRect = new Rectangle(300, 400, texture.Width, texture.Height);
             }
-        }
+		}
 
-        // get-set functions:
-        public bool isMovable()
-        {
-            return this.movable;
-        }
-        public bool isCollidable()
-        {
-            return this.collidable;
-        }
+		// get-set functions:
+		public bool isMovable()
+		{
+			return this.movable;
+		}
+		public bool isCollidable()
+		{
+			return this.collidable;
+		}
+
+		public Rectangle getCollisionRect()
+		{
+			return this.collisonRect;
+		}
+
+		public Vector2 getCenterPosition()
+		{
+			return this.centerPosition;
+		}
 
 
-    }
+	}
 }

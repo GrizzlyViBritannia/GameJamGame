@@ -21,6 +21,9 @@ namespace GameJamGame.joels_Work
 		const int MOVE_RIGHT = 1;
 		const int MOVE_DOWN = 1;
 		const int MOVE_UP = 1;
+		const float WALKING_ACC = 1000.0f;
+		const float WALKING_DEC = 700.0f;
+		const float MAX_SPEED = 300.0f;
 
         // animation stuff (Joel)
 
@@ -62,11 +65,11 @@ namespace GameJamGame.joels_Work
 			
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 
-			updateMovement(currentKeyboardState);
+			updateMovement(gameTime, currentKeyboardState);
 			updateJump(currentKeyboardState);
 			checkFalling();
 			updateGravity(gameTime);
-			this.moveObject(mDirection * mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+			this.moveObject(mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 			this.collisonRect = drawRect(this.drawOffset);
 			if (currentKeyboardState.IsKeyDown(Keys.Space) == true)
 			{
@@ -92,21 +95,55 @@ namespace GameJamGame.joels_Work
 			//Console.WriteLine("UPDATING GRAVITY " + (this.gravity * (float)gameTime.ElapsedGameTime.TotalSeconds) + mSpeed.Y);
 		}
 
-		private void updateMovement(KeyboardState currentKeyboardState)
+		private void updateWalking(GameTime gameTime, int direction)
 		{
-			mSpeed.X = 0;
-			mDirection.X = 0;
+			if (direction != 0)
+			{
+				mSpeed.X = mSpeed.X + (direction * (WALKING_ACC * (float)gameTime.ElapsedGameTime.TotalSeconds));
+				if (mSpeed.X > MAX_SPEED)
+				{
+					mSpeed.X = MAX_SPEED;
+				}
+				else if (mSpeed.X < -MAX_SPEED)
+				{
+					mSpeed.X = -MAX_SPEED;
+				}
+			}
+			else
+			{
+				if (Math.Abs(mSpeed.X) < 10)
+				{
+					mSpeed.X = 0;
+				} 
+				else if (mSpeed.X < 0)
+				{
+					mSpeed.X = mSpeed.X + (WALKING_DEC * (float)gameTime.ElapsedGameTime.TotalSeconds);
+				}
+				else if (mSpeed.X > 0)
+				{
+					mSpeed.X = mSpeed.X - (WALKING_DEC * (float)gameTime.ElapsedGameTime.TotalSeconds);
+				}
+			}
+		}
+
+		private void updateMovement(GameTime gameTime, KeyboardState currentKeyboardState)
+		{
 
 			if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
 			{
-				mSpeed.X = WALKING_SPEED;
-				mDirection.X = MOVE_LEFT;
+				updateWalking(gameTime, MOVE_LEFT);
+				Console.WriteLine("MOVE LEFT");
 			}
 			else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
 			{
-				mSpeed.X = WALKING_SPEED;
-				mDirection.X = MOVE_RIGHT;
+				updateWalking(gameTime, MOVE_RIGHT);
+				Console.WriteLine("MOVE RIGHT");
 			}
+			else
+			{
+				updateWalking(gameTime, 0);
+				Console.WriteLine("STOP MOVING");
+			} 
 		}
 
 		private void updateJump(KeyboardState currentKeyboardState)

@@ -62,7 +62,7 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="joels Work\" />
-    <Folder Include="Sams Work2\" />
+    <Folder Include="Sams Work\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameJamContent\GameJamContent\GameJamContent.csproj">

@@ -21,7 +21,6 @@ namespace GameJamGame.joels_Work
 		const int MOVE_DOWN = -1;
 		const int MOVE_UP = 1;
 
-
 		enum State
 		{
 			Walking,
@@ -29,8 +28,6 @@ namespace GameJamGame.joels_Work
 			Falling
 		}
 		State currentState = State.Walking;
-
-		public Vector2 Position = new Vector2(0, 0);
 
 		Vector2 mDirection = Vector2.Zero;
 		Vector2 mSpeed = Vector2.Zero;
@@ -42,11 +39,11 @@ namespace GameJamGame.joels_Work
 		{
 
         }
-        public Player(Texture2D texture, Rectangle pos, Color colour)
+        public Player(Texture2D texture, Vector2 pos, Color colour)
         {
-            this.texture = texture;
-            this.drawRect = pos;
-            this.colour = colour;
+			this.texture = texture;
+			this.centerPosition = pos;
+			this.colour = colour;
         }
 
 		private void update(GameTime gameTime)
@@ -55,7 +52,13 @@ namespace GameJamGame.joels_Work
 
 			updateMovement(currentKeyboardState);
 
+
 			mPreviousKeyboardState = currentKeyboardState;
+		}
+
+		public void updatePosition(GameTime theGameTime, Vector2 theSpeed, Vector2 theDirection)
+		{
+			//this.drawRect.X += (theDirection * theSpeed * (float)theGameTime.ElapsedGameTime.TotalSeconds).X;
 		}
 
 		private void updateMovement(KeyboardState currentKeyboardState)
@@ -117,7 +120,7 @@ namespace GameJamGame.joels_Work
 			if (currentState != State.Jumping)
 			{
 				currentState = State.Jumping;
-				jumpStartingPosition = Position;
+				//jumpStartingPosition = Position;
 				mDirection.Y = MOVE_UP;
 				mSpeed = new Vector2(WALKING_SPEED, WALKING_SPEED);
 			}

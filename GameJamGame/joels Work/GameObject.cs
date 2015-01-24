@@ -22,26 +22,28 @@ namespace GameJamGame.joels_Work
 		protected bool collidable;
 
 		// draw variable
-		protected Rectangle drawRect;
 		protected Color colour;
         protected Texture2D texture;
 
 		// private functions:
 
-
+		private Rectangle drawRect(Vector2 input)
+		{
+			return new Rectangle((int)(input.X - (int)(texture.Width / 2)), (int)(input.Y - (int)(texture.Height / 2)), texture.Width, texture.Height);
+		}
 
 		// public functions:
         public GameObject()
         {
 
         }
-        public GameObject(Texture2D texture, Rectangle pos, Color colour)
+        public GameObject(Texture2D texture, Vector2 pos, Color colour)
         {
             this.texture = texture;
-            this.drawRect = pos;
+            this.centerPosition = pos;
             this.colour = colour;
 
-            this.collisonRect = drawRect;
+            this.collisonRect = drawRect(centerPosition);
         }
 
 
@@ -58,15 +60,11 @@ namespace GameJamGame.joels_Work
 		}
 		public void draw(SpriteBatch SB)
 		{
-            SB.Draw(this.texture, this.drawRect, this.colour);
+            SB.Draw(this.texture, this.drawRect(this.centerPosition), this.colour);
         }
         public void load (Texture2D texture)
         {
             this.texture = texture;
-            if(this.drawRect.Width == 0 &&this.drawRect.Width == 0)
-            {
-                this.drawRect = new Rectangle(300, 400, texture.Width, texture.Height);
-            }
 		}
 
 		// get-set functions:

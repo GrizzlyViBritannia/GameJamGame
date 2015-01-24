@@ -29,11 +29,11 @@ namespace GameJamGame.joels_Work
 
 		// private functions:
 
-        public Rectangle drawRect()
+        public Rectangle drawRect(Vector2 offset)
         {
             Vector2 drawPos = new Vector2((int)(this.centerPosition.X - (texture.Width / 2)),
                                           (int)(this.centerPosition.Y - (texture.Height / 2)));
-            drawPos += this.drawOffset;
+            drawPos += this.drawOffset + offset;
 
             return new Rectangle(
                 (int)drawPos.X,
@@ -52,7 +52,7 @@ namespace GameJamGame.joels_Work
             this.texture = texture;
             this.colour = colour;
             this.centerPosition = pos;
-            this.collisonRect = drawRect();
+            this.collisonRect = drawRect(Vector2.Zero);
         }
 
 
@@ -67,9 +67,9 @@ namespace GameJamGame.joels_Work
 		{
 			
 		}
-		public void draw(SpriteBatch SB)
+		public void draw(SpriteBatch SB, Vector2 offset)
 		{
-            SB.Draw(this.texture, this.drawRect(), this.colour);
+            SB.Draw(this.texture, this.drawRect(offset), this.colour);
         }
         public void load (Texture2D texture)
         {

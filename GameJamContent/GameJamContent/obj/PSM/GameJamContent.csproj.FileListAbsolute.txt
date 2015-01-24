@@ -16,3 +16,6 @@ D:\git rep\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\back
 D:\git rep\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\objectPlaceHolder.png
 D:\git rep\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\playerPlaceHolder.png
 D:\git rep\GameJamGame\GameJamContent\GameJamContent\obj\PSM\GameJamContent.csprojResolveAssemblyReference.cache
+D:\tst\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\backgroundPlaceHolder.png
+D:\tst\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\objectPlaceHolder.png
+D:\tst\GameJamGame\GameJamContent\GameJamContent\bin\PSM\Content\Images\playerPlaceHolder.png

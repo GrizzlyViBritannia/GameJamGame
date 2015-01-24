@@ -16,13 +16,13 @@ namespace GameJamGame.joels_Work
 		Texture2D currentBackGround;
 		Rectangle currentDrawRect;
 		List<GameObject> gameObjectList;
-        Player player;
+		Player player;
 
-        // constructor
-        public Board()
-        {
-           
-        }
+		// constructor
+		public Board()
+		{
+
+		}
 
 		// private functions:
 
@@ -54,51 +54,52 @@ namespace GameJamGame.joels_Work
 		}
 
 		// public logic-draw functions
-        public void update(GameTime gameTime)
+		public void update(GameTime gameTime)
 		{
 			foreach (GameObject i in gameObjectList)
 			{
-                i.update(gameTime);
-            }
-            foreach (GameObject i in gameObjectList)
-            {
-                foreach (GameObject j in gameObjectList)
-                {
-                    if (i != j)
-                    {
-                        this.checkCollision(i, j);
-                    }
-                }
+				i.update(gameTime);
+			}
+			foreach (GameObject i in gameObjectList)
+			{
+				foreach (GameObject j in gameObjectList)
+				{
+					if (i != j)
+					{
+						this.checkCollision(i, j);
+					}
+				}
 			}
 
-        }
+		}
 
-        public void load(int objectNumber)
-        {
-            this.currentBackGround = Game1.backGroundPlaceHolderSave;
-            this.currentDrawRect = new Rectangle(0, 0, 500, 500);
-            gameObjectList = new List<GameObject>();
-            gameObjectList.Add(new Player(Game1.playerTextureSave, new Rectangle(0,0,50,50), Color.White)); // player will always be index 0
-            gameObjectList[0].load(Game1.playerTextureSave);
-            for (int i = 0; i < objectNumber; i++)
-            {
-                gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Rectangle(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490), 25, 25), Color.White));
-                gameObjectList[i+1].load(Game1.objectPlaceHolderSave);
-            }
+		public void load(int objectNumber)
+		{
+			this.currentBackGround = Game1.backGroundPlaceHolderSave;
+			this.currentDrawRect = new Rectangle(0, 0, 500, 500);
+			gameObjectList = new List<GameObject>();
+			gameObjectList.Add(new Player(Game1.playerTextureSave, new Rectangle(0, 0, 50, 50), Color.White)); // player will always be index 0
+			gameObjectList[0].load(Game1.playerTextureSave);
+			for (int i = 0; i < objectNumber; i++)
+			{
+				gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Rectangle(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490), 25, 25), Color.White));
+				gameObjectList[i + 1].load(Game1.objectPlaceHolderSave);
+			}
 		}
 
 
 		public void draw(SpriteBatch SB)
 		{
-            SB.Draw(this.currentBackGround, this.currentDrawRect, Color.White);
-            foreach(GameObject i in this.gameObjectList)
-            {
-                i.draw(SB);
+			SB.Draw(this.currentBackGround, this.currentDrawRect, Color.White);
+			foreach (GameObject i in this.gameObjectList)
+			{
+				i.draw(SB);
+			}
+
+
+
+
+
 		}
-
-
-
-
-
 	}
 }

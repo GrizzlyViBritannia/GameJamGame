@@ -9,8 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
-#endregionPlayer
-Player
+#endregion
 namespace GameJamGame.joels_Work
 {
 	class Player : GameObject
@@ -25,9 +24,9 @@ namespace GameJamGame.joels_Work
 
 		enum State
 		{
-			Walking,Player
+			Walking,
 			Jumping,
-			FallingPlayer
+			Falling
 		}
 		State currentState = State.Walking;
 
@@ -50,7 +49,7 @@ namespace GameJamGame.joels_Work
             this.colour = colour;
         }
 
-
+		private void update(GameTime gameTime)
 		{
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 

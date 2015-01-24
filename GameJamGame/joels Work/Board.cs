@@ -52,12 +52,51 @@ namespace GameJamGame.joels_Work
 				//if rectangle1 is movable move it away from rectangle2
 				if (object1.isMovable())
 				{
+					float[] intersect = new float[4];
+
 					if (o1Rect.Bottom > o2Rect.Top && o1Rect.Bottom < o2Rect.Bottom)
 					{
-						float intersect = o2Rect.Top - o1Rect.Bottom;
-						Vector2 newVector = new Vector2(0, intersect);
-						object1.moveObject(newVector);
+						intersect[0] = o2Rect.Top - o1Rect.Bottom;
 					}
+
+					if (o1Rect.Left < o2Rect.Right && o1Rect.Left > o2Rect.Left)
+					{
+						intersect[1] = o2Rect.Right - o1Rect.Left;
+					}
+
+					if (o1Rect.Top < o2Rect.Bottom && o1Rect.Top > o2Rect.Top)
+					{
+						intersect[2] = o2Rect.Bottom - o1Rect.Top;
+					}
+
+					if (o1Rect.Right > o2Rect.Left && o1Rect.Right < o2Rect.Right)
+					{
+						intersect[3] = o2Rect.Left - o1Rect.Right;
+					}
+
+					int index = 0, count = 0;
+
+					foreach (float intersection in intersect)
+					{
+						if (Math.Abs(intersection) < Math.Abs(intersect[index]) && Math.Abs(intersection) != 0)
+						{
+							index = count;
+						}
+						count++;
+					}
+
+					Vector2 newVector;
+
+					if (index % 2 == 0)
+					{
+						newVector = new Vector2(0, intersect[index]);
+					}
+					else
+					{
+						newVector = new Vector2(intersect[index], 0);
+					}
+
+					object1.moveObject(newVector);
 				}
 				//if rectangle2 is movable move it away from rectangle1
 				//if (object2.isMovable())

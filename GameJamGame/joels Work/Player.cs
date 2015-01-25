@@ -16,15 +16,15 @@ namespace GameJamGame.joels_Work
 	{
 
 		const int WALKING_SPEED = 160;
-		const int JUMP_POWER = -350;
+		const int JUMP_POWER = -400;
 		const int MOVE_LEFT = -1;
 		const int MOVE_RIGHT = 1;
 		const int MOVE_DOWN = 1;
 		const int MOVE_UP = 1;
 		const float WALKING_ACC = 2000.0f;
 		const float WALKING_DEC = 2000.0f;
-		const float MAX_SPEED_WALKING = 150.0f;
-		const float MAX_SPEED_JUMPING = 75.0f;
+		const float MAX_SPEED_WALKING = 170.0f;
+		const float MAX_SPEED_JUMPING = 90.0f;
 
         int animationTimer = 0;
 

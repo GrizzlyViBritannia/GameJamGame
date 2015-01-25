@@ -20,9 +20,10 @@ namespace GameJamGame.joels_Work
 		protected float gravity = 1000.0f;
 
 		protected bool movable;
-		protected bool collidable;
+		protected bool collidable = true;
 		protected bool falling;
 		protected bool colliding;
+		protected int sideCollide = -1;
 		protected bool previousState = false;
 		protected bool currentState = false;
 		protected bool deletable = false;
@@ -167,6 +168,16 @@ namespace GameJamGame.joels_Work
 
 
 		// get-set functions:
+
+		public void setSideCollide(int side)
+		{
+			this.sideCollide = side;
+		}
+
+		public int whatSideCollide()
+		{
+			return this.sideCollide;
+		}
         
         public GameObject clone()
         {

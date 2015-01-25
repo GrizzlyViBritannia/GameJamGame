@@ -24,7 +24,7 @@ namespace GameJamGame.joels_Work
 		const float WALKING_ACC = 2000.0f;
 		const float WALKING_DEC = 2000.0f;
 		const float MAX_SPEED_WALKING = 200.0f;
-		const float MAX_SPEED_JUMPING = 90.0f;
+		const float MAX_SPEED_JUMPING = 85.0f;
 
         int animationTimer = 0;
 
@@ -251,6 +251,7 @@ namespace GameJamGame.joels_Work
 			currentState = State.Jumping;
 			mSpeed.Y = JUMP_POWER;
 			Console.WriteLine("DO JUMP");
+			Game1.cycle();
 		}
 
 

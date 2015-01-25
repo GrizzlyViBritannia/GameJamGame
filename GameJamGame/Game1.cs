@@ -153,6 +153,10 @@ namespace GameJamGame
         {
             gameBoard.endLevel(direction);
         }
+		public static void cycle()
+		{
+			gameBoard.cycleBlocks();
+		}
         public static void swapCompleteBlocks()
         {
             for (int i = 0; i < levelList.Count; i++)
@@ -167,9 +171,14 @@ namespace GameJamGame
                     }
                 }
             }
-            //gameBoard.swapCompleteBlocks();
-            
         }
+            //gameBoard.swapCompleteBlocks();
+		public static int getCycle()
+		{
+			return gameBoard.getCycleNumber();
+		}
+            
+        
 
         /*
          * 

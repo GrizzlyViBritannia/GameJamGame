@@ -39,8 +39,10 @@
     <Compile Include="joels Work\Board.cs" />
     <Compile Include="joels Work\CompleteBlock.cs" />
     <Compile Include="joels Work\Flower.cs" />
+    <Compile Include="joels Work\CycleBlock.cs" />
     <Compile Include="joels Work\GameObject.cs" />
     <Compile Include="joels Work\invisibleBlock.cs" />
+    <Compile Include="joels Work\Lava.cs" />
     <Compile Include="joels Work\Level.cs" />
     <Compile Include="joels Work\MoveBlock.cs" />
     <Compile Include="joels Work\Player.cs" />

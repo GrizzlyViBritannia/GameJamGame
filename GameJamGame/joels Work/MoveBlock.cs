@@ -18,6 +18,7 @@ namespace GameJamGame.joels_Work
 			this.texture = texture;
 			this.colour = colour;
 			this.centerPosition = pos;
+			this.movable = true;
 			moveDirection = direction;
 			drawSize = new Vector2(this.texture.Width, this.texture.Height);
 			this.collisonRect = drawRect(Vector2.Zero);
@@ -29,6 +30,32 @@ namespace GameJamGame.joels_Work
 		{
 			checkForCollisions();
 			run();
+		}
+
+		protected override void checkForCollisions()
+		{
+			this.previousState = currentState;
+			if (colliding)
+			{
+				state = 1;
+				currentState = true;
+			}
+			else if (state >= 1)
+			{
+				state++;
+				currentState = true;
+				previousState = true;
+			}
+			if (state >= 5)
+			{
+				previousState = true;
+				currentState = false;
+			}
+			if (state >= 10)
+			{
+				previousState = false;
+				currentState = false;
+			}
 		}
 
 		protected override void stillColliding()

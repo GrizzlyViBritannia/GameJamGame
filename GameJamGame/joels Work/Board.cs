@@ -263,8 +263,8 @@ namespace GameJamGame.joels_Work
 		{
 			this.currentBackGround = Game1.backGroundPlaceHolderSave;
 			gameObjectList = new List<GameObject>();
-			gameObjectList.Add(new Player(Game1.playerTextureSave, new Vector2(0, 0), Color.White)); // player will always be index 0
-			gameObjectList[0].load(Game1.playerTextureSave);
+			gameObjectList.Add(new Player(Game1.playerSpriteSheet, new Vector2(0, 0), Color.White)); // player will always be index 0
+            gameObjectList[0].load(Game1.playerSpriteSheet);
             playerPointer = (Player)gameObjectList[0];
             
             gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(25, 300),Color.White));

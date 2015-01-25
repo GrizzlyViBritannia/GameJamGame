@@ -34,21 +34,32 @@ namespace GameJamGame.joels_Work
         protected Vector2 drawOffset = Vector2.Zero;
 		protected Vector2 mSpeed = Vector2.Zero;
         protected int spriteState;
+        protected Vector2 drawSize;
 
 
 		// private functions:
 
         public Rectangle drawRect(Vector2 offset)
         {
-            Vector2 drawPos = new Vector2((int)(this.centerPosition.X - (texture.Width / 2)),
-                                          (int)(this.centerPosition.Y - (texture.Height / 2)));
+            Vector2 drawPos = new Vector2((int)(this.centerPosition.X - (drawSize.X / 2)),
+                                          (int)(this.centerPosition.Y - (drawSize.Y / 2)));
             drawPos += this.drawOffset + offset;
-
-            return new Rectangle(
-                (int)drawPos.X,
-                (int)drawPos.Y,
-                texture.Width, 
-                texture.Height);
+            if (drawSize == Vector2.Zero)
+            {
+                return new Rectangle(
+                    (int)drawPos.X,
+                    (int)drawPos.Y,
+                    texture.Width,
+                    texture.Height);
+            }
+            else
+            {
+                return new Rectangle(
+                    (int)drawPos.X,
+                    (int)drawPos.Y,
+                    (int)drawSize.X,
+                    (int)drawSize.Y);
+            }
         }
 
 		// public functions:
@@ -61,6 +72,7 @@ namespace GameJamGame.joels_Work
             this.texture = texture;
             this.colour = colour;
             this.centerPosition = pos;
+            drawSize = new Vector2(this.texture.Width,this.texture.Height);
             this.collisonRect = drawRect(Vector2.Zero);
 			this.movable = false;
         }
@@ -78,10 +90,10 @@ namespace GameJamGame.joels_Work
 		{
 			
 		}
-		public void draw(SpriteBatch SB, Vector2 offset)
+		public virtual void draw(SpriteBatch SB, Vector2 offset)
 		{
             if (drawable)
-                SB.Draw()
+                //SB.Draw()
                 SB.Draw(this.texture, this.drawRect(offset), this.colour);
         }
         public void load (Texture2D texture)

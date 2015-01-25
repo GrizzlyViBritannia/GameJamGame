@@ -26,6 +26,8 @@ namespace GameJamGame.joels_Work
 		const float MAX_SPEED_WALKING = 150.0f;
 		const float MAX_SPEED_JUMPING = 75.0f;
 
+        int animationTimer = 0;
+
 		// animation stuff (Joel)
 
 
@@ -33,15 +35,18 @@ namespace GameJamGame.joels_Work
 
 		enum State
 		{
-			Walking,
+            Standing,
+            WalkingRight,
+			WalkingLeft,
 			Jumping
 		}
-		State currentState = State.Walking;
+        State currentState = State.Standing;
 
 		//public Vector2 Position = new Vector2(0, 0);
 
 		Vector2 mDirection = new Vector2(0, 1);
 		Vector2 jumpStartingPosition = Vector2.Zero;
+        int animationState;
 
 		int jumpCount = 0;
 
@@ -57,6 +62,7 @@ namespace GameJamGame.joels_Work
 			this.centerPosition = pos;
 			this.colour = colour;
 			this.movable = true;
+            this.drawSize = new Vector2(30, 42);
 			this.collisonRect = drawRect(this.drawOffset);
 		}
 
@@ -74,10 +80,28 @@ namespace GameJamGame.joels_Work
 			this.collisonRect = drawRect(this.drawOffset);
 			if (currentKeyboardState.IsKeyDown(Keys.Space) == true)
 			{
-				currentState = State.Walking;
+				//currentState = State.;
 			}
 
 			mPreviousKeyboardState = currentKeyboardState;
+
+            // state checking
+            //if (this.falling && (mSpeed.Y > 0 && mSpeed.Y < 0))
+            //{
+            //    this.currentState = State.Jumping;
+            //}
+            //else if (mSpeed.X > 0)
+            //{
+            //    this.currentState = State.WalkingRight;
+            //}
+            //else if (mSpeed.X < 0)
+            //{
+            //    this.currentState = State.WalkingLeft;
+            //}
+            //else
+            //{
+            //    this.currentState = State.Standing;
+            //}
 		}
 
 		private void checkFalling()
@@ -86,7 +110,7 @@ namespace GameJamGame.joels_Work
 			{
 				mSpeed.Y = 0;
 				jumpCount = 0;
-				currentState = State.Walking;
+				
 				this.isFalling(true);
 			}
 		}
@@ -100,7 +124,7 @@ namespace GameJamGame.joels_Work
 		private void updateWalking(GameTime gameTime, int direction)
 		{
 			float currentMax;
-			if (currentState == State.Walking)
+            if (currentState == State.WalkingLeft || currentState == State.WalkingRight)
 			{
 				currentMax = MAX_SPEED_WALKING;
 			}
@@ -130,6 +154,7 @@ namespace GameJamGame.joels_Work
 				if (Math.Abs(mSpeed.X) < 10)
 				{
 					mSpeed.X = 0;
+                    currentState = State.Standing;
 				}
 				else if (mSpeed.X < 0)
 				{
@@ -148,14 +173,20 @@ namespace GameJamGame.joels_Work
 			if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
 			{
 				updateWalking(gameTime, MOVE_LEFT);
+                if(currentState != State.Jumping)
+                    currentState = State.WalkingLeft;
 			}
 			else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
 			{
 				updateWalking(gameTime, MOVE_RIGHT);
+                if (currentState != State.Jumping)
+                    currentState = State.WalkingRight;
 			}
 			else
 			{
 				updateWalking(gameTime, 0);
+                if (currentState != State.Jumping)
+                    currentState = State.Standing;
 			}
 		}
 
@@ -183,6 +214,36 @@ namespace GameJamGame.joels_Work
 
 			return doJump;
 		}
+
+
+        //
+        //
+        //
+        //
+
+        public override void draw(SpriteBatch SB, Vector2 offset)
+        {
+            SB.Draw(
+                this.texture,
+                new Vector2(this.drawRect(this.drawOffset).X, this.drawRect(this.drawOffset).Y),
+                new Rectangle(
+                    this.animationState * (int)this.drawSize.X,
+                    (int)this.currentState * (int)this.drawSize.Y, 
+                    (int)this.drawSize.X, 
+                    (int)this.drawSize.Y),
+                Color.White);
+            
+            animationTimer++;
+            if (animationTimer > 10)
+            {
+                this.animationState++;
+                if (this.animationState > 2)
+                {
+                    this.animationState = 0;
+                }
+                animationTimer = 0;
+            }
+        }
 
 		private void jump()
 		{

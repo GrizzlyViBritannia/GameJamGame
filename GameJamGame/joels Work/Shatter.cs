@@ -14,6 +14,7 @@ namespace GameJamGame.joels_Work
             this.texture = texture;
             this.colour = colour;
             this.centerPosition = pos;
+            drawSize = new Vector2(this.texture.Width, this.texture.Height);
             this.collisonRect = drawRect(Vector2.Zero);
 			this.movable = false;
 			this.colliding = false;

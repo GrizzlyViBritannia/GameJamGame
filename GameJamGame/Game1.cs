@@ -27,8 +27,9 @@ namespace GameJamGame
 
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
-        public static Texture2D playerTextureSave;
+        //public static Texture2D playerTextureSave;
 
+        public static Texture2D playerSpriteSheet;
         public static int currentLevel = -1;
 
         // level 1 tutorial level
@@ -80,8 +81,11 @@ namespace GameJamGame
 
             image = Content.Load<Texture2D>("Images/test"); // i hate you
             backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backgroundPlaceHolder");
-            playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
+            //playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
+
+            // load spriteSheet
+            playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.png");
 
             // level 1 load
             level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");

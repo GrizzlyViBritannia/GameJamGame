@@ -16,58 +16,59 @@ namespace GameJamGame.joels_Work
 	{
 
 		const int WALKING_SPEED = 160;
-		const int JUMP_POWER = -500;
+		const int JUMP_POWER = -350;
 		const int MOVE_LEFT = -1;
 		const int MOVE_RIGHT = 1;
 		const int MOVE_DOWN = 1;
 		const int MOVE_UP = 1;
-		const float WALKING_ACC = 1000.0f;
-		const float WALKING_DEC = 700.0f;
-		const float MAX_SPEED = 300.0f;
+		const float WALKING_ACC = 2000.0f;
+		const float WALKING_DEC = 2000.0f;
+		const float MAX_SPEED_WALKING = 150.0f;
+		const float MAX_SPEED_JUMPING = 75.0f;
 
-        // animation stuff (Joel)
+		// animation stuff (Joel)
 
 
 
 
 		enum State
 		{
-			Walking
+			Walking,
+			Jumping
 		}
 		State currentState = State.Walking;
 
 		//public Vector2 Position = new Vector2(0, 0);
 
-		Vector2 mDirection = new Vector2(0,1);
-		Vector2 mSpeed = Vector2.Zero;
+		Vector2 mDirection = new Vector2(0, 1);
 		Vector2 jumpStartingPosition = Vector2.Zero;
 
 		int jumpCount = 0;
 
 		KeyboardState mPreviousKeyboardState;
 
-        public Player()
+		public Player()
 		{
 
-        }
-        public Player(Texture2D texture, Vector2 pos, Color colour)
-        {
-            this.texture = texture;
-            this.centerPosition = pos;
-            this.colour = colour;
+		}
+		public Player(Texture2D texture, Vector2 pos, Color colour)
+		{
+			this.texture = texture;
+			this.centerPosition = pos;
+			this.colour = colour;
 			this.movable = true;
 			this.collisonRect = drawRect(this.drawOffset);
-        }
+		}
 
 		public override void update(GameTime gameTime)
 		{
-			
-			
+
+
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 
 			updateMovement(gameTime, currentKeyboardState);
-			updateJump(currentKeyboardState);
 			checkFalling();
+			updateJump(currentKeyboardState);
 			updateGravity(gameTime);
 			this.moveObject(mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 			this.collisonRect = drawRect(this.drawOffset);
@@ -85,6 +86,7 @@ namespace GameJamGame.joels_Work
 			{
 				mSpeed.Y = 0;
 				jumpCount = 0;
+				currentState = State.Walking;
 				this.isFalling(true);
 			}
 		}
@@ -97,16 +99,30 @@ namespace GameJamGame.joels_Work
 
 		private void updateWalking(GameTime gameTime, int direction)
 		{
+			float currentMax;
+			if (currentState == State.Walking)
+			{
+				currentMax = MAX_SPEED_WALKING;
+			}
+			else if (currentState == State.Jumping)
+			{
+				currentMax = MAX_SPEED_JUMPING;
+			}
+			else
+			{
+				currentMax = MAX_SPEED_WALKING;
+			}
+
 			if (direction != 0)
 			{
 				mSpeed.X = mSpeed.X + (direction * (WALKING_ACC * (float)gameTime.ElapsedGameTime.TotalSeconds));
-				if (mSpeed.X > MAX_SPEED)
+				if (mSpeed.X > currentMax)
 				{
-					mSpeed.X = MAX_SPEED;
+					mSpeed.X = currentMax;
 				}
-				else if (mSpeed.X < -MAX_SPEED)
+				else if (mSpeed.X < -currentMax)
 				{
-					mSpeed.X = -MAX_SPEED;
+					mSpeed.X = -currentMax;
 				}
 			}
 			else
@@ -114,7 +130,7 @@ namespace GameJamGame.joels_Work
 				if (Math.Abs(mSpeed.X) < 10)
 				{
 					mSpeed.X = 0;
-				} 
+				}
 				else if (mSpeed.X < 0)
 				{
 					mSpeed.X = mSpeed.X + (WALKING_DEC * (float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -132,28 +148,22 @@ namespace GameJamGame.joels_Work
 			if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
 			{
 				updateWalking(gameTime, MOVE_LEFT);
-				Console.WriteLine("MOVE LEFT");
 			}
 			else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
 			{
 				updateWalking(gameTime, MOVE_RIGHT);
-				Console.WriteLine("MOVE RIGHT");
 			}
 			else
 			{
 				updateWalking(gameTime, 0);
-				Console.WriteLine("STOP MOVING");
-			} 
+			}
 		}
 
 		private void updateJump(KeyboardState currentKeyboardState)
 		{
-			if (currentState == State.Walking)
+			if (jumpInit(currentKeyboardState) == true)
 			{
-				if (jumpInit(currentKeyboardState) == true)
-				{
-					jump();
-				}
+				jump();
 			}
 		}
 
@@ -168,7 +178,6 @@ namespace GameJamGame.joels_Work
 					 mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
 				{
 					doJump = true;
-					Console.WriteLine("TRY JUMP");
 				}
 			}
 
@@ -178,14 +187,15 @@ namespace GameJamGame.joels_Work
 		private void jump()
 		{
 			jumpCount++;
+			currentState = State.Jumping;
 			mSpeed.Y = JUMP_POWER;
 			Console.WriteLine("DO JUMP");
 		}
 
 
-        internal void setPosition(int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		internal void setPosition(int p1, int p2)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

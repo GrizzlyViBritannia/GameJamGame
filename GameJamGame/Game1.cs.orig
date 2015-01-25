@@ -24,11 +24,14 @@ namespace GameJamGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+<<<<<<< HEAD
         Texture2D image; // piss off
         Ending endingScene;
 
         bool ending = true;
 
+=======
+>>>>>>> Art
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D flowerTexture;
@@ -37,6 +40,39 @@ namespace GameJamGame
         public static Texture2D playerSpriteSheet;
         public static int currentLevel = -1;
         public static int currentLevelList = 0;
+<<<<<<< HEAD
+                                                           
+        // level 1 tutorial level                          
+        public static Texture2D level1BGSave;              
+        public static Texture2D level2BGSave;              
+        public static Texture2D level3BGSave;              
+        public static Texture2D level1BreakableBlockSave;  
+                                                           
+        public static Random rnd = new Random();           
+                                                                    
+        // level 2 stuff                                            
+        public static Texture2D background20;                       
+        public static Texture2D background21;                       
+        public static Texture2D background22;                       
+        public static Texture2D jumpCounter1;                       
+        public static Texture2D jumpCounter2;                       
+        public static Texture2D jumpCounter3;                                
+        public static Texture2D jumpCounter4;                                
+		public static Texture2D jumpCounterAlpha1;                           
+		public static Texture2D jumpCounterAlpha2;                           
+		public static Texture2D jumpCounterAlpha3;                           
+		public static Texture2D jumpCounterAlpha4;                           
+                                                                             
+        // game end                                                          
+        public static Texture2D endingScreen;                       
+        public static Texture2D spotLight;                          
+        public static Texture2D flowerSprites;                      
+        public static Texture2D text1;                              
+        public static Texture2D text2;                              
+        public static Texture2D text3;                              
+        public static Texture2D text4;                              
+                                                                    
+=======
 
         // level 1 tutorial level
         public static Texture2D level1BGSave;
@@ -54,15 +90,17 @@ namespace GameJamGame
         public static Texture2D jumpCounter2;
         public static Texture2D jumpCounter3;
         public static Texture2D jumpCounter4;
-		public static Texture2D jumpCounterAlpha1;
-		public static Texture2D jumpCounterAlpha2;
-		public static Texture2D jumpCounterAlpha3;
-		public static Texture2D jumpCounterAlpha4;
 
-        // game end
-        public static Texture2D endingScreen;
-        public static Texture2D spotLight;
-        public static Texture2D flowerSprites;
+		// level FINAL stuff
+		public static Texture2D backgroundF0;
+		public static Texture2D backgroundF1;
+		public static Texture2D backgroundF2;
+		public static Texture2D arrowDown;
+		public static Texture2D arrowLeft;
+		public static Texture2D arrowRight;
+		public static Texture2D arrowUp;
+
+>>>>>>> Art
 
         static Board gameBoard = new Board();
         public static List<List<Level>> levelList;
@@ -103,9 +141,7 @@ namespace GameJamGame
 
             // TODO: use this.Content to load your game content here
 
-            image = Content.Load<Texture2D>("Images/test"); // i hate you
-            backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
-            //playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
+			backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
 
             // load spriteSheet
@@ -115,7 +151,7 @@ namespace GameJamGame
             level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
             level2BGSave = Content.Load<Texture2D>("Images/Level1/1_2BG.png");
             level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3.png");
-            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/glass2.png");
+            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/iceblock.png");
 
             // level 2 load
 
@@ -126,21 +162,33 @@ namespace GameJamGame
             jumpCounter2  = Content.Load<Texture2D>("Images/Level2/jump counter 2.png");
             jumpCounter3  = Content.Load<Texture2D>("Images/Level2/jump counter 3.png");
             jumpCounter4  = Content.Load<Texture2D>("Images/Level2/jump counter 4.png");
-<<<<<<< HEAD
-
-            // ending
-            endingScreen = Content.Load<Texture2D>("Images/ending/gameendingscreen.png");
-            spotLight = Content.Load<Texture2D>("Images/ending/spotLight.png");
-            flowerSprites = Content.Load<Texture2D>("Images/ending/flower_sheet.png");
-            endingScene = new Ending(flowerSprites);
-
-=======
 			jumpCounterAlpha1 = Content.Load<Texture2D>("Images/Level2/jump1.png");
 			jumpCounterAlpha2 = Content.Load<Texture2D>("Images/Level2/jump2.png");
 			jumpCounterAlpha3 = Content.Load<Texture2D>("Images/Level2/jump3.png");
 			jumpCounterAlpha4 = Content.Load<Texture2D>("Images/Level2/jump4.png");
             
->>>>>>> origin/master
+            // ending
+            endingScreen = Content.Load<Texture2D>("Images/ending/gameendingscreen.png");
+            spotLight = Content.Load<Texture2D>("Images/ending/spotLight.png");
+            flowerSprites = Content.Load<Texture2D>("Images/ending/flower_sheet.png");
+            endingScene = new Ending(flowerSprites);
+            text1 = Content.Load<Texture2D>("Images/ending/Text1.png");
+            text2 = Content.Load<Texture2D>("Images/ending/Text2.png");
+            text3 = Content.Load<Texture2D>("Images/ending/Text3.png");
+            text4 = Content.Load<Texture2D>("Images/ending/Text4.png");
+
+
+
+
+			// level FINAL load
+			arrowDown = Content.Load<Texture2D>("Images/LevelF/arrow platform down.png");
+			arrowLeft = Content.Load<Texture2D>("Images/LevelF/arrow platform left.png");
+			arrowRight = Content.Load<Texture2D>("Images/LevelF/arrow platform right");
+			arrowUp = Content.Load<Texture2D>("Images/LevelF/arrow platform up");
+			backgroundF0 = Content.Load<Texture2D>("Images/LevelF/5_1_bg.png");
+			backgroundF1 = Content.Load<Texture2D>("Images/LevelF/5_2_bg.png");
+			backgroundF2 = Content.Load<Texture2D>("Images/LevelF/5_3_bg.png");
+
             // create level data
             levelList = new List<List<Level>>();
             levelList.Add(new List<Level>());
@@ -191,6 +239,7 @@ namespace GameJamGame
 
             spriteBatch.Begin();
 
+<<<<<<< HEAD
             
 
             if (!ending)
@@ -200,6 +249,9 @@ namespace GameJamGame
                 endingScene.draw(spriteBatch);
             }
 
+=======
+			gameBoard.draw(spriteBatch);
+>>>>>>> Art
 
             spriteBatch.End();
 

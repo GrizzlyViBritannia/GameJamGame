@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+Content\Images\Level2\Lava2.xnb
+Content\Images\Level2\Lava1.xnb
+Content\Images\Level2\jump1.xnb
+Content\Images\Level2\jump2.xnb
+Content\Images\Level2\jump3.xnb
+Content\Images\Level2\jump4.xnb
+Content\Images\test.png
+Content\Images\backgroundPlaceHolder.png
+=======
+>>>>>>> Art
 Content\Images\backGroundStart.png
 Content\Images\ending\flower_sheet.png
 Content\Images\ending\gameendingscreen.png
@@ -11,8 +22,6 @@ Content\Images\Level1\1_3.png
 Content\Images\Level1\1_1BG.png
 Content\Images\Level1\1_2BG.png
 Content\Images\Level1\iceblock.png
-Content\Images\Level2\Lava1.png
-Content\Images\Level2\Lava2.png
 Content\Images\Level2\3_1_bg.png
 Content\Images\Level2\3_2_bg.png
 Content\Images\Level2\3_3_bg.png
@@ -20,10 +29,6 @@ Content\Images\Level2\jump counter 1.png
 Content\Images\Level2\jump counter 2.png
 Content\Images\Level2\jump counter 3.png
 Content\Images\Level2\jump counter 4.png
-Content\Images\Level2\jump1.png
-Content\Images\Level2\jump2.png
-Content\Images\Level2\jump3.png
-Content\Images\Level2\jump4.png
 Content\Images\LevelF\5_1_bg.png
 Content\Images\LevelF\5_2_bg.png
 Content\Images\LevelF\5_3_bg.png

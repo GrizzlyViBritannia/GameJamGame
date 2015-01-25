@@ -26,7 +26,7 @@ namespace GameJamGame
 
         Ending endingScene;
 
-        bool ending = true;
+        bool ending = false;
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D flowerTexture;
@@ -122,9 +122,9 @@ namespace GameJamGame
             playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.png");
             flowerTexture = Content.Load<Texture2D>("Images/flower.png");
             // level 1 load
-            level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
+            level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1.png");
             level2BGSave = Content.Load<Texture2D>("Images/Level1/1_2BG.png");
-            level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3.png");
+            level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3_bg.png");
             level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/iceblock.png");
 
             // level 2 load

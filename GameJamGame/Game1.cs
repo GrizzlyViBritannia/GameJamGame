@@ -111,8 +111,8 @@ namespace GameJamGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //Song song = Content.Load<Song>("song_title");  // Put the name of your song here instead of "song_title"
-            //MediaPlayer.Play(song);
+            Song song = Content.Load<Song>("song_title");  // Put the name of your song here instead of "song_title"
+            MediaPlayer.Play(song);
 
             // TODO: use this.Content to load your game content here
 

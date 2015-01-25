@@ -179,11 +179,16 @@ namespace GameJamGame.joels_Work
             if (Game1.currentLevel + direction <= 0 && Game1.currentLevel > 0)
             {
                 Game1.currentLevelList++;
+                if (Game1.currentLevelList >= Game1.levelList.Count)
+                {
+                    Game1.startEnding();
+                }
             }
             currectDirection = direction;
             state = transitionState;
             declareTransition(new Vector2(-1280*direction, 0), this.boardOffset);
             getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-1280 * direction, 0));
+            if (!Game1.ending)
             StartTransition(direction);
             
 

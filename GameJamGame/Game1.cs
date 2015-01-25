@@ -27,7 +27,7 @@ namespace GameJamGame
         Texture2D image; // piss off
         Ending endingScene;
 
-        bool ending = true;
+        public static bool ending = false;
 
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
@@ -155,6 +155,8 @@ namespace GameJamGame
             levelList[0] = create1Levels();
             levelList.Add(new List<Level>());
             levelList[1] = create2Levels();
+            levelList.Add(new List<Level>());
+            levelList[2] = create3Levels();
             gameBoard.load();
         }
 
@@ -248,21 +250,72 @@ namespace GameJamGame
         public static List<GameObject> reloadLevel(bool invert)
         {
             List<GameObject> returnList = new List<GameObject>();
-            switch (currentLevel)
+            switch (currentLevelList)
             {
                 case 0:
                     {
-                        returnList.AddRange(level11Objects());
+                        switch (currentLevel)
+                        {
+                            case 0:
+                                {
+                                    returnList.AddRange(level11Objects());
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    returnList.AddRange(level12Objects());
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    returnList.AddRange(level13Objects());
+                                    break;
+                                }
+                        }
                         break;
                     }
                 case 1:
                     {
-                        returnList.AddRange(level12Objects());
+                        switch (currentLevel)
+                        {
+                            case 0:
+                                {
+                                    returnList.AddRange(level21Objects());
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    returnList.AddRange(level22Objects());
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    returnList.AddRange(level23Objects());
+                                    break;
+                                }
+                        }
                         break;
                     }
                 case 2:
                     {
-                        returnList.AddRange(level13Objects());
+                        switch (currentLevel)
+                        {
+                            case 0:
+                                {
+                                    returnList.AddRange(level31Objects());
+                                    break;
+                                }
+                            case 1:
+                                {
+                                    returnList.AddRange(level32Objects());
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    returnList.AddRange(level33Objects());
+                                    break;
+                                }
+                        }
                         break;
                     }
             }
@@ -279,6 +332,10 @@ namespace GameJamGame
             return returnList;
         }
         
+        public static void startEnding()
+        {
+            ending  = true;
+        }
 
         /*
          * 
@@ -463,6 +520,7 @@ namespace GameJamGame
         {
             List<GameObject> returnList = new List<GameObject>();
 
+            
 			returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(330, 355), Color.White, 3));
 
 			returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(390, 235), Color.White, 1));
@@ -524,5 +582,153 @@ namespace GameJamGame
 
             return returnList;
         }
+    
+    
+        private List<Level> create3Levels()
+        {
+            List<Level> returnList = new List<Level>();
+
+            // lvl 1
+            List<GameObject> level1GameObjectList = new List<GameObject>();
+            level1GameObjectList = level31Objects();
+            Level level1 = new Level(background20, level1GameObjectList, new Vector2(430, 550), new Vector2(860, 175), new Vector2(430, 590), true);
+
+            // lvl 2
+            List<GameObject> level2GameObjectList = new List<GameObject>();
+            level2GameObjectList = level32Objects();
+            Level level2 = new Level(background21, level2GameObjectList, new Vector2(210, 175), new Vector2(1105, 295), new Vector2(210, 175), true);
+
+            // lvl 3
+            List<GameObject> level3GameObjectList = new List<GameObject>();
+            level3GameObjectList = level33Objects();
+            Level level3 = new Level(background22, level3GameObjectList, new Vector2(390, 395), new Vector2(800, 175), new Vector2(390, 295), false);
+
+
+
+
+
+            returnList.Add(level1);
+            returnList.Add(level2);
+            returnList.Add(level3);
+            return returnList;
+        
+        }
+
+
+
+        private static List<GameObject> level31Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(510, 595), Color.White, 1));
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(570, 535), Color.White, 2));
+            returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(630, 535), Color.White, 3));
+            returnList.Add(new CycleBlock(jumpCounterAlpha4, jumpCounter4, new Vector2(690, 475), Color.White, 4));
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(630, 415), Color.White, 1));
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(690, 355), Color.White, 2));
+            returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(750, 295), Color.White, 3));
+            returnList.Add(new CycleBlock(jumpCounterAlpha4, jumpCounter4, new Vector2(810, 235), Color.White, 4));
+
+
+            // add walls
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(290, 40, 390 - 290, 660 - 40), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(370, 625, 920 - 370, 680 - 40), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(840, 205, 1050 - 840, 660 - 205), Color.White));
+
+            // complete block
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(890, 175), Color.Red, 1, true));
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(450, 600), Color.Red, -1, false));
+
+            return returnList;
+        }
+        private static List<GameObject> level32Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+            ///
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(270, 235), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(330, 235), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(390, 355), Color.White));
+
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(450, 295), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(510, 415), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(570, 415), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(570, 235), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(630, 535), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(690, 295), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(750, 535), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(810, 355), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(870, 535), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(930, 415), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(990, 535), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(990, 595), Color.White));
+
+
+            ////// it's guna be great
+
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(330, 355), Color.White, 3));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(390, 235), Color.White, 1));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha4, jumpCounter4, new Vector2(450, 355), Color.White, 4));
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(450, 415), Color.White, 1));
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(450, 535), Color.White, 2));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(570, 295), Color.White, 2));
+            returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(570, 475), Color.White, 3));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha4, jumpCounter4, new Vector2(630, 175), Color.White, 4));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha4, jumpCounter4, new Vector2(690, 415), Color.White, 4));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(750, 295), Color.White, 2));
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(750, 355), Color.White, 1));
+            returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(750, 475), Color.White, 3));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(810, 295), Color.White, 2));
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(810, 475), Color.White, 2));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha4, jumpCounter4, new Vector2(930, 355), Color.White, 4));
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(930, 415), Color.White, 1));
+            returnList.Add(new CycleBlock(jumpCounterAlpha2, jumpCounter2, new Vector2(930, 535), Color.White, 2));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha1, jumpCounter1, new Vector2(990, 235), Color.White, 1));
+
+            returnList.Add(new CycleBlock(jumpCounterAlpha3, jumpCounter3, new Vector2(1050, 355), Color.White, 3));
+
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(150 - 30, 55 - 30, 60, 660), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(210 - 30, 55 - 30, 60, 120), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(210 - 30, 235 - 30, 60, 480), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(1110 - 30, 55 - 30, 60, 240), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(1110 - 30, 355 - 30, 60, 360), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(1170 - 30, 55 - 30, 60, 660), Color.White));
+
+
+            // complete block
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(210, 175), Color.Red, -1, false));
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(1110, 295), Color.Red, 1, true));
+
+            return returnList;
+        }
+        private static List<GameObject> level33Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(300, 140, 60, 485), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(360, 140, 120, 125), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(360, 325, 120, 60), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(480, 385, 60, 125), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(540, 500, 60, 125), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(840, 140, 60, 485), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(600, 625, 240, 60), Color.White));
+
+            returnList.Add(new Flower(flowerTexture, new Vector2(750, 600), Color.Green));
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(365, 270), Color.Red, -1, false));
+
+            return returnList;
+        }
+    
+    
     }
 }

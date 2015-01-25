@@ -112,7 +112,7 @@ namespace GameJamGame.joels_Work
 
             Color color = Color.White;
             color.A = (byte)spotLightAlpha;
-            SB.Draw(Game1.spotLight, new Rectangle((int)playerPos.X - 1180, 0, 2280, 720), color);
+            SB.Draw(Game1.spotLight, new Rectangle((int)playerPos.X - 1010, 0, 2280, 720), color);
 
             if (playingState == 0 && tick < 300)
             {

@@ -149,7 +149,15 @@ namespace GameJamGame
             base.Draw(gameTime);
         }
 
-        
+		public static void cycle()
+		{
+			gameBoard.cycleBlocks();
+		}
+
+		public static int getCycle()
+		{
+			return gameBoard.getCycleNumber();
+		}
 
         /*
          * 

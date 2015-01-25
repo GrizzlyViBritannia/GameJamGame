@@ -20,7 +20,7 @@ namespace GameJamGame.joels_Work
 		protected float gravity = 1000.0f;
 
 		protected bool movable;
-		protected bool collidable;
+		protected bool collidable = true;
 		protected bool falling;
 		protected bool colliding;
 		protected bool previousState = false;

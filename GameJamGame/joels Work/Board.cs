@@ -18,6 +18,7 @@ namespace GameJamGame.joels_Work
         const String updateState = "update";
         const int forward = 1;
         const int backwards = -1;
+		private int cycleBlockCycle = 1;
 
         Vector2 respawnPoint;
 
@@ -233,7 +234,7 @@ namespace GameJamGame.joels_Work
                 {
 					foreach (GameObject j in gameObjectList)
 					{
-						if (i != j)
+						if (i != j && (i.isCollidable() && j.isCollidable()))
 						{
                             if (this.checkCollision(i, j))
                             {
@@ -283,8 +284,14 @@ namespace GameJamGame.joels_Work
             gameObjectList[1].load(Game1.objectPlaceHolderSave);
 			gameObjectList.Add(new Shatter(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
 			gameObjectList[2].load(Game1.objectPlaceHolderSave);
-			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White));
+			gameObjectList.Add(new CycleBlock(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White,1));
 			gameObjectList[3].load(Game1.objectPlaceHolderSave);
+			gameObjectList.Add(new CycleBlock(Game1.objectPlaceHolderSave, new Vector2(175, 300), Color.White, 2));
+			gameObjectList[4].load(Game1.objectPlaceHolderSave);
+			gameObjectList.Add(new CycleBlock(Game1.objectPlaceHolderSave, new Vector2(225, 300), Color.White, 3));
+			gameObjectList[5].load(Game1.objectPlaceHolderSave);
+			gameObjectList.Add(new CycleBlock(Game1.objectPlaceHolderSave, new Vector2(275, 300), Color.White, 4));
+			gameObjectList[6].load(Game1.objectPlaceHolderSave);
 			
             for (int i = 0; i < objectNumber; i++)
 			{
@@ -313,7 +320,20 @@ namespace GameJamGame.joels_Work
                 this.currentBackGround.Width,
                 this.currentBackGround.Height);
         }
-		
+
+		public void cycleBlocks()
+		{
+			cycleBlockCycle++;
+			if (cycleBlockCycle == 5)
+			{
+				cycleBlockCycle = 1;
+			}
+		}
+
+		public int getCycleNumber()
+		{
+			return cycleBlockCycle;
+		}
 
         // get-set
         public Player getPlayer()

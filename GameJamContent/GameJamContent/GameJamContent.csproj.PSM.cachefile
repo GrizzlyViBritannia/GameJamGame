@@ -1,13 +1,10 @@
-Content\Images\Level2\Lava1.xnb
-Content\Images\Level2\Lava2.xnb
-Content\Images\test.png
 Content\Images\backgroundPlaceHolder.png
 Content\Images\backGroundStart.png
 Content\Images\flower.png
 Content\Images\Level1\1_3.png
-Content\Images\Level1\glass2.png
 Content\Images\Level1\1_1BG.png
 Content\Images\Level1\1_2BG.png
+Content\Images\Level1\iceblock.png
 Content\Images\Level1\playerPlaceHolder2.png
 Content\Images\Level2\3_1_bg.png
 Content\Images\Level2\3_2_bg.png
@@ -19,4 +16,4 @@ Content\Images\Level2\jump counter 4.png
 Content\Images\objectPlaceHolder.png
 Content\Images\playerPlaceHolder.png
 Content\Images\Player\PlayerSpriteSheet1.png
-Content\Images\Player\PlayerSpriteSheet1.bmp
+Content\Images\test.png

@@ -23,8 +23,6 @@ namespace GameJamGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D image; // piss off
-
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D flowerTexture;
@@ -88,19 +86,17 @@ namespace GameJamGame
 
             // TODO: use this.Content to load your game content here
 
-            image = Content.Load<Texture2D>("Images/test"); // i hate you
-            backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
-            //playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
+			backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
 
             // load spriteSheet
-            playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.bmp");
+            playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.png");
             flowerTexture = Content.Load<Texture2D>("Images/flower.png");
             // level 1 load
             level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
             level2BGSave = Content.Load<Texture2D>("Images/Level1/1_2BG.png");
             level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3.png");
-            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/glass2.png");
+            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/iceblock.png");
 
             // level 2 load
 
@@ -159,11 +155,7 @@ namespace GameJamGame
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
-
-
-            gameBoard.draw(spriteBatch);
-
+			gameBoard.draw(spriteBatch);
 
             spriteBatch.End();
 

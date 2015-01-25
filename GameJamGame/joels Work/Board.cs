@@ -202,7 +202,7 @@ namespace GameJamGame.joels_Work
         void StartTransition(int direction)
         {
             transitionBoard = new Board();
-            transitionBoard.buildBoard(Game1.levelList[Game1.currentLevel + direction], getPlayer());
+            transitionBoard.buildBoard(Game1.levelList[Game1.currentLevelList][Game1.currentLevel + direction], getPlayer());
             transitionBoard.declareTransition(Vector2.Zero, new Vector2(1280*direction, 0));
         }
 
@@ -211,7 +211,7 @@ namespace GameJamGame.joels_Work
             transitionBoard = null;
             //this.gameObjectList[0].moveObject(new Vector2(-800, 0));
             Game1.currentLevel += direction;
-            this.buildBoard(Game1.levelList[Game1.currentLevel], (Player)gameObjectList[0]);
+            this.buildBoard(Game1.levelList[Game1.currentLevelList][Game1.currentLevel], (Player)gameObjectList[0]);
             gameObjectList[0].setPosition(this.respawnPoint);
             //Game1.levelList.RemoveAt(0);
             this.state = updateState;

@@ -31,8 +31,9 @@ namespace GameJamGame.joels_Work
 
         protected override void collision()
         {
-
-            Game1.swapCompleteBlocks();
+            if (collidable)
+                Game1.swapCompleteBlocks();
+            this.collidable = false;
 
         }
 

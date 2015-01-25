@@ -31,6 +31,7 @@ namespace GameJamGame
 
         public static Texture2D playerSpriteSheet;
         public static int currentLevel = -1;
+        public static int currentLevelList = 1;
 
         // level 1 tutorial level
         public static Texture2D level1BGSave;
@@ -40,11 +41,18 @@ namespace GameJamGame
 
         public static Random rnd = new Random();
 
-
+        // level 2 stuff
+        public static Texture2D background20;
+        public static Texture2D background21;
+        public static Texture2D background22;
+        public static Texture2D jumpCounter1;
+        public static Texture2D jumpCounter2;
+        public static Texture2D jumpCounter3;
+        public static Texture2D jumpCounter4;
 
 
         static Board gameBoard = new Board();
-        public static List<Level> levelList;
+        public static List<List<Level>> levelList;
 
         public Game1()
             : base()
@@ -93,10 +101,22 @@ namespace GameJamGame
             level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3.png");
             level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/glass2.png");
 
-            // create level data
-            levelList = new List<Level>();
-            levelList = createLevels();
+            // level 2 load
 
+            background20   = Content.Load<Texture2D>("Images/Level2/3_1_bg.png");
+            background21   = Content.Load<Texture2D>("Images/Level2/3_2_bg.png");
+            background22   = Content.Load<Texture2D>("Images/Level2/3_3_bg.png");
+            jumpCounter1  = Content.Load<Texture2D>("Images/Level2/jump counter 1.png");
+            jumpCounter2  = Content.Load<Texture2D>("Images/Level2/jump counter 2.png");
+            jumpCounter3  = Content.Load<Texture2D>("Images/Level2/jump counter 3.png");
+            jumpCounter4  = Content.Load<Texture2D>("Images/Level2/jump counter 4.png");
+
+            // create level data
+            levelList = new List<List<Level>>();
+            levelList.Add(new List<Level>());
+            levelList[0] = create1Levels();
+            levelList.Add(new List<Level>());
+            levelList[1] = create2Levels();
             gameBoard.load(0);
         }
 
@@ -159,20 +179,22 @@ namespace GameJamGame
 		}
         public static void swapCompleteBlocks()
         {
+            List<Level> levelList1 = levelList[currentLevelList];
+
             for (int i = 0; i < levelList.Count; i++)
             {
-                levelList[i].changeRespawn(levelList[i].firstEndPoint);
-                for (int j = 0; j < levelList[i].getObjectList().Count; j++)
+                levelList1[i].changeRespawn(levelList1[i].firstEndPoint);
+                for (int j = 0; j < levelList1[i].getObjectList().Count; j++)
                 {
-                    if (levelList[i].getObjectList()[j].GetType() == typeof(CompleteBlock))
+                    if (levelList1[i].getObjectList()[j].GetType() == typeof(CompleteBlock))
                     {
-                        ((CompleteBlock)(levelList[i].getObjectList()[j])).visable = !((CompleteBlock)(levelList[i].getObjectList()[j])).visable;
+                        ((CompleteBlock)(levelList1[i].getObjectList()[j])).visable = !((CompleteBlock)(levelList1[i].getObjectList()[j])).visable;
                     
                     }
                 }
             }
         }
-            //gameBoard.swapCompleteBlocks();
+
 		public static int getCycle()
 		{
 			return gameBoard.getCycleNumber();
@@ -180,23 +202,22 @@ namespace GameJamGame
             
         public static List<GameObject> reloadLevel(bool invert)
         {
-
             List<GameObject> returnList = new List<GameObject>();
             switch (currentLevel)
             {
                 case 0:
                     {
-                        returnList.AddRange(level1Objects());
+                        returnList.AddRange(level11Objects());
                         break;
                     }
                 case 1:
                     {
-                        returnList.AddRange(level2Objects());
+                        returnList.AddRange(level12Objects());
                         break;
                     }
                 case 2:
                     {
-                        returnList.AddRange(level3Objects());
+                        returnList.AddRange(level13Objects());
                         break;
                     }
             }
@@ -220,22 +241,22 @@ namespace GameJamGame
          * 
          */
 
-        private List<Level> createLevels()
+        private List<Level> create1Levels()
         {
             List<Level> returnList = new List<Level>();
             // lvl 1
             List<GameObject> level1GameObjectList = new List<GameObject>();
-            level1GameObjectList = level1Objects();
+            level1GameObjectList = level11Objects();
             Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(535,115),new Vector2(865,175),new Vector2(450,600),true);
 
             // lvl 2
             List<GameObject> level2GameObjectList = new List<GameObject>();
-            level2GameObjectList = level2Objects();
+            level2GameObjectList = level12Objects();
             Level level2 = new Level(level2BGSave, level2GameObjectList, new Vector2(210, 175), new Vector2(1100,135), new Vector2(185,175),true);
 
             // lvl 3
             List<GameObject> level3GameObjectList = new List<GameObject>();
-            level3GameObjectList = level3Objects();
+            level3GameObjectList = level13Objects();
             Level level3 = new Level(level3BGSave, level3GameObjectList, new Vector2(390, 535), new Vector2(900,115), new Vector2(365,530),false);
 
             
@@ -246,7 +267,7 @@ namespace GameJamGame
 
         }
 
-        private static List<GameObject> level1Objects()
+        private static List<GameObject> level11Objects()
         {
             List<GameObject> returnList = new List<GameObject>();
 
@@ -283,7 +304,7 @@ namespace GameJamGame
 
 
         }
-        private static List<GameObject> level2Objects()
+        private static List<GameObject> level12Objects()
         {
             List<GameObject> returnList = new List<GameObject>();
 
@@ -320,7 +341,7 @@ namespace GameJamGame
 
 
         }
-        private static List<GameObject> level3Objects()
+        private static List<GameObject> level13Objects()
         {
             List<GameObject> returnList = new List<GameObject>();
 
@@ -342,5 +363,55 @@ namespace GameJamGame
         }
 
 
+
+        private List<Level> create2Levels()
+        {
+            List<Level> returnList = new List<Level>();
+            // lvl 1
+            List<GameObject> level1GameObjectList = new List<GameObject>();
+            level1GameObjectList = level21Objects();
+            Level level1 = new Level(background20, level1GameObjectList, new Vector2(430, 550), new Vector2(860, 175), new Vector2(430, 590), true);
+
+            // lvl 2
+            List<GameObject> level2GameObjectList = new List<GameObject>();
+            level2GameObjectList = level22Objects();
+            Level level2 = new Level(background21, level2GameObjectList, new Vector2(210, 175), new Vector2(1105, 295), new Vector2(210, 175), true);
+
+            // lvl 3
+            List<GameObject> level3GameObjectList = new List<GameObject>();
+            level3GameObjectList = level23Objects();
+            Level level3 = new Level(background22, level3GameObjectList, new Vector2(390, 395), new Vector2(800, 175), new Vector2(390, 295), false);
+
+
+            returnList.Add(level1);
+            returnList.Add(level2);
+            returnList.Add(level3);
+            return returnList;
+        }
+
+        private static List<GameObject> level21Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+
+
+            return returnList;
+        }
+        private static List<GameObject> level22Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+
+
+            return returnList;
+        }
+        private static List<GameObject> level23Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
+
+
+            return returnList;
+        }
     }
 }

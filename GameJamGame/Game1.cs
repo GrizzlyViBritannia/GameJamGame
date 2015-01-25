@@ -605,7 +605,7 @@ namespace GameJamGame
             // lvl 1
             List<GameObject> level1GameObjectList = new List<GameObject>();
             level1GameObjectList = level31Objects();
-            Level level1 = new Level(background20, level1GameObjectList, new Vector2(430, 550), new Vector2(860, 175), new Vector2(430, 590), true);
+            Level level1 = new Level(backgroundF0, level1GameObjectList, new Vector2(430, 550), new Vector2(860, 175), new Vector2(430, 590), true);
 
             // lvl 2
             List<GameObject> level2GameObjectList = new List<GameObject>();
@@ -615,7 +615,7 @@ namespace GameJamGame
             // lvl 3
             List<GameObject> level3GameObjectList = new List<GameObject>();
             level3GameObjectList = level33Objects();
-            Level level3 = new Level(background22, level3GameObjectList, new Vector2(390, 395), new Vector2(800, 175), new Vector2(390, 295), false);
+            Level level3 = new Level(backgroundF2, level3GameObjectList, new Vector2(390, 395), new Vector2(800, 175), new Vector2(390, 295), false);
 
 
 

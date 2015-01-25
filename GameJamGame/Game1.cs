@@ -37,32 +37,37 @@ namespace GameJamGame
         public static Texture2D playerSpriteSheet;
         public static int currentLevel = -1;
         public static int currentLevelList = 0;
-
-        // level 1 tutorial level
-        public static Texture2D level1BGSave;
-        public static Texture2D level2BGSave;
-        public static Texture2D level3BGSave;
-        public static Texture2D level1BreakableBlockSave;
-
-        public static Random rnd = new Random();
-
-        // level 2 stuff
-        public static Texture2D background20;
-        public static Texture2D background21;
-        public static Texture2D background22;
-        public static Texture2D jumpCounter1;
-        public static Texture2D jumpCounter2;
-        public static Texture2D jumpCounter3;
-        public static Texture2D jumpCounter4;
-		public static Texture2D jumpCounterAlpha1;
-		public static Texture2D jumpCounterAlpha2;
-		public static Texture2D jumpCounterAlpha3;
-		public static Texture2D jumpCounterAlpha4;
-
-        // game end
-        public static Texture2D endingScreen;
-        public static Texture2D spotLight;
-        public static Texture2D flowerSprites;
+                                                           
+        // level 1 tutorial level                          
+        public static Texture2D level1BGSave;              
+        public static Texture2D level2BGSave;              
+        public static Texture2D level3BGSave;              
+        public static Texture2D level1BreakableBlockSave;  
+                                                           
+        public static Random rnd = new Random();           
+                                                                    
+        // level 2 stuff                                            
+        public static Texture2D background20;                       
+        public static Texture2D background21;                       
+        public static Texture2D background22;                       
+        public static Texture2D jumpCounter1;                       
+        public static Texture2D jumpCounter2;                       
+        public static Texture2D jumpCounter3;                                
+        public static Texture2D jumpCounter4;                                
+		public static Texture2D jumpCounterAlpha1;                           
+		public static Texture2D jumpCounterAlpha2;                           
+		public static Texture2D jumpCounterAlpha3;                           
+		public static Texture2D jumpCounterAlpha4;                           
+                                                                             
+        // game end                                                          
+        public static Texture2D endingScreen;                       
+        public static Texture2D spotLight;                          
+        public static Texture2D flowerSprites;                      
+        public static Texture2D text1;                              
+        public static Texture2D text2;                              
+        public static Texture2D text3;                              
+        public static Texture2D text4;                              
+                                                                    
 
         static Board gameBoard = new Board();
         public static List<List<Level>> levelList;
@@ -136,6 +141,13 @@ namespace GameJamGame
             spotLight = Content.Load<Texture2D>("Images/ending/spotLight.png");
             flowerSprites = Content.Load<Texture2D>("Images/ending/flower_sheet.png");
             endingScene = new Ending(flowerSprites);
+            text1 = Content.Load<Texture2D>("Images/ending/Text1.png");
+            text2 = Content.Load<Texture2D>("Images/ending/Text2.png");
+            text3 = Content.Load<Texture2D>("Images/ending/Text3.png");
+            text4 = Content.Load<Texture2D>("Images/ending/Text4.png");
+
+
+
 
             // create level data
             levelList = new List<List<Level>>();

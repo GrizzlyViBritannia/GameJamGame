@@ -78,6 +78,30 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\ending\text1.png">
+      <Name>text1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ending\text2.png">
+      <Name>text2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ending\text3.png">
+      <Name>text3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ending\text4.png">
+      <Name>text4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\flower.png">
       <Name>flower</Name>
       <Importer>TextureImporter</Importer>
@@ -115,17 +139,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
     </Content>
-    <Compile Include="Images\Level2\Lava1.png">
+    <Content Include="Images\Level2\Lava1.png">
       <Name>Lava1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
-    </Compile>
-    <Compile Include="Images\Level2\Lava2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Level2\Lava2.png">
       <Name>Lava2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Level2\3_1_bg.png">
       <Name>3_1_bg</Name>
       <Importer>TextureImporter</Importer>

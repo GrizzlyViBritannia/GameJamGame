@@ -70,11 +70,6 @@ namespace GameJamGame.joels_Work
 						object1.moveObject(newVector);
 					}
 				}
-				//if rectangle2 is movable move it away from rectangle1
-				//if (object2.isMovable())
-				//{
-				//	object2.moveObject(new Vector2(object1.getCenterPosition().X - object2.getCenterPosition().X, object1.getCenterPosition().Y - object2.getCenterPosition().Y));
-				//}
 			}
 		}
 
@@ -95,8 +90,8 @@ namespace GameJamGame.joels_Work
         {
             
             state = transitionState;
-            declareTransition(new Vector2(-800*direction, 0), this.boardOffset);
-            getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-800 * direction, 0));
+            declareTransition(new Vector2(-1280*direction, 0), this.boardOffset);
+            getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-1280 * direction, 0));
             StartTransition(direction);
             
 
@@ -118,7 +113,7 @@ namespace GameJamGame.joels_Work
         {
             transitionBoard = new Board();
             transitionBoard.buildBoard(Game1.levelList[Game1.currentLevel + direction], getPlayer());
-            transitionBoard.declareTransition(Vector2.Zero, new Vector2(800*direction, 0));
+            transitionBoard.declareTransition(Vector2.Zero, new Vector2(1280*direction, 0));
         }
 
         void endTransition(int direction)

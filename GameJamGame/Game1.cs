@@ -33,6 +33,8 @@ namespace GameJamGame
 
         // level 1 tutorial level
         public static Texture2D level1BGSave;
+        public static Texture2D level2BGSave;
+        public static Texture2D level3BGSave;
         public static Texture2D level1BreakableBlockSave;
 
         public static Random rnd = new Random();
@@ -59,7 +61,9 @@ namespace GameJamGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            graphics.PreferredBackBufferWidth = 1280;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 720;   // set this value to the desired height of your window
+            graphics.ApplyChanges();
             base.Initialize();
         }
 
@@ -80,8 +84,10 @@ namespace GameJamGame
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
 
             // level 1 load
-            level1BGSave = Content.Load<Texture2D>("Images/Level1/tutorial level 1.png");
-            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/breakableBlockPlaceHolder.png");
+            level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
+            level2BGSave = Content.Load<Texture2D>("Images/Level1/1_2BG.png");
+            level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3.png");
+            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/glass2.png");
 
             // create level data
             levelList = new List<Level>();
@@ -150,18 +156,25 @@ namespace GameJamGame
         private List<Level> createLevels()
         {
             List<Level> returnList = new List<Level>();
-            List<GameObject> level1GameObjectList = new List<GameObject>();
             // lvl 1
+            List<GameObject> level1GameObjectList = new List<GameObject>();
             level1GameObjectList = level1Objects();
             Level level1 = new Level(level1BGSave, level1GameObjectList);
 
             // lvl 2
-            level1GameObjectList = level2Objects();
-            Level level2 = new Level(level1BGSave, level1GameObjectList);
+            List<GameObject> level2GameObjectList = new List<GameObject>();
+            level2GameObjectList = level2Objects();
+            Level level2 = new Level(level2BGSave, level2GameObjectList);
+
+            // lvl 3
+            List<GameObject> level3GameObjectList = new List<GameObject>();
+            level3GameObjectList = level3Objects();
+            Level level3 = new Level(level3BGSave, level3GameObjectList);
 
             
             returnList.Add(level1);
             returnList.Add(level2);
+            returnList.Add(level3);
             return returnList;
 
         }
@@ -170,10 +183,24 @@ namespace GameJamGame
         {
             List<GameObject> returnList = new List<GameObject>();
 
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(200, 350), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(250, 350), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(300, 350), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(350, 350), Color.White));
+             // 60 - 60
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(510, 595), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(510, 535), Color.White));
+
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(570, 475), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(570, 535), Color.White));
+
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(630, 415), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(630, 475), Color.White));
+
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(690, 415), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(690, 355), Color.White));
+
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(750, 355), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(750, 295), Color.White));
+
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(810, 295), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(810, 235), Color.White));
 
             return returnList;
 
@@ -183,14 +210,29 @@ namespace GameJamGame
         {
             List<GameObject> returnList = new List<GameObject>();
 
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(000, 300), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(050, 300), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(100, 300), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(150, 300), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(200, 350), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(250, 400), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(300, 450), Color.White));
-            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(350, 400), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(270, 235), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(330, 235), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(390, 295), Color.White));
+
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(450, 395), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(510, 415), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(570, 235), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(630, 535), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(680, 295), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(740, 535), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(800, 355), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(870, 535), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(930, 415), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(990, 545), Color.White));
+            returnList.Add(new GameObject(level1BreakableBlockSave, new Vector2(990, 605), Color.White));
+            return returnList;
+
+
+        }
+        private List<GameObject> level3Objects()
+        {
+            List<GameObject> returnList = new List<GameObject>();
+
             return returnList;
 
 

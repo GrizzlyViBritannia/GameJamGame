@@ -24,6 +24,8 @@ namespace GameJamGame.joels_Work
 		protected bool falling;
 		protected bool colliding;
 
+        protected bool drawable = true;
+
 		protected int state; // 1 is INIT	2 is INTERMEDIATE	3 is DEAD
 
 		// draw variable
@@ -74,7 +76,8 @@ namespace GameJamGame.joels_Work
 		}
 		public void draw(SpriteBatch SB, Vector2 offset)
 		{
-            SB.Draw(this.texture, this.drawRect(offset), this.colour);
+            if (drawable)
+                SB.Draw(this.texture, this.drawRect(offset), this.colour);
         }
         public void load (Texture2D texture)
         {

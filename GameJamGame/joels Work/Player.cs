@@ -41,7 +41,6 @@ namespace GameJamGame.joels_Work
 		//public Vector2 Position = new Vector2(0, 0);
 
 		Vector2 mDirection = new Vector2(0, 1);
-		Vector2 mSpeed = Vector2.Zero;
 		Vector2 jumpStartingPosition = Vector2.Zero;
 
 		int jumpCount = 0;
@@ -59,7 +58,6 @@ namespace GameJamGame.joels_Work
 			this.colour = colour;
 			this.movable = true;
 			this.collisonRect = drawRect(this.drawOffset);
-			this.player = true;
 		}
 
 		public override void update(GameTime gameTime)

@@ -30,6 +30,7 @@ namespace GameJamGame.joels_Work
 		protected Color colour;
         protected Texture2D texture;
         protected Vector2 drawOffset = Vector2.Zero;
+		protected Vector2 mSpeed = Vector2.Zero;
 
 		// private functions:
 
@@ -125,6 +126,11 @@ namespace GameJamGame.joels_Work
         {
             this.centerPosition = pos;
         }
+
+		public Vector2 getSpeed()
+		{
+			return this.mSpeed;
+		}
 
 		public int getState()
 		{

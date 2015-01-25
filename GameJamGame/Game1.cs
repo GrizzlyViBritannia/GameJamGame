@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Media;
 using GameJamGame.joels_Work;
 #endregion
 
@@ -24,6 +25,9 @@ namespace GameJamGame
         SpriteBatch spriteBatch;
 
         Texture2D image; // piss off
+        Ending endingScene;
+
+        bool ending = true;
 
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
@@ -51,6 +55,10 @@ namespace GameJamGame
         public static Texture2D jumpCounter3;
         public static Texture2D jumpCounter4;
 
+        // game end
+        public static Texture2D endingScreen;
+        public static Texture2D spotLight;
+        public static Texture2D flowerSprites;
 
         static Board gameBoard = new Board();
         public static List<List<Level>> levelList;
@@ -86,6 +94,9 @@ namespace GameJamGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Song song = Content.Load<Song>("song_title");  // Put the name of your song here instead of "song_title"
+            //MediaPlayer.Play(song);
+
             // TODO: use this.Content to load your game content here
 
             image = Content.Load<Texture2D>("Images/test"); // i hate you
@@ -94,7 +105,7 @@ namespace GameJamGame
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
 
             // load spriteSheet
-            playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.bmp");
+            playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.png");
             flowerTexture = Content.Load<Texture2D>("Images/flower.png");
             // level 1 load
             level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
@@ -104,13 +115,19 @@ namespace GameJamGame
 
             // level 2 load
 
-            background20   = Content.Load<Texture2D>("Images/Level2/3_1_bg.png");
-            background21   = Content.Load<Texture2D>("Images/Level2/3_2_bg.png");
-            background22   = Content.Load<Texture2D>("Images/Level2/3_3_bg.png");
+            background20  = Content.Load<Texture2D>("Images/Level2/3_1_bg.png");
+            background21  = Content.Load<Texture2D>("Images/Level2/3_2_bg.png");
+            background22  = Content.Load<Texture2D>("Images/Level2/3_3_bg.png");
             jumpCounter1  = Content.Load<Texture2D>("Images/Level2/jump counter 1.png");
             jumpCounter2  = Content.Load<Texture2D>("Images/Level2/jump counter 2.png");
             jumpCounter3  = Content.Load<Texture2D>("Images/Level2/jump counter 3.png");
             jumpCounter4  = Content.Load<Texture2D>("Images/Level2/jump counter 4.png");
+
+            // ending
+            endingScreen = Content.Load<Texture2D>("Images/ending/gameendingscreen.png");
+            spotLight = Content.Load<Texture2D>("Images/ending/spotLight.png");
+            flowerSprites = Content.Load<Texture2D>("Images/ending/flower_sheet.png");
+            endingScene = new Ending(flowerSprites);
 
             // create level data
             levelList = new List<List<Level>>();
@@ -141,7 +158,10 @@ namespace GameJamGame
                 Exit();
 
 			// TODO: Add your update logic here
-			gameBoard.update(gameTime);
+            if (!ending)
+                gameBoard.update(gameTime);
+            else
+                endingScene.logic();
 
 
             base.Update(gameTime);
@@ -159,10 +179,14 @@ namespace GameJamGame
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(image, new Rectangle(0, 0, 800, 480), Color.White);
+            
 
-
-            gameBoard.draw(spriteBatch);
+            if (!ending)
+                gameBoard.draw(spriteBatch);
+            else
+            {
+                endingScene.draw(spriteBatch);
+            }
 
 
             spriteBatch.End();

@@ -176,9 +176,8 @@ namespace GameJamGame.joels_Work
         // public functions:
         public void endLevel(int direction)
         {
-            if (Game1.currentLevel + direction < 0)
+            if (Game1.currentLevel + direction <= 0 && Game1.currentLevel > 0)
             {
-                Game1.currentLevel++;
                 Game1.currentLevelList++;
             }
             currectDirection = direction;
@@ -222,6 +221,18 @@ namespace GameJamGame.joels_Work
             this.state = updateState;
         }
 
+        public void respawn()
+        {
+            List<GameObject> testList = new List<GameObject>();
+                    testList.Add(gameObjectList[0]);
+                    if (currectDirection > 0)
+                        testList.AddRange(Game1.reloadLevel(false));
+                    if (currectDirection < 0)
+                        testList.AddRange(Game1.reloadLevel(true));
+                    gameObjectList = testList;
+                    gameObjectList[0].setPosition(respawnPoint);
+        }
+
 		// public logic-draw functions
 		public void update(GameTime gameTime)
 		{
@@ -231,14 +242,7 @@ namespace GameJamGame.joels_Work
                     
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && respawnable)
                 {
-                    List<GameObject> testList = new List<GameObject>();
-                    testList.Add(gameObjectList[0]);
-                    if (currectDirection > 0)
-                        testList.AddRange(Game1.reloadLevel(false));
-                    if (currectDirection < 0)
-                        testList.AddRange(Game1.reloadLevel(true));
-                    gameObjectList = testList;
-                    gameObjectList[0].setPosition(respawnPoint);
+                    respawn();
                 }
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {

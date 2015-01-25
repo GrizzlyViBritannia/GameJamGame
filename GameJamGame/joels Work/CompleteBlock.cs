@@ -13,6 +13,7 @@ namespace GameJamGame.joels_Work
         public bool visable;
 		public CompleteBlock(Texture2D texture, Vector2 pos, Color colour, int direction, bool visable)
 		{
+            this.drawable = false;
             this.collidable = false;
             this.visable = visable;
 			this.texture = texture;

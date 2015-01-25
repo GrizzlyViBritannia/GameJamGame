@@ -84,6 +84,16 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Images\Level2\Lava1.png">
+      <Name>Lava1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\Level2\Lava2.png">
+      <Name>Lava2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="Images\objectPlaceHolder.png">
       <Name>objectPlaceHolder</Name>
       <Importer>TextureImporter</Importer>

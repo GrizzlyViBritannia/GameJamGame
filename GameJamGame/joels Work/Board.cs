@@ -19,7 +19,7 @@ namespace GameJamGame.joels_Work
         const int forward = 1;
         const int backwards = -1;
 
-
+        Vector2 respawnPoint;
 
 		Texture2D currentBackGround;
 		//Rectangle currentDrawRect;
@@ -176,6 +176,7 @@ namespace GameJamGame.joels_Work
 
         public void buildBoard(Level level, Player player)
         {
+            this.respawnPoint = level.respawnPoint;
             this.boardOffset = Vector2.Zero;
             this.currentBackGround = level.backGround;
             this.state = transitionState;
@@ -199,6 +200,7 @@ namespace GameJamGame.joels_Work
             //this.gameObjectList[0].moveObject(new Vector2(-800, 0));
             Game1.currentLevel += direction;
             this.buildBoard(Game1.levelList[Game1.currentLevel], (Player)gameObjectList[0]);
+            gameObjectList[0].setPosition(this.respawnPoint);
             //Game1.levelList.RemoveAt(0);
             this.state = updateState;
         }

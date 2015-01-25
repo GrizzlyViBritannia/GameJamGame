@@ -62,7 +62,7 @@ namespace GameJamGame.joels_Work
 			this.centerPosition = pos;
 			this.colour = colour;
 			this.movable = true;
-            this.drawSize = new Vector2(30, 42);
+            this.drawSize = new Vector2(38, 61);
 			this.collisonRect = drawRect(this.drawOffset);
 		}
 

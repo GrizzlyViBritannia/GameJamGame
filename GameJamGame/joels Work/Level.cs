@@ -20,9 +20,11 @@ namespace GameJamGame.joels_Work
 		public Texture2D backGround;
 		public Rectangle drawRect;
 		private List<GameObject> objectList;
+        public Vector2 respawnPoint;
 
-		public Level(Texture2D backGround, List<GameObject> gameObjectList)
+		public Level(Texture2D backGround, List<GameObject> gameObjectList, Vector2 respawnPoint)
 		{
+            this.respawnPoint = respawnPoint;
 			this.backGround = backGround;
 			this.drawRect = drawRect;
             objectList = new List<GameObject>();

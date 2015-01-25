@@ -163,17 +163,17 @@ namespace GameJamGame
             // lvl 1
             List<GameObject> level1GameObjectList = new List<GameObject>();
             level1GameObjectList = level1Objects();
-            Level level1 = new Level(level1BGSave, level1GameObjectList);
+            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(450,115));
 
             // lvl 2
             List<GameObject> level2GameObjectList = new List<GameObject>();
             level2GameObjectList = level2Objects();
-            Level level2 = new Level(level2BGSave, level2GameObjectList);
+            Level level2 = new Level(level2BGSave, level2GameObjectList, new Vector2(210, 175));
 
             // lvl 3
             List<GameObject> level3GameObjectList = new List<GameObject>();
             level3GameObjectList = level3Objects();
-            Level level3 = new Level(level3BGSave, level3GameObjectList);
+            Level level3 = new Level(level3BGSave, level3GameObjectList, new Vector2(390, 535));
 
             
             returnList.Add(level1);
@@ -205,6 +205,11 @@ namespace GameJamGame
 
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(810, 295), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(810, 235), Color.White));
+
+            // add walls
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(290, 40, 390 - 290 , 660 - 40), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(370, 625, 920 - 370, 680 - 40), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(840, 205, 1050 - 840, 660 - 205), Color.White));
 
             return returnList;
 

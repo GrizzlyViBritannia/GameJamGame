@@ -60,29 +60,23 @@ namespace GameJamGame.joels_Work
 				//if rectangle1 is movable move it away from rectangle2
 				if (object1.isMovable())
 				{
-
-					Vector2 currentSpeed = object1.getSpeed();
-					Rectangle oldPos = object1.drawRect(-currentSpeed);
-
-					float[] intersect = new float[]{-999,-999,-999,-999};
-					//Top
-					
+					float[] intersect = new float[4];
 
 					if (o1Rect.Bottom > o2Rect.Top && o1Rect.Bottom < o2Rect.Bottom)
 					{
 						intersect[0] = o2Rect.Top - o1Rect.Bottom;
 					}
-					//Right
+
 					if (o1Rect.Left < o2Rect.Right && o1Rect.Left > o2Rect.Left)
 					{
 						intersect[1] = o2Rect.Right - o1Rect.Left;
 					}
-					//Bottom
+
 					if (o1Rect.Top < o2Rect.Bottom && o1Rect.Top > o2Rect.Top)
 					{
 						intersect[2] = o2Rect.Bottom - o1Rect.Top;
 					}
-					//Left
+
 					if (o1Rect.Right > o2Rect.Left && o1Rect.Right < o2Rect.Right)
 					{
 						intersect[3] = o2Rect.Left - o1Rect.Right;
@@ -92,7 +86,7 @@ namespace GameJamGame.joels_Work
 
 					foreach (float intersection in intersect)
 					{
-						if ((Math.Abs(intersection) < Math.Abs(intersect[index])) && Math.Abs(intersection) != 0)
+						if (Math.Abs(intersection) < Math.Abs(intersect[index]) && Math.Abs(intersection) != 0)
 						{
 							index = count;
 						}
@@ -116,7 +110,6 @@ namespace GameJamGame.joels_Work
 					}
 
 					object1.moveObject(newVector);
-
 				}
 				//if rectangle2 is movable move it away from rectangle1
 				//if (object2.isMovable())
@@ -257,7 +250,7 @@ namespace GameJamGame.joels_Work
 			gameObjectList[2].load(Game1.objectPlaceHolderSave);
 			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(125, 300), Color.White));
 			gameObjectList[3].load(Game1.objectPlaceHolderSave);
-			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(275, 350), Color.White));
+			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(175, 300), Color.White));
 			//gameObjectList[4].load(Game1.objectPlaceHolderSave);
 			//gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(225, 300), Color.White));
 			//gameObjectList[5].load(Game1.objectPlaceHolderSave);

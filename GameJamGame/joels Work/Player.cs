@@ -19,7 +19,7 @@ namespace GameJamGame.joels_Work
 		const int JUMP_POWER = -350;
 		const int MOVE_LEFT = -1;
 		const int MOVE_RIGHT = 1;
-		const int MOVE_DOWN = -1;
+		const int MOVE_DOWN = 1;
 		const int MOVE_UP = 1;
 		const float WALKING_ACC = 2000.0f;
 		const float WALKING_DEC = 2000.0f;
@@ -41,7 +41,7 @@ namespace GameJamGame.joels_Work
 		//public Vector2 Position = new Vector2(0, 0);
 
 		Vector2 mDirection = new Vector2(0, 1);
-		
+		Vector2 mSpeed = Vector2.Zero;
 		Vector2 jumpStartingPosition = Vector2.Zero;
 
 		int jumpCount = 0;
@@ -69,9 +69,9 @@ namespace GameJamGame.joels_Work
 			KeyboardState currentKeyboardState = Keyboard.GetState();
 
 			updateMovement(gameTime, currentKeyboardState);
-			//checkFalling();
-			//updateJump(currentKeyboardState);
-			//updateGravity(gameTime);
+			checkFalling();
+			updateJump(currentKeyboardState);
+			updateGravity(gameTime);
 			this.moveObject(mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 			this.collisonRect = drawRect(this.drawOffset);
 			if (currentKeyboardState.IsKeyDown(Keys.Space) == true)
@@ -144,51 +144,6 @@ namespace GameJamGame.joels_Work
 			}
 		}
 
-		private void updateHeight(GameTime gameTime, int direction)
-		{
-			float currentMax;
-			if (currentState == State.Walking)
-			{
-				currentMax = MAX_SPEED_WALKING;
-			}
-			else if (currentState == State.Jumping)
-			{
-				currentMax = MAX_SPEED_JUMPING;
-			}
-			else
-			{
-				currentMax = MAX_SPEED_WALKING;
-			}
-
-			if (direction != 0)
-			{
-				mSpeed.Y = mSpeed.Y + (direction * (WALKING_ACC * (float)gameTime.ElapsedGameTime.TotalSeconds));
-				if (mSpeed.Y > currentMax)
-				{
-					mSpeed.Y = currentMax;
-				}
-				else if (mSpeed.Y < -currentMax)
-				{
-					mSpeed.Y = -currentMax;
-				}
-			}
-			else
-			{
-				if (Math.Abs(mSpeed.Y) < 10)
-				{
-					mSpeed.Y = 0;
-				}
-				else if (mSpeed.Y < 0)
-				{
-					mSpeed.Y = mSpeed.Y + (WALKING_DEC * (float)gameTime.ElapsedGameTime.TotalSeconds);
-				}
-				else if (mSpeed.X > 0)
-				{
-					mSpeed.Y = mSpeed.Y - (WALKING_DEC * (float)gameTime.ElapsedGameTime.TotalSeconds);
-				}
-			}
-		}
-
 		private void updateMovement(GameTime gameTime, KeyboardState currentKeyboardState)
 		{
 
@@ -204,20 +159,6 @@ namespace GameJamGame.joels_Work
 			{
 				updateWalking(gameTime, 0);
 			}
-
-			if (currentKeyboardState.IsKeyDown(Keys.Up) == true)
-			{
-				updateHeight(gameTime, MOVE_DOWN);
-			}
-			else if (currentKeyboardState.IsKeyDown(Keys.Down) == true)
-			{
-				updateHeight(gameTime, MOVE_UP);
-			}
-			else
-			{
-				updateHeight(gameTime, 0);
-			}
-
 		}
 
 		private void updateJump(KeyboardState currentKeyboardState)

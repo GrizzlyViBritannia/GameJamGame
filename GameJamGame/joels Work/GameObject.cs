@@ -30,7 +30,6 @@ namespace GameJamGame.joels_Work
 		protected Color colour;
         protected Texture2D texture;
         protected Vector2 drawOffset = Vector2.Zero;
-		protected Vector2 mSpeed = Vector2.Zero;
 
 		// private functions:
 
@@ -106,11 +105,6 @@ namespace GameJamGame.joels_Work
 		public void isColliding(bool colliding)
 		{
 			this.colliding = colliding;
-		}
-
-		public Vector2 getSpeed()
-		{
-			return this.mSpeed;
 		}
 
 		public void isFalling(bool falling)

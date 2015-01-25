@@ -29,6 +29,7 @@ namespace GameJamGame.joels_Work
 		{
             if (visable)
             {
+                this.collidable = true;
                 checkForCollisions();
                 run();
             }

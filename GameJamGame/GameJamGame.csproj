@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="joels Work\Board.cs" />
+    <Compile Include="joels Work\CompleteBlock.cs" />
     <Compile Include="joels Work\GameObject.cs" />
     <Compile Include="joels Work\invisibleBlock.cs" />
     <Compile Include="joels Work\Level.cs" />

@@ -54,6 +54,10 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\ending\Credit.png">
+      <Name>Credit</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\ending\flower_sheet.png">
       <Name>flower_sheet</Name>
       <Importer>TextureImporter</Importer>

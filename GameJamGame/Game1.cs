@@ -26,7 +26,7 @@ namespace GameJamGame
 
         Ending endingScene;
 
-        bool ending = false;
+        bool ending = true;
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D flowerTexture;
@@ -64,7 +64,8 @@ namespace GameJamGame
         public static Texture2D text1;                              
         public static Texture2D text2;                              
         public static Texture2D text3;                              
-        public static Texture2D text4;                              
+        public static Texture2D text4;
+		public static Texture2D credit;                     
                                                                     
 		// level FINAL stuff
 		public static Texture2D backgroundF0;
@@ -150,6 +151,7 @@ namespace GameJamGame
             text2 = Content.Load<Texture2D>("Images/ending/Text2.png");
             text3 = Content.Load<Texture2D>("Images/ending/Text3.png");
             text4 = Content.Load<Texture2D>("Images/ending/Text4.png");
+			credit = Content.Load<Texture2D>("Images/ending/Credit.png");
 
 
 

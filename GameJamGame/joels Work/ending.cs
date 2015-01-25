@@ -131,6 +131,10 @@ namespace GameJamGame.joels_Work
             {
                 SB.Draw(Game1.text4, new Rectangle(0, 0, Game1.text4.Width, Game1.text4.Height), Color.White);
             }
+			else if (playingState > 3)
+			{
+				SB.Draw(Game1.credit, new Rectangle(0, 0, 1280, 720), Color.White);
+			}
         }
         
 

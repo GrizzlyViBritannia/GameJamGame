@@ -23,9 +23,11 @@ namespace GameJamGame.joels_Work
         public Vector2 respawnPoint;
         public Vector2 firstEndPoint;
         public Vector2 secondEndPoint;
+        public bool respawnable;
 
-        public Level(Texture2D backGround, List<GameObject> gameObjectList, Vector2 respawnPoint,Vector2 firstEndPoint, Vector2 secondEndPoint)
+        public Level(Texture2D backGround, List<GameObject> gameObjectList, Vector2 respawnPoint,Vector2 firstEndPoint, Vector2 secondEndPoint, bool respawnable)
 		{
+            this.respawnable = respawnable;
             this.secondEndPoint = secondEndPoint;
             this.firstEndPoint = firstEndPoint;
             this.respawnPoint = respawnPoint;

@@ -178,6 +178,40 @@ namespace GameJamGame
 			return gameBoard.getCycleNumber();
 		}
             
+        public static List<GameObject> reloadLevel(bool invert)
+        {
+
+            List<GameObject> returnList = new List<GameObject>();
+            switch (currentLevel)
+            {
+                case 0:
+                    {
+                        returnList.AddRange(level1Objects());
+                        break;
+                    }
+                case 1:
+                    {
+                        returnList.AddRange(level2Objects());
+                        break;
+                    }
+                case 2:
+                    {
+                        returnList.AddRange(level3Objects());
+                        break;
+                    }
+            }
+            if (invert)
+            {
+                for (int j = 0; j < returnList.Count; j++)
+                {
+                    if (returnList[j].GetType() == typeof(CompleteBlock))
+                    {
+                        ((CompleteBlock)(returnList[j])).visable = !((CompleteBlock)(returnList[j])).visable;
+                    }
+                }
+            }
+            return returnList;
+        }
         
 
         /*
@@ -192,17 +226,17 @@ namespace GameJamGame
             // lvl 1
             List<GameObject> level1GameObjectList = new List<GameObject>();
             level1GameObjectList = level1Objects();
-            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(450,115),new Vector2(865,175),new Vector2(450,600));
+            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(535,115),new Vector2(865,175),new Vector2(450,600),true);
 
             // lvl 2
             List<GameObject> level2GameObjectList = new List<GameObject>();
             level2GameObjectList = level2Objects();
-            Level level2 = new Level(level2BGSave, level2GameObjectList, new Vector2(210, 175), new Vector2(1100,135), new Vector2(185,175));
+            Level level2 = new Level(level2BGSave, level2GameObjectList, new Vector2(210, 175), new Vector2(1100,135), new Vector2(185,175),true);
 
             // lvl 3
             List<GameObject> level3GameObjectList = new List<GameObject>();
             level3GameObjectList = level3Objects();
-            Level level3 = new Level(level3BGSave, level3GameObjectList, new Vector2(390, 535), new Vector2(900,115), new Vector2(365,530));
+            Level level3 = new Level(level3BGSave, level3GameObjectList, new Vector2(390, 535), new Vector2(900,115), new Vector2(365,530),false);
 
             
             returnList.Add(level1);
@@ -212,7 +246,7 @@ namespace GameJamGame
 
         }
 
-        private List<GameObject> level1Objects()
+        private static List<GameObject> level1Objects()
         {
             List<GameObject> returnList = new List<GameObject>();
 
@@ -249,7 +283,7 @@ namespace GameJamGame
 
 
         }
-        private List<GameObject> level2Objects()
+        private static List<GameObject> level2Objects()
         {
             List<GameObject> returnList = new List<GameObject>();
 
@@ -286,7 +320,7 @@ namespace GameJamGame
 
 
         }
-        private List<GameObject> level3Objects()
+        private static List<GameObject> level3Objects()
         {
             List<GameObject> returnList = new List<GameObject>();
 

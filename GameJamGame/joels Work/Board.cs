@@ -20,6 +20,10 @@ namespace GameJamGame.joels_Work
         const int backwards = -1;
 		private int cycleBlockCycle = 1;
 
+        bool respawnable = false;
+            
+        int currentLevelIndex;
+
         Vector2 respawnPoint;
 
 		Texture2D currentBackGround;
@@ -183,6 +187,7 @@ namespace GameJamGame.joels_Work
 
         public void buildBoard(Level level, Player player)
         {
+            this.respawnable = level.respawnable;
             this.respawnPoint = level.respawnPoint;
             this.boardOffset = Vector2.Zero;
             this.currentBackGround = level.backGround;
@@ -218,7 +223,18 @@ namespace GameJamGame.joels_Work
             
             if (state == updateState)
             {
-
+                    
+                if (Keyboard.GetState().IsKeyDown(Keys.Space) && respawnable)
+                {
+                    List<GameObject> testList = new List<GameObject>();
+                    testList.Add(gameObjectList[0]);
+                    if (currectDirection > 0)
+                        testList.AddRange(Game1.reloadLevel(false));
+                    if (currectDirection < 0)
+                        testList.AddRange(Game1.reloadLevel(true));
+                    gameObjectList = testList;
+                    gameObjectList[0].setPosition(respawnPoint);
+                }
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
                     currectDirection = forward;

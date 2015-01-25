@@ -108,10 +108,11 @@ namespace GameJamGame.joels_Work
 		{
 			if (!this.falling)
 			{
-				mSpeed.Y = 1;
+				mSpeed.Y = 0;
 				jumpCount = 0;
 				
 				this.isFalling(true);
+
 			}
 		}
 
@@ -173,19 +174,19 @@ namespace GameJamGame.joels_Work
 			if (currentKeyboardState.IsKeyDown(Keys.Left) == true)
 			{
 				updateWalking(gameTime, MOVE_LEFT);
-                if(currentState != State.Jumping)
+				if (currentState != State.Jumping)
                     currentState = State.WalkingLeft;
 			}
 			else if (currentKeyboardState.IsKeyDown(Keys.Right) == true)
 			{
 				updateWalking(gameTime, MOVE_RIGHT);
-                if (currentState != State.Jumping)
+				if (currentState != State.Jumping)
                     currentState = State.WalkingRight;
 			}
 			else
 			{
 				updateWalking(gameTime, 0);
-                if (currentState != State.Jumping)
+				//if (currentState != State.Jumping)
                     currentState = State.Standing;
 			}
 		}

@@ -108,7 +108,7 @@ namespace GameJamGame.joels_Work
 		{
 			if (!this.falling)
 			{
-				mSpeed.Y = 0;
+				mSpeed.Y = 1;
 				jumpCount = 0;
 				
 				this.isFalling(true);

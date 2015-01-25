@@ -1,5 +1,5 @@
+Content\Images\backgroundPlaceHolder.png
 Content\Images\backGroundStart.png
-Content\Images\ending\Credit.png
 Content\Images\ending\flower_sheet.png
 Content\Images\ending\gameendingscreen.png
 Content\Images\ending\spotLight.png
@@ -8,10 +8,11 @@ Content\Images\ending\text2.png
 Content\Images\ending\text3.png
 Content\Images\ending\text4.png
 Content\Images\flower.png
-Content\Images\Level1\1_1.png
+Content\Images\Level1\1_3.png
+Content\Images\Level1\glass2.png
+Content\Images\Level1\1_1BG.png
 Content\Images\Level1\1_2BG.png
-Content\Images\Level1\1_3_bg.png
-Content\Images\Level1\iceblock.png
+Content\Images\Level1\playerPlaceHolder2.png
 Content\Images\Level2\Lava1.png
 Content\Images\Level2\Lava2.png
 Content\Images\Level2\3_1_bg.png
@@ -25,12 +26,8 @@ Content\Images\Level2\jump1.png
 Content\Images\Level2\jump2.png
 Content\Images\Level2\jump3.png
 Content\Images\Level2\jump4.png
-Content\Images\LevelF\5_1_bg.png
-Content\Images\LevelF\5_2_bg.png
-Content\Images\LevelF\5_3_bg.png
-Content\Images\LevelF\arrow platform down.png
-Content\Images\LevelF\arrow platform left.png
-Content\Images\LevelF\arrow platform right.png
-Content\Images\LevelF\arrow platform up.png
 Content\Images\objectPlaceHolder.png
+Content\Images\playerPlaceHolder.png
 Content\Images\Player\PlayerSpriteSheet1.png
+Content\Images\Player\PlayerSpriteSheet1.bmp
+Content\Images\test.png

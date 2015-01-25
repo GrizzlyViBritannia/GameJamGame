@@ -41,7 +41,7 @@ namespace GameJamGame.joels_Work
 			else
 			{
 				this.collidable = false;
-				this.colour.A = 0;
+				this.colour.A = 1;
 			}
 		}
 

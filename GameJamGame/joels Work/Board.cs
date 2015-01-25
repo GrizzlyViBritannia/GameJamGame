@@ -265,6 +265,12 @@ namespace GameJamGame.joels_Work
 						{
                             if (this.checkCollision(i, j))
                             {
+								//if player and lava are colliding
+								if (i.GetType() == typeof(Player) && j.GetType() == typeof(Lava))
+								{
+									//kill player
+									
+								}
                                 i.isColliding(true);
                                 j.isColliding(true);
                             }

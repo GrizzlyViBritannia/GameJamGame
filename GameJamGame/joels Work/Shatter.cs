@@ -35,5 +35,12 @@ namespace GameJamGame.joels_Work
 				state ++;
 			}
 		}
+
+        // block colide event
+
+        // block is colliding
+
+        // block stops colliding
+
 	}
 }

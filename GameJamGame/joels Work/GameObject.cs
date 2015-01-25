@@ -33,6 +33,8 @@ namespace GameJamGame.joels_Work
         protected Texture2D texture;
         protected Vector2 drawOffset = Vector2.Zero;
 		protected Vector2 mSpeed = Vector2.Zero;
+        protected int spriteState;
+
 
 		// private functions:
 
@@ -79,6 +81,7 @@ namespace GameJamGame.joels_Work
 		public void draw(SpriteBatch SB, Vector2 offset)
 		{
             if (drawable)
+                SB.Draw()
                 SB.Draw(this.texture, this.drawRect(offset), this.colour);
         }
         public void load (Texture2D texture)

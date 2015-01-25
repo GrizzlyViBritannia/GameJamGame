@@ -209,10 +209,7 @@ namespace GameJamGame.joels_Work
             
             if (state == updateState)
             {
-                foreach (GameObject i in gameObjectList)
-                {
-                    i.isColliding(false);
-                }
+                
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
@@ -227,11 +224,12 @@ namespace GameJamGame.joels_Work
 
                 foreach (GameObject i in gameObjectList)
                 {
+
                     i.update(gameTime);
+                    i.isColliding(false);
                 }
                 foreach (GameObject i in gameObjectList)
                 {
-					bool check = false;
 					foreach (GameObject j in gameObjectList)
 					{
 						if (i != j)

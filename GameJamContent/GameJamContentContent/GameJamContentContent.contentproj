@@ -96,13 +96,13 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Player\PlayerSprfgfgdfiteSheet1.png">
-      <Name>fgffgdgdfgdf</Name>
+    <Content Include="Images\Player\PlayerSpriteSheet1.png">
+      <Name>PlayerSpriteSheet1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Player\PlayerSpriteSheet1.png">
+    <Content Include="Images\Player\PlayerSpriteSheet1.bmp">
       <Name>PlayerSpriteSheet1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

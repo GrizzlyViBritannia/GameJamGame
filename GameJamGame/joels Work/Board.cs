@@ -224,7 +224,6 @@ namespace GameJamGame.joels_Work
 
                 foreach (GameObject i in gameObjectList)
                 {
-
                     i.update(gameTime);
                     i.isColliding(false);
                 }
@@ -257,6 +256,17 @@ namespace GameJamGame.joels_Work
                     }
                 }
             }
+			List<GameObject> bufferList = new List<GameObject>();
+			foreach (GameObject i in gameObjectList)
+			{
+				if (!i.delete())
+				{
+					bufferList.Add(i);
+				}
+			}
+			this.gameObjectList = bufferList;
+			
+
 		}
 
 		public void load(int objectNumber)
@@ -301,7 +311,7 @@ namespace GameJamGame.joels_Work
                 this.currentBackGround.Width,
                 this.currentBackGround.Height);
         }
-
+		
 
         // get-set
         public Player getPlayer()

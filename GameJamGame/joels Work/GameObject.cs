@@ -23,10 +23,13 @@ namespace GameJamGame.joels_Work
 		protected bool collidable;
 		protected bool falling;
 		protected bool colliding;
+		protected bool previousState = false;
+		protected bool currentState = false;
+		protected bool deletable = false;
 
         protected bool drawable = true;
 
-		protected int state; // 1 is INIT	2 is INTERMEDIATE	3 is DEAD
+		protected int state;
 
 		// draw variable
 		protected Color colour;
@@ -80,14 +83,75 @@ namespace GameJamGame.joels_Work
 		}
 		public void draw(SpriteBatch SB, Vector2 offset)
 		{
-            if (drawable)
-                SB.Draw()
+			if (drawable)
+				//SB.Draw()
                 SB.Draw(this.texture, this.drawRect(offset), this.colour);
         }
         public void load (Texture2D texture)
         {
             this.texture = texture;
 		}
+
+
+
+		//COLLISIONS!!!
+
+		protected virtual void checkForCollisions()
+		{
+			this.previousState = currentState;
+			if (colliding)
+			{
+				state = 1;
+				currentState = true;
+			}
+			else if (state >= 1)
+			{
+				state++;
+				currentState = true;
+				previousState = true;
+			}
+			if (state >= 5)
+			{
+				previousState = true;
+				currentState = false;
+			}
+			if (state >= 10)
+			{
+				previousState = false;
+				currentState = false;
+			}
+		}
+
+		protected virtual void run()
+		{
+			if (previousState == false && currentState == false) idle();
+			else if (previousState == false && currentState == true) collision();
+			else if (previousState == true && currentState == true) stillColliding();
+			else if (previousState == true && currentState == false) stoppedColliding();
+		}
+
+		protected virtual void collision()
+		{
+			int x = 0;
+		}
+
+		protected virtual void stillColliding()
+		{
+			int x = 0;
+		}
+
+		protected virtual void stoppedColliding()
+		{
+			int x = 0;
+		}
+
+		protected virtual void idle()
+		{
+			int x = 0;
+		}
+
+
+
 
 		// get-set functions:
         
@@ -141,6 +205,10 @@ namespace GameJamGame.joels_Work
 		public int getState()
 		{
 			return this.state;
+		}
+		public bool delete()
+		{
+			return this.deletable;
 		}
 	}
 }

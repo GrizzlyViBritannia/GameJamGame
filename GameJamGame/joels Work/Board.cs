@@ -116,8 +116,9 @@ namespace GameJamGame.joels_Work
                     if (index == 0)
                     {
                         object1.isFalling(false);
-                    }
-
+                    } 
+                    object1.isColliding(true);
+                    
                     object1.moveObject(newVector);
 
                 }
@@ -132,22 +133,22 @@ namespace GameJamGame.joels_Work
             return false;
         }
 
-		private bool checkAdjacent(GameObject object1, GameObject object2)
-		{
-			Rectangle o1Rect = object1.getCollisionRect();
-			Rectangle o2Rect = object2.getCollisionRect();
-
-			if 
-				(((o1Rect.Top == o2Rect.Bottom || o1Rect.Bottom == o2Rect.Top) && ((o1Rect.Left < o2Rect.Right && o1Rect.Left > o2Rect.Left) || (o1Rect.Right > o2Rect.Left && o1Rect.Right < o2Rect.Right)))
-				||
-				((o1Rect.Left == o2Rect.Right || o1Rect.Right == o2Rect.Left) && ((o1Rect.Bottom > o2Rect.Top && o1Rect.Bottom < o2Rect.Bottom) || (o1Rect.Top < o2Rect.Bottom && o1Rect.Top > o2Rect.Top))))
-			{
-				if (object1.GetType() == typeof(Player) || object2.GetType() == typeof(Player))
-				return true;
-			}
-
-			return false;
-		}
+		//private bool checkAdjacent(GameObject object1, GameObject object2)
+		//{
+		//	Rectangle o1Rect = object1.getCollisionRect();
+		//	Rectangle o2Rect = object2.getCollisionRect();
+        //
+		//	if 
+		//		(((o1Rect.Top == o2Rect.Bottom || o1Rect.Bottom == o2Rect.Top) && ((o1Rect.Left < o2Rect.Right && o1Rect.Left > o2Rect.Left) || (o1Rect.Right > o2Rect.Left && o1Rect.Right < o2Rect.Right)))
+		//		||
+		//		((o1Rect.Left == o2Rect.Right || o1Rect.Right == o2Rect.Left) && ((o1Rect.Bottom > o2Rect.Top && o1Rect.Bottom < o2Rect.Bottom) || (o1Rect.Top < o2Rect.Bottom && o1Rect.Top > o2Rect.Top))))
+		//	{
+		//		if (object1.GetType() == typeof(Player) || object2.GetType() == typeof(Player))
+		//		return true;
+		//	}
+        //
+		//	return false;
+		//}
 
         public void declareTransition(Vector2 endCornerPoint, Vector2 startPoint)
         {
@@ -208,6 +209,11 @@ namespace GameJamGame.joels_Work
             
             if (state == updateState)
             {
+                foreach (GameObject i in gameObjectList)
+                {
+                    i.isColliding(false);
+                }
+
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
                     currectDirection = forward;
@@ -228,16 +234,15 @@ namespace GameJamGame.joels_Work
 					bool check = false;
 					foreach (GameObject j in gameObjectList)
 					{
-						if (i != j && i.getState() != 3 && j.getState() != 3)
+						if (i != j)
 						{
-							this.checkCollision(i, j);
-							if (this.checkAdjacent(i, j))
-							{
-								check = true;
-							}
+                            if (this.checkCollision(i, j))
+                            {
+                                i.isColliding(true);
+                                j.isColliding(true);
+                            }
 						}
 					}
-					i.isColliding(check);
 				}
             }
             else if (state == transitionState)

@@ -17,19 +17,22 @@ namespace GameJamGame.joels_Work
             this.collisonRect = drawRect(Vector2.Zero);
 			this.movable = false;
 			this.colliding = false;
-			this.state = 1;
+			this.state = 0;
         }
 
 		public override void update(GameTime gameTime)
 		{
+            if (state >= 5)
+            {
+                int x = 0; // destroy the block
+            }
 			if (colliding)
 			{
-				state = 2;
+				state = 1;
 			}
-			else if (state == 2)
+			else if (state >= 1)
 			{
-				state = 3;
-				collidable = false;
+				state ++;
 			}
 		}
 	}

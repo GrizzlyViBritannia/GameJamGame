@@ -22,7 +22,7 @@ namespace GameJamGame.joels_Work
             this.centerPosition = new Vector2(region.X + (region.Width/2), region.Y + (region.Height/2));
             drawSize = new Vector2(region.Width, region.Height);
 			this.collisonRect = drawRect(Vector2.Zero);
-            this.drawable = true;
+            this.drawable = false;
 			this.movable = false;
 			this.colliding = false;
 			this.state = 0;

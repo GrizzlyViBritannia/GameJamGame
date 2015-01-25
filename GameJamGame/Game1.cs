@@ -27,11 +27,12 @@ namespace GameJamGame
 
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
+        public static Texture2D flowerTexture;
         //public static Texture2D playerTextureSave;
 
         public static Texture2D playerSpriteSheet;
         public static int currentLevel = -1;
-        public static int currentLevelList = 1;
+        public static int currentLevelList = 0;
 
         // level 1 tutorial level
         public static Texture2D level1BGSave;
@@ -88,13 +89,13 @@ namespace GameJamGame
             // TODO: use this.Content to load your game content here
 
             image = Content.Load<Texture2D>("Images/test"); // i hate you
-            backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backgroundPlaceHolder");
+            backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
             //playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
 
             // load spriteSheet
             playerSpriteSheet = Content.Load<Texture2D>("Images/Player/PlayerSpriteSheet1.bmp");
-
+            flowerTexture = Content.Load<Texture2D>("Images/flower.png");
             // level 1 load
             level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
             level2BGSave = Content.Load<Texture2D>("Images/Level1/1_2BG.png");
@@ -117,7 +118,7 @@ namespace GameJamGame
             levelList[0] = create1Levels();
             levelList.Add(new List<Level>());
             levelList[1] = create2Levels();
-            gameBoard.load(0);
+            gameBoard.load();
         }
 
         /// <summary>
@@ -144,7 +145,7 @@ namespace GameJamGame
 
 
             base.Update(gameTime);
-        }
+       } 
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -181,7 +182,7 @@ namespace GameJamGame
         {
             List<Level> levelList1 = levelList[currentLevelList];
 
-            for (int i = 0; i < levelList.Count; i++)
+            for (int i = 0; i < levelList1.Count; i++)
             {
                 levelList1[i].changeRespawn(levelList1[i].firstEndPoint);
                 for (int j = 0; j < levelList1[i].getObjectList().Count; j++)
@@ -247,7 +248,7 @@ namespace GameJamGame
             // lvl 1
             List<GameObject> level1GameObjectList = new List<GameObject>();
             level1GameObjectList = level11Objects();
-            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(535,115),new Vector2(865,175),new Vector2(450,600),true);
+            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(450,550),new Vector2(865,175),new Vector2(450,600),true);
 
             // lvl 2
             List<GameObject> level2GameObjectList = new List<GameObject>();
@@ -353,7 +354,7 @@ namespace GameJamGame
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(320, 560, 480 - 320, 630 - 560), Color.White));
 
 
-            returnList.Add(new Flower(objectPlaceHolderSave, new Vector2(750, 600), Color.Green));
+            returnList.Add(new Flower(flowerTexture, new Vector2(750, 600), Color.Green));
             returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(390, 530), Color.Red, -1, false));
 
 

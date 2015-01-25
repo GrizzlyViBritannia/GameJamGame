@@ -170,12 +170,17 @@ namespace GameJamGame.joels_Work
         
         private void applyTransmitionAnimation()
         {
-            boardOffset += directionOffset;
+            boardOffset += directionOffset*5;
         }
 
         // public functions:
         public void endLevel(int direction)
         {
+            if (Game1.currentLevel + direction < 0)
+            {
+                Game1.currentLevel++;
+                Game1.currentLevelList++;
+            }
             currectDirection = direction;
             state = transitionState;
             declareTransition(new Vector2(-1280*direction, 0), this.boardOffset);
@@ -294,32 +299,25 @@ namespace GameJamGame.joels_Work
 
 		}
 
-		public void load(int objectNumber)
+		public void load()
 		{
 			this.currentBackGround = Game1.backGroundPlaceHolderSave;
 			gameObjectList = new List<GameObject>();
-			gameObjectList.Add(new Player(Game1.playerSpriteSheet, new Vector2(0, 0), Color.White)); // player will always be index 0
+            gameObjectList.Add(new Player(Game1.playerSpriteSheet, new Vector2(50, 450), Color.White)); // player will always be index 0
             gameObjectList[0].load(Game1.playerSpriteSheet);
             playerPointer = (Player)gameObjectList[0];
-            
-            gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(25, 300),Color.White));
-            gameObjectList[1].load(Game1.objectPlaceHolderSave);
-			gameObjectList.Add(new GameObject(Game1.objectPlaceHolderSave, new Vector2(75, 300), Color.White));
-			gameObjectList[2].load(Game1.objectPlaceHolderSave);
-			gameObjectList.Add(new MoveBlock(Game1.objectPlaceHolderSave, new Vector2(125, 250), Color.White, 1));
-			gameObjectList[3].load(Game1.objectPlaceHolderSave);
-			gameObjectList.Add(new MoveBlock(Game1.objectPlaceHolderSave, new Vector2(275, 300), Color.White, 2));
-			gameObjectList[4].load(Game1.objectPlaceHolderSave);
-			//gameObjectList.Add(new CycleBlock(Game1.objectPlaceHolderSave, new Vector2(225, 300), Color.White, 3));
-			//gameObjectList[5].load(Game1.objectPlaceHolderSave);
-			//gameObjectList.Add(new CycleBlock(Game1.objectPlaceHolderSave, new Vector2(275, 300), Color.White, 4));
-			//gameObjectList[6].load(Game1.objectPlaceHolderSave);
-			
-            for (int i = 0; i < objectNumber; i++)
-			{
-				gameObjectList.Add(new GameObject(GameJamGame.Game1.objectPlaceHolderSave, new Vector2(Game1.rnd.Next(10, 250), Game1.rnd.Next(10, 490)), Color.White));
-				gameObjectList[i + 1].load(Game1.objectPlaceHolderSave);
-			}
+
+            gameObjectList.Add(new startGameBlock(Game1.flowerTexture, new Vector2(640, 450), Color.White));
+            gameObjectList[1].load(Game1.flowerTexture);
+
+            gameObjectList.Add(new invisibleBlock(Game1.objectPlaceHolderSave, new Rectangle(-10, 480, 1300,560), Color.White));
+            gameObjectList[2].load(Game1.objectPlaceHolderSave);
+
+            gameObjectList.Add(new invisibleBlock(Game1.objectPlaceHolderSave, new Rectangle(0, 10, 10, 560), Color.White));
+            gameObjectList[3].load(Game1.objectPlaceHolderSave);
+
+            gameObjectList.Add(new invisibleBlock(Game1.objectPlaceHolderSave, new Rectangle(1270, 10, 10, 560), Color.White));
+            gameObjectList[4].load(Game1.objectPlaceHolderSave);
 		}
 
 

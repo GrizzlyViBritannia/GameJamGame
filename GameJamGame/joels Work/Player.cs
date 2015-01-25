@@ -235,7 +235,7 @@ namespace GameJamGame.joels_Work
                 Color.White);
             
             animationTimer++;
-            if (animationTimer > 10)
+            if (animationTimer > 7)
             {
                 this.animationState++;
                 if (this.animationState > 2)

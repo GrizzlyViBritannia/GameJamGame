@@ -16,7 +16,7 @@ namespace GameJamGame.joels_Work
         public Flower(Texture2D texture, Vector2 pos, Color colour)
         {
             this.texture = texture;
-            this.colour = Color.Green;
+            this.colour = Color.White;
             this.centerPosition = pos;
             drawSize = new Vector2(this.texture.Width,this.texture.Height);
             this.collisonRect = drawRect(Vector2.Zero);
@@ -32,7 +32,10 @@ namespace GameJamGame.joels_Work
         protected override void collision()
         {
             if (collidable)
+            {
                 Game1.swapCompleteBlocks();
+                this.drawable = false;
+            }
             this.collidable = false;
 
         }

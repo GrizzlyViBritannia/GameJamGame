@@ -78,9 +78,9 @@ namespace GameJamGame.joels_Work
 			updateGravity(gameTime);
 			this.moveObject(mSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
 			this.collisonRect = drawRect(this.drawOffset);
-			if (currentKeyboardState.IsKeyDown(Keys.Space) == true)
+			if (currentKeyboardState.IsKeyDown(Keys.B) == true)
 			{
-				//currentState = State.;
+				mSpeed.Y = 0;
 			}
 
 			mPreviousKeyboardState = currentKeyboardState;

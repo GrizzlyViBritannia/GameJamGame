@@ -23,7 +23,7 @@ namespace GameJamGame.joels_Work
 		const int MOVE_UP = 1;
 		const float WALKING_ACC = 2000.0f;
 		const float WALKING_DEC = 2000.0f;
-		const float MAX_SPEED_WALKING = 170.0f;
+		const float MAX_SPEED_WALKING = 200.0f;
 		const float MAX_SPEED_JUMPING = 90.0f;
 
         int animationTimer = 0;

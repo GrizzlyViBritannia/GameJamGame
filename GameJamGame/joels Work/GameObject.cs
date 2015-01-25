@@ -91,7 +91,8 @@ namespace GameJamGame.joels_Work
 
         public virtual void update(GameTime gameTime)
 		{
-			
+            checkForCollisions();
+            run();
 		}
 		public virtual void draw(SpriteBatch SB, Vector2 offset)
 		{

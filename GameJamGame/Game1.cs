@@ -149,7 +149,27 @@ namespace GameJamGame
             base.Draw(gameTime);
         }
 
-        
+        public static void endLevel(int direction)
+        {
+            gameBoard.endLevel(direction);
+        }
+        public static void swapCompleteBlocks()
+        {
+            for (int i = 0; i < levelList.Count; i++)
+            {
+                levelList[i].changeRespawn(levelList[i].firstEndPoint);
+                for (int j = 0; j < levelList[i].getObjectList().Count; j++)
+                {
+                    if (levelList[i].getObjectList()[j].GetType() == typeof(CompleteBlock))
+                    {
+                        ((CompleteBlock)(levelList[i].getObjectList()[j])).visable = !((CompleteBlock)(levelList[i].getObjectList()[j])).visable;
+                    
+                    }
+                }
+            }
+            //gameBoard.swapCompleteBlocks();
+            
+        }
 
         /*
          * 
@@ -163,17 +183,17 @@ namespace GameJamGame
             // lvl 1
             List<GameObject> level1GameObjectList = new List<GameObject>();
             level1GameObjectList = level1Objects();
-            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(450,115));
+            Level level1 = new Level(level1BGSave, level1GameObjectList, new Vector2(450,115),new Vector2(865,175),new Vector2(450,600));
 
             // lvl 2
             List<GameObject> level2GameObjectList = new List<GameObject>();
             level2GameObjectList = level2Objects();
-            Level level2 = new Level(level2BGSave, level2GameObjectList, new Vector2(210, 175));
+            Level level2 = new Level(level2BGSave, level2GameObjectList, new Vector2(210, 175), new Vector2(1100,135), new Vector2(185,175));
 
             // lvl 3
             List<GameObject> level3GameObjectList = new List<GameObject>();
             level3GameObjectList = level3Objects();
-            Level level3 = new Level(level3BGSave, level3GameObjectList, new Vector2(390, 535));
+            Level level3 = new Level(level3BGSave, level3GameObjectList, new Vector2(390, 535), new Vector2(900,115), new Vector2(365,530));
 
             
             returnList.Add(level1);
@@ -188,6 +208,7 @@ namespace GameJamGame
             List<GameObject> returnList = new List<GameObject>();
 
              // 60 - 60
+
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(510, 595), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(510, 535), Color.White));
 
@@ -211,6 +232,10 @@ namespace GameJamGame
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(370, 625, 920 - 370, 680 - 40), Color.White));
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(840, 205, 1050 - 840, 660 - 205), Color.White));
 
+            // complete block
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(890, 175), Color.Red, 1,true));
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(450, 600), Color.Red, -1, false));
+
             return returnList;
 
 
@@ -221,19 +246,20 @@ namespace GameJamGame
 
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(270, 235), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(330, 235), Color.White));
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(390, 295), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(390, 355), Color.White));
 
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(450, 395), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(450, 295), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(510, 415), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(570, 415), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(570, 235), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(630, 535), Color.White));
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(680, 295), Color.White));
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(740, 535), Color.White));
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(800, 355), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(690, 295), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(750, 535), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(810, 355), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(870, 535), Color.White));
             returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(930, 415), Color.White));
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(990, 545), Color.White));
-            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(990, 605), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(990, 535), Color.White));
+            returnList.Add(new Shatter(level1BreakableBlockSave, new Vector2(990, 595), Color.White));
 
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(150, 0, 240 - 150, 140 - 0), Color.White));
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(80, 80, 180 - 80, 230 - 80), Color.White));
@@ -242,6 +268,9 @@ namespace GameJamGame
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(1080, 565, 1200 - 1080, 715 - 565), Color.White));
 
 
+            // complete block
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(1140, 535), Color.Red, 1, true));
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(210, 175), Color.Red, -1, false));
 
 
             return returnList;
@@ -257,7 +286,11 @@ namespace GameJamGame
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(450, 625, 885 - 450, 665 - 625), Color.White));
             returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(840, 130, 900 - 840, 870 - 130), Color.White));
 
-            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(320, 565, 480 - 320, 630 - 565), Color.White));
+            returnList.Add(new invisibleBlock(objectPlaceHolderSave, new Rectangle(320, 560, 480 - 320, 630 - 560), Color.White));
+
+
+            returnList.Add(new Flower(objectPlaceHolderSave, new Vector2(750, 600), Color.Green));
+            returnList.Add(new CompleteBlock(objectPlaceHolderSave, new Vector2(390, 530), Color.Red, -1, false));
 
 
             return returnList;

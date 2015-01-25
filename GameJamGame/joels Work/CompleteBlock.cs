@@ -9,12 +9,17 @@ namespace GameJamGame.joels_Work
 {
 	class CompleteBlock : GameObject
 	{
-		public CompleteBlock(Texture2D texture, Vector2 pos, Color colour)
+        int direction;
+        public bool visable;
+		public CompleteBlock(Texture2D texture, Vector2 pos, Color colour, int direction, bool visable)
 		{
+            this.collidable = false;
+            this.visable = visable;
 			this.texture = texture;
 			this.colour = colour;
 			this.centerPosition = pos;
-			drawSize = new Vector2(this.texture.Width, this.texture.Height);
+            this.direction = direction;
+			drawSize = new Vector2(50, 50);
 			this.collisonRect = drawRect(Vector2.Zero);
 			this.movable = false;
 			this.colliding = false;
@@ -22,13 +27,23 @@ namespace GameJamGame.joels_Work
 
 		public override void update(GameTime gameTime)
 		{
-			checkForCollisions();
-			run();
+            if (visable)
+            {
+                checkForCollisions();
+                run();
+            }
 		}
+
+        public override void draw(SpriteBatch SB, Vector2 offset)
+        {
+            if (visable)
+                base.draw(SB, offset);
+        }
 
 		protected override void collision()
 		{
-			
+            if (visable)
+                Game1.endLevel(direction);
 		}
 
 	}

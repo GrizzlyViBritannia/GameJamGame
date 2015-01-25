@@ -21,9 +21,13 @@ namespace GameJamGame.joels_Work
 		public Rectangle drawRect;
 		private List<GameObject> objectList;
         public Vector2 respawnPoint;
+        public Vector2 firstEndPoint;
+        public Vector2 secondEndPoint;
 
-		public Level(Texture2D backGround, List<GameObject> gameObjectList, Vector2 respawnPoint)
+        public Level(Texture2D backGround, List<GameObject> gameObjectList, Vector2 respawnPoint,Vector2 firstEndPoint, Vector2 secondEndPoint)
 		{
+            this.secondEndPoint = secondEndPoint;
+            this.firstEndPoint = firstEndPoint;
             this.respawnPoint = respawnPoint;
 			this.backGround = backGround;
 			this.drawRect = drawRect;
@@ -35,6 +39,17 @@ namespace GameJamGame.joels_Work
         {
             return this.objectList;
         }
-
+        public void addObject(GameObject gObject)
+        {
+            this.objectList.Add(gObject);
+        }
+        public void removeObject(GameObject gObject)
+        {
+            this.objectList.Remove(gObject);
+        }
+        public void changeRespawn(Vector2 input)
+        {
+            this.respawnPoint = input;
+        }
 	}
 }

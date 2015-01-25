@@ -165,7 +165,7 @@ namespace GameJamGame.joels_Work
         // public functions:
         public void endLevel(int direction)
         {
-            
+            currectDirection = direction;
             state = transitionState;
             declareTransition(new Vector2(-1280*direction, 0), this.boardOffset);
             getPlayer().setPosition(getPlayer().getCenterPosition() + new Vector2(-1280 * direction, 0));
@@ -211,7 +211,6 @@ namespace GameJamGame.joels_Work
             
             if (state == updateState)
             {
-                
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                 {
@@ -314,6 +313,18 @@ namespace GameJamGame.joels_Work
                 this.currentBackGround.Height);
         }
 		
+        public void swapCompleteBlocks()
+        {
+            this.currectDirection *= -1;
+            for (int i = 0; i < gameObjectList.Count; i++)
+            {
+                if (gameObjectList[i].GetType() == typeof(CompleteBlock))
+                {
+                    ((CompleteBlock)(gameObjectList[i])).visable = !((CompleteBlock)(gameObjectList[i])).visable;
+                }
+            }
+                
+        }
 
         // get-set
         public Player getPlayer()

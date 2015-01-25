@@ -11,10 +11,14 @@ namespace GameJamGame.joels_Work
 	{
 
 		int cycleNumber;
+		Texture2D texture1;
+		Texture2D texture2;
 
-		public CycleBlock(Texture2D texture, Vector2 pos, Color colour, int cycle)
+		public CycleBlock(Texture2D texture, Texture2D alphaTexture, Vector2 pos, Color colour, int cycle)
 		{
 			this.texture = texture;
+			this.texture1 = texture;
+			this.texture2 = alphaTexture;
 			this.colour = colour;
 			this.centerPosition = pos;
 			cycleNumber = cycle;
@@ -36,12 +40,12 @@ namespace GameJamGame.joels_Work
 			if (cycleNumber == Game1.getCycle())
 			{
 				this.collidable = true;
-				this.colour.A = 255;
+				this.texture = texture1;
 			}
 			else
 			{
 				this.collidable = false;
-				this.colour.A = 1;
+				this.texture = texture2;
 			}
 		}
 

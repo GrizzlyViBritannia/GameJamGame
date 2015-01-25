@@ -124,6 +124,36 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LevelF\5_1_bg.png">
+      <Name>5_1_bg</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Processor>TextureProcessor</Processor>
+    </Content>
+    <Content Include="Images\LevelF\5_2_bg.png">
+      <Name>5_2_bg</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\5_3_bg.png">
+      <Name>5_3_bg</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform down.png">
+      <Name>arrow platform down</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Processor>TextureProcessor</Processor>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform left.png">
+      <Name>arrow platform left</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform right.png">
+      <Name>arrow platform right</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform up.png">
+      <Name>arrow platform up</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\objectPlaceHolder.png">
       <Name>objectPlaceHolder</Name>
       <Importer>TextureImporter</Importer>

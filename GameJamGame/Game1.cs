@@ -49,6 +49,15 @@ namespace GameJamGame
         public static Texture2D jumpCounter3;
         public static Texture2D jumpCounter4;
 
+		// level FINAL stuff
+		public static Texture2D backgroundF0;
+		public static Texture2D backgroundF1;
+		public static Texture2D backgroundF2;
+		public static Texture2D arrowDown;
+		public static Texture2D arrowLeft;
+		public static Texture2D arrowRight;
+		public static Texture2D arrowUp;
+
 
         static Board gameBoard = new Board();
         public static List<List<Level>> levelList;
@@ -107,6 +116,15 @@ namespace GameJamGame
             jumpCounter2  = Content.Load<Texture2D>("Images/Level2/jump counter 2.png");
             jumpCounter3  = Content.Load<Texture2D>("Images/Level2/jump counter 3.png");
             jumpCounter4  = Content.Load<Texture2D>("Images/Level2/jump counter 4.png");
+
+			// level FINAL load
+			arrowDown = Content.Load<Texture2D>("Images/LevelF/arrow platform down.png");
+			arrowLeft = Content.Load<Texture2D>("Images/LevelF/arrow platform left.png");
+			arrowRight = Content.Load<Texture2D>("Images/LevelF/arrow platform right");
+			arrowUp = Content.Load<Texture2D>("Images/LevelF/arrow platform up");
+			backgroundF0 = Content.Load<Texture2D>("Images/LevelF/5_1_bg.png");
+			backgroundF1 = Content.Load<Texture2D>("Images/LevelF/5_2_bg.png");
+			backgroundF2 = Content.Load<Texture2D>("Images/LevelF/5_3_bg.png");
 
             // create level data
             levelList = new List<List<Level>>();

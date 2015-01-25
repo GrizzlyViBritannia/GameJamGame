@@ -48,12 +48,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\backgroundPlaceHolder.png">
-      <Name>backgroundPlaceHolder</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\backGroundStart.png">
       <Name>backGroundStart</Name>
       <Importer>TextureImporter</Importer>
@@ -114,12 +108,6 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Level1\glass2.png">
-      <Name>glass2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Images\Level1\1_1BG.png">
       <Name>1_1BG</Name>
       <Importer>TextureImporter</Importer>
@@ -132,24 +120,16 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Level1\playerPlaceHolder2.png">
-      <Name>playerPlaceHolder2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
+    <Content Include="Images\Level1\iceblock.png">
+      <Name>iceblock</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
     </Content>
     <Content Include="Images\Level2\Lava1.png">
-      <Name>Lava1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
       <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Level2\Lava2.png">
-      <Name>Lava2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Level2\3_1_bg.png">
@@ -218,17 +198,42 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\LevelF\5_1_bg.png">
+      <Name>5_1_bg</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Processor>TextureProcessor</Processor>
+    </Content>
+    <Content Include="Images\LevelF\5_2_bg.png">
+      <Name>5_2_bg</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\5_3_bg.png">
+      <Name>5_3_bg</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform down.png">
+      <Name>arrow platform down</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Processor>TextureProcessor</Processor>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform left.png">
+      <Name>arrow platform left</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform right.png">
+      <Name>arrow platform right</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\LevelF\arrow platform up.png">
+      <Name>arrow platform up</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\objectPlaceHolder.png">
       <Name>objectPlaceHolder</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\playerPlaceHolder.png">
-      <Name>playerPlaceHolder</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
     </Content>
     <Content Include="Images\Player\PlayerSpriteSheet1.png">
       <Name>PlayerSpriteSheet1</Name>
@@ -236,18 +241,7 @@
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
-    </Content>
-    <Content Include="Images\Player\PlayerSpriteSheet1.bmp">
-      <Name>PlayerSpriteSheet1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <ProcessorParameters_ColorKeyColor>255, 255, 255, 255</ProcessorParameters_ColorKeyColor>
       <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
-    </Content>
-    <Content Include="Images\test.png">
-      <Name>test</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

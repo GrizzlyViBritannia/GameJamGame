@@ -24,11 +24,9 @@ namespace GameJamGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D image; // piss off
         Ending endingScene;
 
         bool ending = true;
-
         public static Texture2D backGroundPlaceHolderSave;
         public static Texture2D objectPlaceHolderSave;
         public static Texture2D flowerTexture;
@@ -68,6 +66,15 @@ namespace GameJamGame
         public static Texture2D text3;                              
         public static Texture2D text4;                              
                                                                     
+		// level FINAL stuff
+		public static Texture2D backgroundF0;
+		public static Texture2D backgroundF1;
+		public static Texture2D backgroundF2;
+		public static Texture2D arrowDown;
+		public static Texture2D arrowLeft;
+		public static Texture2D arrowRight;
+		public static Texture2D arrowUp;
+
 
         static Board gameBoard = new Board();
         public static List<List<Level>> levelList;
@@ -108,9 +115,7 @@ namespace GameJamGame
 
             // TODO: use this.Content to load your game content here
 
-            image = Content.Load<Texture2D>("Images/test"); // i hate you
-            backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
-            //playerTextureSave = Content.Load<Texture2D>("Images/Level1/playerPlaceHolder2.png");
+			backGroundPlaceHolderSave = Content.Load<Texture2D>("Images/backGroundStart.png");
             objectPlaceHolderSave = Content.Load<Texture2D>("Images/objectPlaceHolder.png");
 
             // load spriteSheet
@@ -120,7 +125,7 @@ namespace GameJamGame
             level1BGSave = Content.Load<Texture2D>("Images/Level1/1_1BG.png");
             level2BGSave = Content.Load<Texture2D>("Images/Level1/1_2BG.png");
             level3BGSave = Content.Load<Texture2D>("Images/Level1/1_3.png");
-            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/glass2.png");
+            level1BreakableBlockSave = Content.Load<Texture2D>("Images/Level1/iceblock.png");
 
             // level 2 load
 
@@ -148,6 +153,15 @@ namespace GameJamGame
 
 
 
+
+			// level FINAL load
+			arrowDown = Content.Load<Texture2D>("Images/LevelF/arrow platform down.png");
+			arrowLeft = Content.Load<Texture2D>("Images/LevelF/arrow platform left.png");
+			arrowRight = Content.Load<Texture2D>("Images/LevelF/arrow platform right");
+			arrowUp = Content.Load<Texture2D>("Images/LevelF/arrow platform up");
+			backgroundF0 = Content.Load<Texture2D>("Images/LevelF/5_1_bg.png");
+			backgroundF1 = Content.Load<Texture2D>("Images/LevelF/5_2_bg.png");
+			backgroundF2 = Content.Load<Texture2D>("Images/LevelF/5_3_bg.png");
 
             // create level data
             levelList = new List<List<Level>>();
@@ -200,14 +214,12 @@ namespace GameJamGame
             spriteBatch.Begin();
 
             
-
             if (!ending)
                 gameBoard.draw(spriteBatch);
             else
             {
                 endingScene.draw(spriteBatch);
             }
-
 
             spriteBatch.End();
 
